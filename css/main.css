@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d9ff9f;
+  background: #1dff85;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3120,4 +3120,21 @@ pre .javascript .function {
   .pagination {
     margin: 8px 0 0;
   }
+}
+.sidebar-box {
+  background: #fff;
+  margin-top: 15px;
+  width: 240px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
+  padding: 20px 10px;
+}
+.sidebar .tag-cloud-tags a {
+  border: 1px solid #ddd;
+  margin: 7px 4px 0px 4px;
+  padding: 0px 7px;
+  display: inline-block;
+}
+.sidebar a {
+  border-bottom: none;
 }
