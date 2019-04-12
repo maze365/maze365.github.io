@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2430ff;
+  background: #1d0ffb;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3141,4 +3141,12 @@ pre .javascript .function {
 }
 .post-tags {
   margin-left: 10px;
+}
+.posts-expand .post-body .fancybox img {
+  margin: 0 0 25px;
+}
+.site-uv .busuanzi-value,
+.site-pv .busuanzi-value,
+.page-pv .busuanzi-value {
+  display: inline-block;
 }
