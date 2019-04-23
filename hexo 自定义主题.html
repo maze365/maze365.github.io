@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5308475-9f1817d2d7627f7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5308475-8e8340c7a0489bce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-11T15:21:23.450Z">
+<meta property="og:updated_time" content="2019-04-23T14:37:54.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo 自定义主题">
 <meta name="twitter:description" content="参考文章：http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html NexT官方主题配置：https://theme-next.iissnan.com/theme-settings.html 第三方服务集成：h">
@@ -287,8 +287,8 @@
                 <i class="fa fa-clock-o"></i>
               </span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-11T17:51:50+08:00">
-                2019-04-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T18:51:50+08:00">
+                2018-09-25
               </time>
             
 
@@ -310,6 +310,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/hexo 自定义主题.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="hexo 自定义主题.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -317,7 +328,7 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
             <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
             </span>
           
@@ -342,7 +353,6 @@
         <p>参考文章：<a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html</a></p>
 <p>NexT官方主题配置：<a href="https://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">https://theme-next.iissnan.com/theme-settings.html</a></p>
 <p>第三方服务集成：<a href="http://theme-next.iissnan.com/third-party-services.html#comment-system" target="_blank" rel="noopener">http://theme-next.iissnan.com/third-party-services.html#comment-system</a></p>
-<p>[toc]</p>
 <h2 id="menu-再多加一个-tags"><a href="#menu-再多加一个-tags" class="headerlink" title="menu 再多加一个 tags"></a>menu 再多加一个 tags</h2><p>找到<code>themes/next/_config.yml</code>，打开<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DTS"><figure class="iseeu highlight /dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">menu:</span></span><br><span class="line"><span class="symbol">  home:</span> / || home</span><br><span class="line">  <span class="meta">#about: /about/ || user</span></span><br><span class="line"><span class="symbol">  tags:</span> <span class="meta-keyword">/tags/</span> || tags  <span class="comment">//将注释去除掉</span></span><br><span class="line">  <span class="meta">#categories: /categories/ || th</span></span><br><span class="line"><span class="symbol">  archives:</span> <span class="meta-keyword">/archives/</span> || archive</span><br><span class="line">  <span class="meta">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="meta">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="meta">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure></div></p>
 <p>点开链接，提示 <code>Cannot GET /tags/</code>，不要慌，不能获取tags，创建一个就OK！</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HAXE"><figure class="iseeu highlight /haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> <span class="string">'name'</span> <span class="meta"># 我们这里要创建的是tags，所以这里name改为tags就好</span></span><br></pre></td></tr></table></figure></div>
@@ -371,10 +381,10 @@
 <p>这里呢可以配置的属性有normal | night | night eighties | night blue | night bright，你可以挨个试一试，看下效果，选择你喜欢的一个属性</p>
 <p>光有这个配置还不行，在你的hexo/目录下_config.yml文件中中，找到，并设置如下</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span> <span class="comment">#修改为true</span></span><br><span class="line"><span class="attr">  tab_replace:</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="开启评论（没用）"><a href="#开启评论（没用）" class="headerlink" title="开启评论（没用）"></a>开启评论（没用）</h2><p>在 themes/next 目录下打开 _config.yml 配置文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">disqus:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span> <span class="comment">#设置为 true</span></span><br><span class="line"><span class="attr">  shortname:</span></span><br><span class="line"><span class="attr">  count:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="开启评论"><a href="#开启评论" class="headerlink" title="开启评论"></a>开启评论</h2><p>在 themes/next 目录下打开 _config.yml 配置文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">disqus:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span> <span class="comment">#设置为 true</span></span><br><span class="line"><span class="attr">  shortname:</span></span><br><span class="line"><span class="attr">  count:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h2><p>参考文章：<a href="https://blog.csdn.net/Calvin_zhou/article/details/78820718" target="_blank" rel="noopener">https://blog.csdn.net/Calvin_zhou/article/details/78820718</a></p>
 <h2 id="文章添加阅读次数，访问量"><a href="#文章添加阅读次数，访问量" class="headerlink" title="文章添加阅读次数，访问量"></a>文章添加阅读次数，访问量</h2><p><a href="https://blog.csdn.net/xr469786706/article/details/78166227" target="_blank" rel="noopener">参考文章</a></p>
 <p>打开 \themes\next\ _config.yml 文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span> <span class="comment">#改为 true 开启</span></span><br><span class="line"><span class="attr">  site_uv:</span> <span class="literal">true</span> <span class="comment">#访问人数</span></span><br><span class="line"><span class="attr">  site_uv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-user"&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="attr">  site_uv_footer:</span></span><br><span class="line"><span class="attr">  site_pv:</span> <span class="literal">true</span> <span class="comment">#总访问量</span></span><br><span class="line"><span class="attr">  site_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-eye"&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="attr">  site_pv_footer:</span></span><br><span class="line"><span class="attr">  page_pv:</span> <span class="literal">true</span> <span class="comment">#单篇文章浏览量</span></span><br><span class="line"><span class="attr">  page_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-file-o"&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="attr">  page_pv_footer:</span></span><br></pre></td></tr></table></figure></div></p>
-<h2 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h2><p>参考文章：<a href="https://blog.csdn.net/Calvin_zhou/article/details/78820718" target="_blank" rel="noopener">https://blog.csdn.net/Calvin_zhou/article/details/78820718</a></p>
 
       
     </div>
@@ -439,6 +449,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
 
   
 
@@ -543,7 +563,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#menu-再多加一个-tags"><span class="nav-text">menu 再多加一个 tags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章链接格式修改"><span class="nav-text">文章链接格式修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文章底部的那个带-号的标签"><span class="nav-text">修改文章底部的那个带#号的标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏网页底部powered-By-Hexo-强力驱动"><span class="nav-text">隐藏网页底部powered By Hexo / 强力驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左侧侧边栏加上展开的分类"><span class="nav-text">左侧侧边栏加上展开的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加自定义的css样式"><span class="nav-text">添加自定义的css样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首页改成-archives"><span class="nav-text">首页改成 archives</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索功能"><span class="nav-text">搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首页阅读全文"><span class="nav-text">首页阅读全文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码高亮"><span class="nav-text">代码高亮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启评论（没用）"><span class="nav-text">开启评论（没用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章添加阅读次数，访问量"><span class="nav-text">文章添加阅读次数，访问量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加评论"><span class="nav-text">添加评论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#menu-再多加一个-tags"><span class="nav-text">menu 再多加一个 tags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章链接格式修改"><span class="nav-text">文章链接格式修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文章底部的那个带-号的标签"><span class="nav-text">修改文章底部的那个带#号的标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏网页底部powered-By-Hexo-强力驱动"><span class="nav-text">隐藏网页底部powered By Hexo / 强力驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左侧侧边栏加上展开的分类"><span class="nav-text">左侧侧边栏加上展开的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加自定义的css样式"><span class="nav-text">添加自定义的css样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首页改成-archives"><span class="nav-text">首页改成 archives</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索功能"><span class="nav-text">搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首页阅读全文"><span class="nav-text">首页阅读全文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码高亮"><span class="nav-text">代码高亮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启评论"><span class="nav-text">开启评论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加评论"><span class="nav-text">添加评论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章添加阅读次数，访问量"><span class="nav-text">文章添加阅读次数，访问量</span></a></li></ol></div>
             
 
           </div>
@@ -708,6 +728,26 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/hexo 自定义主题.html';
+          this.page.identifier = 'hexo 自定义主题.html';
+          this.page.title = 'hexo 自定义主题';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 
