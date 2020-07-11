@@ -289,21 +289,23 @@
 
 
   
-     <link href="https://unpkg.com/gitalk/dist/gitalk.css">
-     <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
     <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
     <script>
-      var gitalk = new Gitalk({
-          clientID: <%=theme.gitalk.ClientID%>,
-          clientSecret: <%=theme.gitalk.ClientSecret%>,
-          repo: <%=theme.gitalk.repo%>,
-          owner: <%=theme.gitalk.owner%>,
-          admin: <%=theme.gitalk.adminUser%>,
-          id: <%=theme.gitalk.ID%>,
-          distractionFreeMode: <%=theme.gitalk.distractionFreeMode%>
-      })
-      gitalk.render('gitalk-container')
+    var gitalk = new Gitalk({
+        clientID: '98d3c066c8b2bea8c210',
+        clientSecret: '2646c914ee925451930e82c308e9b58ae9434258',
+        repo: 'hexoGitalk',
+        owner: 'maze365',
+        admin: ['maze365'],
+        id: location.pathname,
+        distractionFreeMode: false
+    })
+
+    gitalk.render('gitalk-container')
     </script>
+    
   
 
 
