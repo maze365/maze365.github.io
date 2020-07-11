@@ -1,25 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[sublime 插件删除不成功]]></title>
-    <url>%2Fsublime%20%E6%8F%92%E4%BB%B6%E5%88%A0%E9%99%A4%E4%B8%8D%E6%88%90%E5%8A%9F.html</url>
-    <content type="text"><![CDATA[删除 sublime 插件步骤：1Ctrl+Shift+P调出命令面板，输入remove，调出Remove Package选项并回车，选择要删除的插件并回车； 打开 preferences - package settings 查看，插件还在，浏览程序包也在。直接删除插件包，插件包重新生成了。 用 ctrl+~ 查看控制台，发现了下面的报错信息。ImportError: No module named &#39;package_control&#39; 以下是解决方法：打开设置-用户的配置文件（非汉化版应该是 user settings） 删除其中一行代码，保存 再重新执行删除的步骤，成功。]]></content>
-      <tags>
-        <tag>sublime</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[hexo 自定义主题]]></title>
-    <url>%2Fhexo%20%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98.html</url>
-    <content type="text"><![CDATA[参考文章：http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html NexT官方主题配置：https://theme-next.iissnan.com/theme-settings.html 第三方服务集成：http://theme-next.iissnan.com/third-party-services.html#comment-system menu 再多加一个 tags找到themes/next/_config.yml，打开123456789menu: home: / || home #about: /about/ || user tags: /tags/ || tags //将注释去除掉 #categories: /categories/ || th archives: /archives/ || archive #schedule: /schedule/ || calendar #sitemap: /sitemap.xml || sitemap #commonweal: /404/ || heartbeat 点开链接，提示 Cannot GET /tags/，不要慌，不能获取tags，创建一个就OK！ 1$ hexo new page 'name' # 我们这里要创建的是tags，所以这里name改为tags就好 在你的网站根目录下面的 source 文件夹会生成 tags 文件夹。 修改 tags 文件夹中的 index.md 文件，新增 type 属性，如下：12345---title: tagsdate: 2018-09-27 11:56:43type: tags--- 当你新建一篇博文的时候，增加上tags和categories属性值，就能在tags和categories界面检索到你的文章了。 文章链接格式修改 默认文章格式是: http://xxx.com/2015/07/06/your-title/ 的格式的,可以修改成 http://xxx.com/posts/programming/2016-03-18-hello-world.html 这样的格式 根目录下的 _config.yml 文件 1permalink: posts/:category/:year-:month-:day-:title.html 修改文章底部的那个带#号的标签 改成下图 修改模板 /themes/next/layout/_macro/post.swig ，搜索 rel=&quot;tag&quot;&gt;# ，将 # 换成 &lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt; 隐藏网页底部powered By Hexo / 强力驱动 打开 themes/next/layout/_partials/footer.swig,隐藏之间的代码即可，或者直接删除。 左侧侧边栏加上展开的分类 打开 themes/next/layout/_macro/sidebar.swig 添加内容 12345 &lt;div class="category-all-page"&gt; &lt;div class="category-all"&gt; &#123;&#123; list_categories(&#123;depth: 1&#125;) &#125;&#125; &lt;/div&gt;&lt;/div&gt; 参考hexo API 添加自定义的css样式 themes\next\layout\_partials\head.swig 添加样式支持为了不把原先文件搞得太乱，这里添加自己的样式文件在 themes\next\source\css 文件夹下，打开main.styl文件，在最后添加：123//My Layer//--------------------------------------------------@import "_my/style"; 首页改成 archives我是简单粗暴的将 themes\next\layout 下的 index.swig 的内容改掉，将 archive.swig 的文件内容复制了过来 搜索功能安装hexo-generator-searchdb插件1npm install hexo-generator-searchdb --save 12local_search: enable: true #主题配置文件下，这里改成 true 首页阅读全文123auto_excerpt: enable: true #主题配置文件下，这里改成true length: 150 代码高亮参考文章参考文章 在 themes/next 目录下打开 _config.yml 配置文件，找到 highlight_theme 属性 这里呢可以配置的属性有normal | night | night eighties | night blue | night bright，你可以挨个试一试，看下效果，选择你喜欢的一个属性 光有这个配置还不行，在你的hexo/目录下_config.yml文件中中，找到，并设置如下 12345highlight: enable: true line_number: true auto_detect: true #修改为true tab_replace: 开启评论在 themes/next 目录下打开 _config.yml 配置文件1234disqus: enable: true #设置为 true shortname: count: true 添加评论参考文章：https://blog.csdn.net/Calvin_zhou/article/details/78820718 文章添加阅读次数，访问量参考文章 打开 \themes\next\ _config.yml 文件1234567891011busuanzi_count: enable: true #改为 true 开启 site_uv: true #访问人数 site_uv_header: &lt;i class="fa fa-user"&gt;&lt;/i&gt; site_uv_footer: site_pv: true #总访问量 site_pv_header: &lt;i class="fa fa-eye"&gt;&lt;/i&gt; site_pv_footer: page_pv: true #单篇文章浏览量 page_pv_header: &lt;i class="fa fa-file-o"&gt;&lt;/i&gt; page_pv_footer:]]></content>
+    <title>hexo 自定义主题</title>
+    <url>/hexo%20%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98.html</url>
+    <content><![CDATA[<p>参考文章：<a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html</a></p>
+<p>NexT官方主题配置：<a href="https://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">https://theme-next.iissnan.com/theme-settings.html</a></p>
+<p>第三方服务集成：<a href="http://theme-next.iissnan.com/third-party-services.html#comment-system" target="_blank" rel="noopener">http://theme-next.iissnan.com/third-party-services.html#comment-system</a></p>
+<h2 id="menu-再多加一个-tags"><a href="#menu-再多加一个-tags" class="headerlink" title="menu 再多加一个 tags"></a>menu 再多加一个 tags</h2><p>找到<code>themes/next/_config.yml</code>，打开<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DTS"><figure class="iseeu highlight /dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">menu:</span></span><br><span class="line"><span class="symbol">  home:</span> / || home</span><br><span class="line">  <span class="meta">#about: /about/ || user</span></span><br><span class="line"><span class="symbol">  tags:</span> <span class="meta-keyword">/tags/</span> || tags  <span class="comment">//将注释去除掉</span></span><br><span class="line">  <span class="meta">#categories: /categories/ || th</span></span><br><span class="line"><span class="symbol">  archives:</span> <span class="meta-keyword">/archives/</span> || archive</span><br><span class="line">  <span class="meta">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="meta">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="meta">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure></div></p>
+<p>点开链接，提示 <code>Cannot GET /tags/</code>，不要慌，不能获取tags，创建一个就OK！</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HAXE"><figure class="iseeu highlight /haxe"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="type">page</span> <span class="string">'name'</span> <span class="meta"># 我们这里要创建的是tags，所以这里name改为tags就好</span></span><br></pre></td></tr></table></figure></div>
+<p>在你的网站根目录下面的 source 文件夹会生成 tags 文件夹。</p>
+<p>修改 tags 文件夹中的 index.md 文件，新增 type 属性，如下：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="bullet">-09</span><span class="bullet">-27</span> <span class="number">11</span><span class="string">:56:43</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure></div></p>
+<p>当你新建一篇博文的时候，增加上tags和categories属性值，就能在tags和categories界面检索到你的文章了。</p>
+<h2 id="文章链接格式修改"><a href="#文章链接格式修改" class="headerlink" title="文章链接格式修改"></a>文章链接格式修改</h2><p> 默认文章格式是: <a href="http://xxx.com/2015/07/06/your-title/" target="_blank" rel="noopener">http://xxx.com/2015/07/06/your-title/</a> 的格式的,可以修改成 <a href="http://xxx.com/posts/programming/2016-03-18-hello-world.html" target="_blank" rel="noopener">http://xxx.com/posts/programming/2016-03-18-hello-world.html</a> 这样的格式</p>
+<p> 根目录下的 _config.yml 文件<br> <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="symbol">permalink:</span> posts/<span class="symbol">:category/</span><span class="symbol">:year-</span><span class="symbol">:month-</span><span class="symbol">:day-</span><span class="symbol">:title</span>.html</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="修改文章底部的那个带-号的标签"><a href="#修改文章底部的那个带-号的标签" class="headerlink" title="修改文章底部的那个带#号的标签"></a>修改文章底部的那个带#号的标签</h2><p> 改成下图</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/5308475-9f1817d2d7627f7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p> 修改模板 <code>/themes/next/layout/_macro/post.swig</code> ，搜索 <code>rel=&quot;tag&quot;&gt;#</code> ，将 # 换成 <code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code> </p>
+<h2 id="隐藏网页底部powered-By-Hexo-强力驱动"><a href="#隐藏网页底部powered-By-Hexo-强力驱动" class="headerlink" title="隐藏网页底部powered By Hexo / 强力驱动"></a>隐藏网页底部powered By Hexo / 强力驱动</h2><p> 打开 themes/next/layout/_partials/footer.swig,隐藏之间的代码即可，或者直接删除。<br> <img src="http://upload-images.jianshu.io/upload_images/5308475-8e8340c7a0489bce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="左侧侧边栏加上展开的分类"><a href="#左侧侧边栏加上展开的分类" class="headerlink" title="左侧侧边栏加上展开的分类"></a>左侧侧边栏加上展开的分类</h2><p> 打开 themes/next/layout/_macro/sidebar.swig<br> 添加内容<br> <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="APPLESCRIPT"><figure class="iseeu highlight /applescript"><table><tr><td class="code"><pre><span class="line"> &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"category-all-page"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"category-all"</span>&gt;</span><br><span class="line">        &#123;&#123; list_categories(&#123;depth: <span class="number">1</span>&#125;) &#125;&#125;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure></div></p>
+<p> 参考<a href="https://hexo.io/zh-cn/docs/helpers.html#list-categories" target="_blank" rel="noopener">hexo API</a></p>
+<h2 id="添加自定义的css样式"><a href="#添加自定义的css样式" class="headerlink" title="添加自定义的css样式"></a>添加自定义的css样式</h2><p> <code>themes\next\layout\_partials\head.swig</code></p>
+<ul>
+<li>添加样式支持<br>为了不把原先文件搞得太乱，这里添加自己的样式文件<br>在 <code>themes\next\source\css</code> 文件夹下，打开main.styl文件，在最后添加：<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight /scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//My Layer</span></span><br><span class="line"><span class="comment">//--------------------------------------------------</span></span><br><span class="line">@<span class="keyword">import</span> <span class="string">"_my/style"</span>;</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<h2 id="首页改成-archives"><a href="#首页改成-archives" class="headerlink" title="首页改成 archives"></a>首页改成 archives</h2><p>我是简单粗暴的将 <code>themes\next\layout</code> 下的 index.swig 的内容改掉，将 archive.swig 的文件内容复制了过来</p>
+<h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>安装hexo-generator-searchdb插件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-searchdb <span class="comment">--save</span></span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span>  <span class="comment">#主题配置文件下，这里改成 true</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="首页阅读全文"><a href="#首页阅读全文" class="headerlink" title="首页阅读全文"></a>首页阅读全文</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span> <span class="comment">#主题配置文件下，这里改成true</span></span><br><span class="line"><span class="attr">  length:</span> <span class="number">150</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><p><a href="https://eggsywelsh.github.io/2016/11/10/hexo%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" target="_blank" rel="noopener">参考文章</a><br><a href="https://blog.shadowy.me/2018/03/16/hexo-next-macpanel-improved/" target="_blank" rel="noopener">参考文章</a></p>
+<p>在 themes/next 目录下打开 _config.yml 配置文件，找到 highlight_theme 属性</p>
+<p>这里呢可以配置的属性有normal | night | night eighties | night blue | night bright，你可以挨个试一试，看下效果，选择你喜欢的一个属性</p>
+<p>光有这个配置还不行，在你的hexo/目录下_config.yml文件中中，找到，并设置如下</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span> <span class="comment">#修改为true</span></span><br><span class="line"><span class="attr">  tab_replace:</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="开启评论"><a href="#开启评论" class="headerlink" title="开启评论"></a>开启评论</h2><p>在 themes/next 目录下打开 _config.yml 配置文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disqus:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span> <span class="comment">#设置为 true</span></span><br><span class="line"><span class="attr">  shortname:</span></span><br><span class="line"><span class="attr">  count:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h2><p>参考文章：<a href="https://blog.csdn.net/Calvin_zhou/article/details/78820718" target="_blank" rel="noopener">https://blog.csdn.net/Calvin_zhou/article/details/78820718</a></p>
+<h2 id="文章添加阅读次数，访问量"><a href="#文章添加阅读次数，访问量" class="headerlink" title="文章添加阅读次数，访问量"></a>文章添加阅读次数，访问量</h2><p><a href="https://blog.csdn.net/xr469786706/article/details/78166227" target="_blank" rel="noopener">参考文章</a></p>
+<p>打开 \themes\next\ _config.yml 文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span> <span class="comment">#改为 true 开启</span></span><br><span class="line"><span class="attr">  site_uv:</span> <span class="literal">true</span> <span class="comment">#访问人数</span></span><br><span class="line"><span class="attr">  site_uv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-user"&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="attr">  site_uv_footer:</span></span><br><span class="line"><span class="attr">  site_pv:</span> <span class="literal">true</span> <span class="comment">#总访问量</span></span><br><span class="line"><span class="attr">  site_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-eye"&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="attr">  site_pv_footer:</span></span><br><span class="line"><span class="attr">  page_pv:</span> <span class="literal">true</span> <span class="comment">#单篇文章浏览量</span></span><br><span class="line"><span class="attr">  page_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-file-o"&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="attr">  page_pv_footer:</span></span><br></pre></td></tr></table></figure></div></p>
+]]></content>
       <tags>
         <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[用 GitHub + hexo 搭建博客]]></title>
-    <url>%2F%E7%94%A8-GitHub-hexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2.html</url>
-    <content type="text"><![CDATA[系统：win7 64x nodejs：v10.8.0 npm：6.2.0 安装node.js http://nodejs.cn/这里我下载了msi程序包。 一直点击下一步安装就行了。 安装完成后，检测 PATH 环境变量是否配置了 Node.js，点击开始 -&gt; 运行 -&gt; 输入 [ cmd ] -&gt; 在 dos 窗口中输入命令 [ path ] ，输出如下结果： 123456&gt; PATH=C:\oraclexe\app\oracle\product\10.2.0\server\bin;C:\Windows\system32;&gt; C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;&gt; c:\python32\python;C:\MinGW\bin;C:\Program Files\GTK2-Runtime\lib;&gt; C:\Program Files\MySQL\MySQL Server 5.5\bin;C:\Program Files\nodejs\;&gt; C:\Users\rg\AppData\Roaming\npm&gt; 我们可以看到环境变量中已经包含了C:\Program Files\nodejs\ 笔者在这里不是安装的c盘 使用以下命令验证是否安装成功 node -v npm -v 安装git https://git-scm.com/downloads 安装好后可以在开始菜单栏看到git Git Bath 命令行模式 Git GUI 图形界面 回到电脑桌面，鼠标右击如果看到有两个git单词则安装成功 安装hexo 首先在本地磁盘中建立一个Hexo文件夹用于存储本地文件(做本地文件保存以及测试使用) 然后在文件夹中右击打开git命令框(Git Bash) [ npm install -g hexo-cli ] 使用npm安装Hexo ,在git命令框中安装Hexo [ hexo init ] 初始化新建完成后，指定文件夹的目录如下：12345678.├── _config.yml├── package.json├── scaffolds├── source| ├── _drafts| └── _posts└── themes 笔者在这里出现了 hexo: command not found 的错误，通过搜索，发现是hexo没有添加到环境变量，最后顺利解决。参考文章 ，没有差错请忽视 quote 文字 添加环境变量 参考文章 打开hexo的安装路径，笔者安装在e盘，路径如下 [ E:\hexo\node-v10.8.0-win-x64\node-global\node_modules\hexo-cli\bin ] 第一种方法：我的电脑 -&gt; 右键 -&gt; 属性 -&gt; 高级系统设置 -&gt; 环境变量 -&gt; 找到 [ path ] 选择 -&gt; 编辑，加上分号 [ ; ]把路径 [ E:\hexo\node-v10.8.0-win-x64\node-global\node_modules\hexo-cli\bin ] 拷贝进来 第二种方法，点击开始 -&gt; 运行 -&gt; 输入 [ sysdm.cpl ] -&gt; 高级 -&gt; 环境变量 -&gt; 找到 [ path ] 选择 -&gt; 编辑，加上分号 ; 把路径 [ E:\hexo\node-v10.8.0-win-x64\node-global\node_modules\hexo-cli\bin ] 拷贝进来 环境变量配置好后，记得把 git 关掉再重新打开 12345678$ npm install -g hexo-cli $ hexo init &lt;folder&gt; 新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。// 笔者这里输入 hexo init blog ，完成后会在文件夹下新建了一个blog的文件夹来存放网站$ cd &lt;folder&gt; // 切换到站点根目录// 输入 cd blog$ npm install$ hexo g // generetor的缩写 生成博客静态文件$ hexo s // server的缩写 启动本地服务器 浏览器输入 http://localhost:4000/ 访问 成功了！！！ hexo主题更换显示的是默认的主题，这里我们可以更换主题 官网主题 https://www.haomwei.com/ 响应式的主题 github 上有大量的主题可供选择，这里我选择使用 nexT 主题，https://github.com/iissnan/hexo-theme-next 下载主题相关文件 1.第一种方法：可以直接在此网站下载文件，下载后放到当前目录下的 themes 里面的 next 文件夹中。( next 文件夹自己新建 ) 2.第二种方法：在此文件夹 -&gt; 右键 -&gt; 打开命令提示符 -&gt; 输入 [ git clone https://github.com/iissnan/hexo-theme-next themes/next ] 以上代码的意思是从 https://github.com/iissnan/hexo-theme-next 将 next 下载到当前目录下的 themes 里面的 next 文件夹中。 更换主题 打开配置文件( 配置文件就是根目录下的 _config.yml 文件 ) 查找到 theme 字段，后面跟着的 landscape 是默认的主题，改成我们现在下载的 next 就可以了 1theme: next 1234$ hexo clean // 清除缓存$ hexo g // 重新生成代码$ hexo s // 部署到本地//然后打开浏览器访问 localhost:4000 查看效果 nexT主题有三种选择，这个只是最简洁的一种，我们选择最好看的那个。 Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白 Mist - Muse 的紧凑版本，整洁有序的单栏外观 Pisces - 双栏 Scheme，小家碧玉似的清新 在 站点根目录/themes/next/_congig.yml 文件中修改 1scheme: Pisces 然后重新clean，generator，server查看效果: 可以自定义主题，甚至修改源码，定制自己的主题，具体请查看官网文档 将本地博客上传到 GitHub 注册 GitHub 创建新项目( New repository ) 按格式输入项目名称( Repository name ) 项目名必须为：用户名.github.io 。把 [ Initialize this repository with a README ] 勾选上 点击设置( setting ) 往下拉，找到 GitHub pages ，choose theme 选择则一个主题，随便选，后面会覆盖掉 这个时候访问一下你的链接，应该可以看到效果，接下来将我们Hexo的代码部署到github上 修改hexo站点的配置文件 _config.yml，修改如下 12345deploy: type: git repository: https://github.com/maze365.github.io.git branch: master //冒号后面要有空格，缩进为两个空格 7.使用 git 部署一下就好了1234$ npm install hexo-deployer-git --save//装个插件$ hexo d // 部署的命令//等一会就好了 发布你的第一篇博客git 根目录下输入 ：1234$ hexo new "postName" //hexo n 也可以 //你自己的博客名称，名为postName.md的文件会建在目 //录/blog/source/_posts下。 文章编辑完成后，执行如下命令来发布:12$ hexo g //生成静态页面$ hexo d //发布 1234567$ hexo new "postName" #新建文章$ hexo new page "pageName" #新建页面$ hexo generate #生成静态页面至public目录$ hexo server #开启预览访问端口（默认端口4000，'ctrl + c'关闭server）$ hexo deploy #将.deploy目录部署到GitHub $ hexo help # 查看帮助$ hexo version #查看Hexo的版本 重启 hexo关闭服务器后，再次重启在站点根目录下 git123$ npm install$ hexo g$ hexo s 参考文章：https://blog.csdn.net/Hoshea_chx/article/details/78826689 参考文章：https://blog.csdn.net/AinUser/article/details/77609180 hexo官网]]></content>
+    <title>sublime 插件删除不成功</title>
+    <url>/sublime%20%E6%8F%92%E4%BB%B6%E5%88%A0%E9%99%A4%E4%B8%8D%E6%88%90%E5%8A%9F.html</url>
+    <content><![CDATA[<p>删除 sublime 插件步骤：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+P调出命令面板，输入<span class="keyword">remove</span>，调出<span class="keyword">Remove</span> Package选项并回车，选择要删除的插件并回车；</span><br></pre></td></tr></table></figure></div></p>
+<p>打开 <code>preferences</code> - <code>package settings</code> 查看，插件还在，浏览程序包也在。<br>直接删除插件包，插件包重新生成了。</p>
+<p>用 <code>ctrl+~</code> 查看控制台，发现了下面的报错信息。<br><code>ImportError: No module named &#39;package_control&#39;</code></p>
+<p>以下是解决方法：<br>打开<code>设置-用户</code>的配置文件（非汉化版应该是 <code>user settings</code>）<br><img src="/images/sublime1.png" alt=""></p>
+<p>删除其中一行代码，保存<br><img src="/images/sublime2.png" alt=""></p>
+<p>再重新执行删除的步骤，成功。</p>
+]]></content>
+      <tags>
+        <tag>sublime</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 GitHub + hexo 搭建博客</title>
+    <url>/%E7%94%A8-GitHub-hexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2.html</url>
+    <content><![CDATA[<ul>
+<li>系统：win7 64x</li>
+<li>nodejs：v10.8.0</li>
+<li><p>npm：6.2.0</p>
+<h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><blockquote>
+<p><a href="http://nodejs.cn/" target="_blank" rel="noopener">http://nodejs.cn/</a><br>这里我下载了msi程序包。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/install-node-msi-version-on-windows-step2.png" alt="image"><br>一直点击下一步安装就行了。</p>
+<ul>
+<li>安装完成后，检测 PATH 环境变量是否配置了 Node.js，点击开始 -&gt; 运行 -&gt; 输入 [ cmd ]  -&gt; 在 dos 窗口中输入命令 [ path ] ，输出如下结果：</li>
+</ul>
+<blockquote>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="TAGGERSCRIPT"><figure class="iseeu highlight /taggerscript"><table><tr><td class="code"><pre><span class="line">&gt; PATH=C:<span class="symbol">\o</span>raclexe<span class="symbol">\a</span>pp<span class="symbol">\o</span>racle<span class="symbol">\p</span>roduct<span class="symbol">\1</span>0.2.0<span class="symbol">\s</span>erver<span class="symbol">\b</span>in;C:<span class="symbol">\W</span>indows<span class="symbol">\s</span>ystem32;</span><br><span class="line">&gt; C:<span class="symbol">\W</span>indows;C:<span class="symbol">\W</span>indows<span class="symbol">\S</span>ystem32<span class="symbol">\W</span>bem;C:<span class="symbol">\W</span>indows<span class="symbol">\S</span>ystem32<span class="symbol">\W</span>indowsPowerShell<span class="symbol">\v</span>1.0<span class="symbol">\;</span></span><br><span class="line">&gt; c:<span class="symbol">\p</span>ython32<span class="symbol">\p</span>ython;C:<span class="symbol">\M</span>inGW<span class="symbol">\b</span>in;C:<span class="symbol">\P</span>rogram Files<span class="symbol">\G</span>TK2-Runtime<span class="symbol">\l</span>ib;</span><br><span class="line">&gt; C:<span class="symbol">\P</span>rogram Files<span class="symbol">\M</span>ySQL<span class="symbol">\M</span>ySQL Server 5.5<span class="symbol">\b</span>in;C:<span class="symbol">\P</span>rogram Files<span class="symbol">\n</span>odejs<span class="symbol">\;</span></span><br><span class="line">&gt; C:<span class="symbol">\U</span>sers<span class="symbol">\r</span>g<span class="symbol">\A</span>ppData<span class="symbol">\R</span>oaming<span class="symbol">\n</span>pm</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<p>我们可以看到环境变量中已经包含了C:\Program Files\nodejs\</p>
+<blockquote>
+<p>我在这里不是安装的c盘</p>
+</blockquote>
+<p>使用以下命令验证是否安装成功</p>
+<ul>
+<li>node -v</li>
+<li><p>npm -v</p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><blockquote>
+<p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a> </p>
+</blockquote>
+</li>
+</ul>
+<p><img src="/images/Snipaste_2018-09-26_16-56-51.png" alt></p>
+<p>安装好后可以在开始菜单栏看到git</p>
+<ul>
+<li>Git Bath 命令行模式</li>
+<li>Git GUI 图形界面</li>
+</ul>
+<p>回到电脑桌面，鼠标右击如果看到有两个git单词则安装成功</p>
+<p><img src="/images/Snipaste_2018-09-26_16-57-32.png" alt></p>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><ul>
+<li>首先在本地磁盘中建立一个Hexo文件夹用于存储本地文件(做本地文件保存以及测试使用)</li>
+<li>然后在文件夹中右击打开git命令框(Git Bash)</li>
+<li>[ npm install -g hexo-cli ] 使用npm安装Hexo ,在git命令框中安装Hexo </li>
+<li>[ hexo init ] 初始化<br>新建完成后，指定文件夹的目录如下：<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SQF"><figure class="iseeu highlight /sqf"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── <span class="variable">_config</span>.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── <span class="variable">_drafts</span></span><br><span class="line">|   └── <span class="variable">_posts</span></span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<blockquote>
+<p>我在这里出现了 hexo: command not found 的错误，通过搜索，发现是hexo没有添加到环境变量，最后顺利解决。<a href="https://blog.csdn.net/whjkm/article/details/42675579" target="_blank" rel="noopener">参考文章</a> ，没有差错请忽视 quote 文字</p>
+</blockquote>
+<blockquote>
+<p>添加环境变量 <a href="https://jingyan.baidu.com/article/47a29f24610740c0142399ea.html" target="_blank" rel="noopener">参考文章</a></p>
+</blockquote>
+<blockquote>
+<ul>
+<li>打开hexo的安装路径，我是安装在e盘，路径如下 [ E:\hexo\node-v10.8.0-win-x64\node-global\node_modules\hexo-cli\bin ] </li>
+<li>第一种方法：我的电脑 -&gt; 右键 -&gt; 属性 -&gt; 高级系统设置 -&gt; 环境变量 -&gt; 找到 [ path ] 选择 -&gt; 编辑，加上分号 [ ; ]把路径 [ E:\hexo\node-v10.8.0-win-x64\node-global\node_modules\hexo-cli\bin ] 拷贝进来</li>
+<li>第二种方法，点击开始 -&gt; 运行 -&gt; 输入 [ sysdm.cpl ]  -&gt; 高级 -&gt; 环境变量 -&gt; 找到 [ path ] 选择 -&gt; 编辑，加上分号 ; 把路径 [ E:\hexo\node-v10.8.0-win-x64\node-global\node_modules\hexo-cli\bin ] 拷贝进来</li>
+<li>环境变量配置好后，记得把 git 关掉再重新打开</li>
+</ul>
+</blockquote>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GAMS"><figure class="iseeu highlight /gams"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$</span> npm install -g hexo-cli </span><br><span class="line"><span class="symbol">$</span> hexo init &lt;folder&gt;  新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</span><br><span class="line"><span class="comment">// 我这里输入 hexo init blog ，完成后会在文件夹下新建了一个blog的文件夹来存放网站</span></span><br><span class="line"><span class="symbol">$</span> cd &lt;folder&gt; <span class="comment">// 切换到站点根目录</span></span><br><span class="line"><span class="comment">// 输入 cd blog</span></span><br><span class="line"><span class="symbol">$</span> npm install</span><br><span class="line"><span class="symbol">$</span> hexo g <span class="comment">// generetor的缩写  生成博客静态文件</span></span><br><span class="line"><span class="symbol">$</span> hexo s <span class="comment">// server的缩写 启动本地服务器</span></span><br></pre></td></tr></table></figure></div>
+<p>浏览器输入 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 访问 </p>
+<p>成功了！！！</p>
+<h2 id="hexo主题更换"><a href="#hexo主题更换" class="headerlink" title="hexo主题更换"></a>hexo主题更换</h2><p>显示的是默认的主题，这里我们可以更换主题</p>
+<p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">官网主题</a></p>
+<p><a href="https://www.haomwei.com/" target="_blank" rel="noopener">https://www.haomwei.com/</a> 响应式的主题</p>
+<p>github 上有大量的主题可供选择，这里我选择使用 nexT 主题，<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next</a> </p>
+<ul>
+<li><p>下载主题相关文件</p>
+</li>
+<li><p>1.第一种方法：可以直接在此网站下载文件，下载后放到当前目录下的 themes 里面的 next 文件夹中。( next 文件夹自己新建 )</p>
+</li>
+<li><p>2.第二种方法：在此文件夹 -&gt; 右键 -&gt; 打开命令提示符 -&gt; 输入 [ git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next</a> themes/next ]</p>
+<blockquote>
+<p>以上代码的意思是从 <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next</a> 将 next 下载到当前目录下的 themes 里面的 next 文件夹中。</p>
+</blockquote>
+</li>
+<li><p>更换主题</p>
+</li>
+<li>打开配置文件( 配置文件就是根目录下的 _config.yml 文件 )</li>
+<li>查找到 theme 字段，后面跟着的 landscape 是默认的主题，改成我们现在下载的 next 就可以了</li>
+</ul>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="AUTOIT"><figure class="iseeu highlight /autoit"><table><tr><td class="code"><pre><span class="line">theme: <span class="keyword">next</span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GAMS"><figure class="iseeu highlight /gams"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$</span> hexo clean  <span class="comment">// 清除缓存</span></span><br><span class="line"><span class="symbol">$</span> hexo g  <span class="comment">// 重新生成代码</span></span><br><span class="line"><span class="symbol">$</span> hexo s  <span class="comment">// 部署到本地</span></span><br><span class="line"><span class="comment">//然后打开浏览器访问 localhost:4000 查看效果</span></span><br></pre></td></tr></table></figure></div>
+<p>nexT主题有三种选择，这个只是最简洁的一种，我们选择最好看的那个。</p>
+<blockquote>
+<ul>
+<li>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白</li>
+<li>Mist - Muse 的紧凑版本，整洁有序的单栏外观</li>
+<li>Pisces - 双栏 Scheme，小家碧玉似的清新</li>
+</ul>
+</blockquote>
+<ul>
+<li>在 站点根目录/themes/next/_congig.yml 文件中修改</li>
+</ul>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="AVRASM"><figure class="iseeu highlight /avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">scheme:</span> Pisces</span><br></pre></td></tr></table></figure></div>
+<p>然后重新clean，generator，server查看效果:</p>
+<p>可以自定义主题，甚至修改源码，定制自己的主题，具体请查看<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">官网文档</a></p>
+<h2 id="将本地博客上传到-GitHub"><a href="#将本地博客上传到-GitHub" class="headerlink" title="将本地博客上传到 GitHub"></a>将本地博客上传到 GitHub</h2><ol>
+<li>注册 <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+<li>创建新项目( New repository )</li>
+<li><p>按格式输入项目名称( Repository name ) </p>
+<blockquote>
+<p>项目名必须为：用户名.github.io 。把 [ Initialize this repository with a README ] 勾选上</p>
+</blockquote>
+</li>
+<li><p>点击设置( setting ) </p>
+</li>
+<li>往下拉，找到 GitHub pages ，choose theme 选择则一个主题，随便选，后面会覆盖掉</li>
+</ol>
+<blockquote>
+<p>这个时候访问一下你的链接，应该可以看到效果，接下来将我们Hexo的代码部署到github上</p>
+</blockquote>
+<ol start="6">
+<li>修改hexo站点的配置文件 _config.yml，修改如下</li>
+</ol>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LESS"><figure class="iseeu highlight /less"><table><tr><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repository</span>: <span class="attribute">https</span>:<span class="comment">//github.com/maze365.github.io.git</span></span><br><span class="line">  <span class="attribute">branch</span>: master</span><br><span class="line">    <span class="comment">//冒号后面要有空格，缩进为两个空格</span></span><br></pre></td></tr></table></figure></div>
+<p>7.使用 git 部署一下就好了<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GAMS"><figure class="iseeu highlight /gams"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$</span> npm install hexo-deployer-git --save</span><br><span class="line"><span class="comment">//装个插件</span></span><br><span class="line"><span class="symbol">$</span> hexo d  <span class="comment">//  部署的命令</span></span><br><span class="line"><span class="comment">//等一会就好了</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="发布你的第一篇博客"><a href="#发布你的第一篇博客" class="headerlink" title="发布你的第一篇博客"></a>发布你的第一篇博客</h2><p>git 根目录下输入 ：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ACTIONSCRIPT"><figure class="iseeu highlight /actionscript"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="string">"postName"</span></span><br><span class="line"> <span class="comment">//hexo n 也可以 </span></span><br><span class="line"> <span class="comment">//你自己的博客名称，名为postName.md的文件会建在目</span></span><br><span class="line"> <span class="comment">//录/blog/source/_posts下。</span></span><br></pre></td></tr></table></figure></div></p>
+<p>文章编辑完成后，执行如下命令来发布:<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GAMS"><figure class="iseeu highlight /gams"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$</span> hexo g <span class="comment">//生成静态页面</span></span><br><span class="line"><span class="symbol">$</span> hexo d <span class="comment">//发布</span></span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"postName"</span> #新建文章</span><br><span class="line">$ hexo new<span class="built_in"> page </span><span class="string">"pageName"</span> #新建页面</span><br><span class="line">$ hexo generate #生成静态页面至public目录</span><br><span class="line">$ hexo<span class="built_in"> server </span>#开启预览访问端口（默认端口4000，<span class="string">'ctrl + c'</span>关闭server）</span><br><span class="line">$ hexo deploy #将.deploy目录部署到GitHub </span><br><span class="line">$ hexo help # 查看帮助</span><br><span class="line">$ hexo version #查看Hexo的版本</span><br></pre></td></tr></table></figure></div>
+<h2 id="重启-hexo"><a href="#重启-hexo" class="headerlink" title="重启 hexo"></a>重启 hexo</h2><p>关闭服务器后，再次重启<br>在站点根目录下 git<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>npm install</span><br><span class="line"><span class="variable">$ </span>hexo g</span><br><span class="line"><span class="variable">$ </span>hexo s</span><br></pre></td></tr></table></figure></div></p>
+<p> 参考文章：<a href="https://blog.csdn.net/Hoshea_chx/article/details/78826689" target="_blank" rel="noopener">https://blog.csdn.net/Hoshea_chx/article/details/78826689</a></p>
+<p> 参考文章：<a href="https://blog.csdn.net/AinUser/article/details/77609180" target="_blank" rel="noopener">https://blog.csdn.net/AinUser/article/details/77609180</a></p>
+<p> <a href="https://hexo.io/zh-cn/docs/setup" target="_blank" rel="noopener">hexo官网</a></p>
+]]></content>
       <tags>
         <tag>hexo</tag>
       </tags>
