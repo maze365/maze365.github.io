@@ -1,46 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hexo 自定义主题</title>
-    <url>/hexo%20%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98.html</url>
-    <content><![CDATA[<p>参考文章：<a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html</a></p>
-<p>NexT官方主题配置：<a href="https://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">https://theme-next.iissnan.com/theme-settings.html</a></p>
-<p>第三方服务集成：<a href="http://theme-next.iissnan.com/third-party-services.html#comment-system" target="_blank" rel="noopener">http://theme-next.iissnan.com/third-party-services.html#comment-system</a></p>
-<h2 id="menu-再多加一个-tags"><a href="#menu-再多加一个-tags" class="headerlink" title="menu 再多加一个 tags"></a>menu 再多加一个 tags</h2><p>找到<code>themes/next/_config.yml</code>，打开<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DTS"><figure class="iseeu highlight /dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">menu:</span></span><br><span class="line"><span class="symbol">  home:</span> / || home</span><br><span class="line">  <span class="meta">#about: /about/ || user</span></span><br><span class="line"><span class="symbol">  tags:</span> <span class="meta-keyword">/tags/</span> || tags  <span class="comment">//将注释去除掉</span></span><br><span class="line">  <span class="meta">#categories: /categories/ || th</span></span><br><span class="line"><span class="symbol">  archives:</span> <span class="meta-keyword">/archives/</span> || archive</span><br><span class="line">  <span class="meta">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="meta">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="meta">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure></div></p>
-<p>点开链接，提示 <code>Cannot GET /tags/</code>，不要慌，不能获取tags，创建一个就OK！</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="code"><pre><span class="line">$ hexo new<span class="built_in"> page </span><span class="string">'name'</span> # 我们这里要创建的是tags，所以这里name改为tags就好</span><br></pre></td></tr></table></figure></div>
-<p>在你的网站根目录下面的 source 文件夹会生成 tags 文件夹。</p>
-<p>修改 tags 文件夹中的 index.md 文件，新增 type 属性，如下：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="number">-09</span><span class="number">-27</span> <span class="number">11</span><span class="string">:56:43</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure></div></p>
-<p>当你新建一篇博文的时候，增加上tags和categories属性值，就能在tags和categories界面检索到你的文章了。</p>
-<h2 id="文章链接格式修改"><a href="#文章链接格式修改" class="headerlink" title="文章链接格式修改"></a>文章链接格式修改</h2><p> 默认文章格式是: <a href="http://xxx.com/2015/07/06/your-title/" target="_blank" rel="noopener">http://xxx.com/2015/07/06/your-title/</a> 的格式的,可以修改成 <a href="http://xxx.com/posts/programming/2016-03-18-hello-world.html" target="_blank" rel="noopener">http://xxx.com/posts/programming/2016-03-18-hello-world.html</a> 这样的格式</p>
-<p> 根目录下的 _config.yml 文件<br> <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="symbol">permalink:</span> posts/<span class="symbol">:category/</span><span class="symbol">:year-</span><span class="symbol">:month-</span><span class="symbol">:day-</span><span class="symbol">:title</span>.html</span><br></pre></td></tr></table></figure></div></p>
-<h2 id="修改文章底部的那个带-号的标签"><a href="#修改文章底部的那个带-号的标签" class="headerlink" title="修改文章底部的那个带#号的标签"></a>修改文章底部的那个带#号的标签</h2><p> 改成下图</p>
-<p> <img src="http://upload-images.jianshu.io/upload_images/5308475-9f1817d2d7627f7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p> 修改模板 <code>/themes/next/layout/_macro/post.swig</code> ，搜索 <code>rel=&quot;tag&quot;&gt;#</code> ，将 # 换成 <code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code> </p>
-<h2 id="隐藏网页底部powered-By-Hexo-强力驱动"><a href="#隐藏网页底部powered-By-Hexo-强力驱动" class="headerlink" title="隐藏网页底部powered By Hexo / 强力驱动"></a>隐藏网页底部powered By Hexo / 强力驱动</h2><p> 打开 themes/next/layout/_partials/footer.swig,隐藏之间的代码即可，或者直接删除。<br> <img src="http://upload-images.jianshu.io/upload_images/5308475-8e8340c7a0489bce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h2 id="左侧侧边栏加上展开的分类"><a href="#左侧侧边栏加上展开的分类" class="headerlink" title="左侧侧边栏加上展开的分类"></a>左侧侧边栏加上展开的分类</h2><p> 打开 themes/next/layout/_macro/sidebar.swig<br> 添加内容<br> <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="APPLESCRIPT"><figure class="iseeu highlight /applescript"><table><tr><td class="code"><pre><span class="line"> &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"category-all-page"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"category-all"</span>&gt;</span><br><span class="line">        &#123;&#123; list_categories(&#123;depth: <span class="number">1</span>&#125;) &#125;&#125;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure></div></p>
-<p> 参考<a href="https://hexo.io/zh-cn/docs/helpers.html#list-categories" target="_blank" rel="noopener">hexo API</a></p>
-<h2 id="添加自定义的css样式"><a href="#添加自定义的css样式" class="headerlink" title="添加自定义的css样式"></a>添加自定义的css样式</h2><p> <code>themes\next\layout\_partials\head.swig</code></p>
-<ul>
-<li>添加样式支持<br>为了不把原先文件搞得太乱，这里添加自己的样式文件<br>在 <code>themes\next\source\css</code> 文件夹下，打开main.styl文件，在最后添加：<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight /scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//My Layer</span></span><br><span class="line"><span class="comment">//--------------------------------------------------</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">"_my/style"</span>;</span><br></pre></td></tr></table></figure></div>
-</li>
-</ul>
-<h2 id="首页改成-archives"><a href="#首页改成-archives" class="headerlink" title="首页改成 archives"></a>首页改成 archives</h2><p>我是简单粗暴的将 <code>themes\next\layout</code> 下的 index.swig 的内容改掉，将 archive.swig 的文件内容复制了过来</p>
-<h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>安装hexo-generator-searchdb插件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-searchdb <span class="comment">--save</span></span><br></pre></td></tr></table></figure></div></p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment">#主题配置文件下，这里改成 true</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="首页阅读全文"><a href="#首页阅读全文" class="headerlink" title="首页阅读全文"></a>首页阅读全文</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#主题配置文件下，这里改成true</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">150</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><p><a href="https://eggsywelsh.github.io/2016/11/10/hexo%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" target="_blank" rel="noopener">参考文章</a><br><a href="https://blog.shadowy.me/2018/03/16/hexo-next-macpanel-improved/" target="_blank" rel="noopener">参考文章</a></p>
-<p>在 themes/next 目录下打开 _config.yml 配置文件，找到 highlight_theme 属性</p>
-<p>这里呢可以配置的属性有normal | night | night eighties | night blue | night bright，你可以挨个试一试，看下效果，选择你喜欢的一个属性</p>
-<p>光有这个配置还不行，在你的hexo/目录下_config.yml文件中中，找到，并设置如下</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">true</span> <span class="comment">#修改为true</span></span><br><span class="line">  <span class="attr">tab_replace:</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="开启评论"><a href="#开启评论" class="headerlink" title="开启评论"></a>开启评论</h2><p>在 themes/next 目录下打开 _config.yml 配置文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disqus:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#设置为 true</span></span><br><span class="line">  <span class="attr">shortname:</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></div></p>
-<h2 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h2><p>参考文章：<a href="https://blog.csdn.net/Calvin_zhou/article/details/78820718" target="_blank" rel="noopener">https://blog.csdn.net/Calvin_zhou/article/details/78820718</a></p>
-<h2 id="文章添加阅读次数，访问量"><a href="#文章添加阅读次数，访问量" class="headerlink" title="文章添加阅读次数，访问量"></a>文章添加阅读次数，访问量</h2><p><a href="https://blog.csdn.net/xr469786706/article/details/78166227" target="_blank" rel="noopener">参考文章</a></p>
-<p>打开 \themes\next\ _config.yml 文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#改为 true 开启</span></span><br><span class="line">  <span class="attr">site_uv:</span> <span class="literal">true</span> <span class="comment">#访问人数</span></span><br><span class="line">  <span class="attr">site_uv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-user"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">site_uv_footer:</span></span><br><span class="line">  <span class="attr">site_pv:</span> <span class="literal">true</span> <span class="comment">#总访问量</span></span><br><span class="line">  <span class="attr">site_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-eye"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">site_pv_footer:</span></span><br><span class="line">  <span class="attr">page_pv:</span> <span class="literal">true</span> <span class="comment">#单篇文章浏览量</span></span><br><span class="line">  <span class="attr">page_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-file-o"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">page_pv_footer:</span></span><br></pre></td></tr></table></figure></div></p>
+    <title>sublime 插件删除不成功</title>
+    <url>/sublime%20%E6%8F%92%E4%BB%B6%E5%88%A0%E9%99%A4%E4%B8%8D%E6%88%90%E5%8A%9F.html</url>
+    <content><![CDATA[<p>删除 sublime 插件步骤：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+P调出命令面板，输入<span class="keyword">remove</span>，调出<span class="keyword">Remove</span> Package选项并回车，选择要删除的插件并回车；</span><br></pre></td></tr></table></figure></div></p>
+<p>打开 <code>preferences</code> - <code>package settings</code> 查看，插件还在，浏览程序包也在。<br>直接删除插件包，插件包重新生成了。</p>
+<p>用 <code>ctrl+~</code> 查看控制台，发现了下面的报错信息。<br><code>ImportError: No module named &#39;package_control&#39;</code></p>
+<p>以下是解决方法：<br>打开<code>设置-用户</code>的配置文件（非汉化版应该是 <code>user settings</code>）<br><img src="/images/sublime1.png" alt></p>
+<p>删除其中一行代码，保存<br><img src="/images/sublime2.png" alt></p>
+<p>再重新执行删除的步骤，成功。</p>
 ]]></content>
       <tags>
-        <tag>hexo</tag>
+        <tag>sublime</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>纯 html 文件中怎么使用 sass</title>
+    <url>/%E7%BA%AF-html-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-sass.html</url>
+    <content><![CDATA[<p>sass 是一种流行的 CSS 预处理器，它能够让开发者使用嵌套语法和变量，以及一些其他的便利功能，来更加高效地编写 CSS 样式表。</p>
+<blockquote>
+<p>没有使用 npm 安装 sass，在平时的纯 html 页面中，要怎么才能使用 sass</p>
+</blockquote>
+<h1 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h1><p><a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">http://www.ruby-lang.org/zh_cn/downloads/</a></p>
+<h1 id="安装-sass"><a href="#安装-sass" class="headerlink" title="安装 sass"></a>安装 sass</h1><p>cmd 命令行输入下面的命令</p>
+<pre><code>gem install sass
+</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><blockquote>
+<p>文件夹名称不能是中文，否则会编译失败</p>
+</blockquote>
+<ul>
+<li>单文件编译</li>
+</ul>
+<!---->
+<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
+</code></pre><ul>
+<li><p>多文件编译<br>sass sass/\:css/（表示“sass”文件夹中所有的”.scss”文件编译成”.css”文件，并且将这些css文件放到“css”文件夹中）</p>
+</li>
+<li><p>自动监测（主要使用）<br><code>sass --watch&lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css</code>（.scss文件每次修改按ctrl+s保存都会实时的反映到输出的.css文件中）</p>
+</li>
+</ul>
+<!---->
+<pre><code>:expanded 普通样式
+:compact 一个样式一行
+:compressed 所有样式一行
+</code></pre><p>先打开命令行工具，进入到具体的文件夹，然后再执行使用命令。</p>
+<p>例子：<br>我有一个项目放在了 <code>E</code> 盘，名称叫 <code>sass-project</code>，里面有一个 <code>sass</code> 和 <code>css</code> 文件夹。<br>打开 <code>cmd</code>,<code>E:</code>进入到 E 盘，然后使用 <code>cd</code> 进入到 <code>sass-project</code>文件夹，接下来执行下面的命令就行</p>
+<pre><code>sass --watch sass:css --style compact
+</code></pre><!---->
+<pre><code>ctrl+c 停止
+</code></pre><p><img src="/images/2023-3-11-1.png" alt="image"></p>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre><code>　　$blue : #1875e7;　
+　　div {
+　　　color : $blue;
+　　}
+</code></pre><h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><pre><code>　　body {
+　　　　margin: (14px/2);
+　　　　top: 50px + 100px;
+　　　　right: $var * 10%;
+　　}
+</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><pre><code>　　div {
+　　　　h1 {
+　　　　　　color:red;
+　　　　}
+　　}
+　　border-color属性
+　　p { 
+　　　　border: {
+　　　　　　color: red;
+　　　　}
+　　}
+　　a:hover
+　　a {
+　　　　&amp;:hover { color: #ffb3ff; }
+　　}
+</code></pre><h2 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><pre><code>.class1 {
+　　　　border: 1px solid #ddd;
+　　}
+　　.class2 {
+　　　　@extend .class1;
+　　　　font-size:120%;
+　　}
+</code></pre><h3 id="Mixin-重用代码块-可以指定参数和缺省值"><a href="#Mixin-重用代码块-可以指定参数和缺省值" class="headerlink" title="Mixin (重用代码块) 可以指定参数和缺省值"></a>Mixin (重用代码块) 可以指定参数和缺省值</h3><pre><code>　　@mixin left {
+　　　　float: left;
+　　　　margin-left: 10px;
+　　}
+　　div {
+　　　　@include left;
+　　}
+</code></pre><p>eg: mixin的实例，用来生成浏览器前缀</p>
+<pre><code>　　@mixin rounded($vert, $horz, $radius: 10px) {
+　　　　border-#{$vert}-#{$horz}-radius: $radius;
+　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
+　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
+　　}
+　　&lt;!--调用--&gt;
+　　#navbar li { @include rounded(top, left); }
+　　#footer { @include rounded(top, left, 5px); }
+</code></pre><h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
+<pre><code>　　lighten(#cc3, 10%) // #d6d65c
+　　darken(#cc3, 10%) // #a3a329
+　　grayscale(#cc3) // #808080
+　　complement(#cc3) // #33c
+</code></pre><h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><pre><code>@import &quot;path/filename.scss&quot;;
+@import &quot;foo.css&quot;;
+</code></pre><h1 id="支持中文注释方法"><a href="#支持中文注释方法" class="headerlink" title="支持中文注释方法"></a>支持中文注释方法</h1><ul>
+<li>在 scss 文件头加上 <code>@charset &quot;utf-8&quot;;</code></li>
+<li>查看出错的 css 文件</li>
+</ul>
+<!---->
+<pre><code>Backtrace:
+sass/shop.scss:4
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1090:in `rescue in block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1087:in `block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each_with_index&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:820:in `rescue in check_sass_encoding&apos;
+</code></pre><p>得到路径 <code>C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass</code></p>
+<p>里面有一个文件<code>engine.rb</code>打开</p>
+<pre><code>require &apos;sass/scss&apos;
+require &apos;sass/stack&apos;
+require &apos;sass/error&apos;
+require &apos;sass/importers&apos;
+require &apos;sass/shared&apos;
+require &apos;sass/media&apos;
+require &apos;sass/supports&apos;
+</code></pre><p>我们在一连串的 require 后面加上代码</p>
+<pre><code>Encoding.default_external = Encoding.find(&apos;utf-8&apos;)
+</code></pre><p>最后再重启 sass 一下就好了</p>
+<p>更详细的使用可以参考：<a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/06/sass.html</a></p>
+]]></content>
+      <tags>
+        <tag>sass</tag>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -175,20 +266,6 @@
       </tags>
   </entry>
   <entry>
-    <title>sublime 插件删除不成功</title>
-    <url>/sublime%20%E6%8F%92%E4%BB%B6%E5%88%A0%E9%99%A4%E4%B8%8D%E6%88%90%E5%8A%9F.html</url>
-    <content><![CDATA[<p>删除 sublime 插件步骤：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+P调出命令面板，输入<span class="keyword">remove</span>，调出<span class="keyword">Remove</span> Package选项并回车，选择要删除的插件并回车；</span><br></pre></td></tr></table></figure></div></p>
-<p>打开 <code>preferences</code> - <code>package settings</code> 查看，插件还在，浏览程序包也在。<br>直接删除插件包，插件包重新生成了。</p>
-<p>用 <code>ctrl+~</code> 查看控制台，发现了下面的报错信息。<br><code>ImportError: No module named &#39;package_control&#39;</code></p>
-<p>以下是解决方法：<br>打开<code>设置-用户</code>的配置文件（非汉化版应该是 <code>user settings</code>）<br><img src="/images/sublime1.png" alt></p>
-<p>删除其中一行代码，保存<br><img src="/images/sublime2.png" alt></p>
-<p>再重新执行删除的步骤，成功。</p>
-]]></content>
-      <tags>
-        <tag>sublime</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vue-electron 批量生成 pdf</title>
     <url>/vue-electron%20%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%20pdf.html</url>
     <content><![CDATA[<blockquote>
@@ -213,6 +290,49 @@
 ]]></content>
       <tags>
         <tag>electron</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo 自定义主题</title>
+    <url>/hexo%20%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98.html</url>
+    <content><![CDATA[<p>参考文章：<a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html</a></p>
+<p>NexT官方主题配置：<a href="https://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">https://theme-next.iissnan.com/theme-settings.html</a></p>
+<p>第三方服务集成：<a href="http://theme-next.iissnan.com/third-party-services.html#comment-system" target="_blank" rel="noopener">http://theme-next.iissnan.com/third-party-services.html#comment-system</a></p>
+<h2 id="menu-再多加一个-tags"><a href="#menu-再多加一个-tags" class="headerlink" title="menu 再多加一个 tags"></a>menu 再多加一个 tags</h2><p>找到<code>themes/next/_config.yml</code>，打开<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DTS"><figure class="iseeu highlight /dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">menu:</span></span><br><span class="line"><span class="symbol">  home:</span> / || home</span><br><span class="line">  <span class="meta">#about: /about/ || user</span></span><br><span class="line"><span class="symbol">  tags:</span> <span class="meta-keyword">/tags/</span> || tags  <span class="comment">//将注释去除掉</span></span><br><span class="line">  <span class="meta">#categories: /categories/ || th</span></span><br><span class="line"><span class="symbol">  archives:</span> <span class="meta-keyword">/archives/</span> || archive</span><br><span class="line">  <span class="meta">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="meta">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="meta">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure></div></p>
+<p>点开链接，提示 <code>Cannot GET /tags/</code>，不要慌，不能获取tags，创建一个就OK！</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="code"><pre><span class="line">$ hexo new<span class="built_in"> page </span><span class="string">'name'</span> # 我们这里要创建的是tags，所以这里name改为tags就好</span><br></pre></td></tr></table></figure></div>
+<p>在你的网站根目录下面的 source 文件夹会生成 tags 文件夹。</p>
+<p>修改 tags 文件夹中的 index.md 文件，新增 type 属性，如下：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="number">-09</span><span class="number">-27</span> <span class="number">11</span><span class="string">:56:43</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure></div></p>
+<p>当你新建一篇博文的时候，增加上tags和categories属性值，就能在tags和categories界面检索到你的文章了。</p>
+<h2 id="文章链接格式修改"><a href="#文章链接格式修改" class="headerlink" title="文章链接格式修改"></a>文章链接格式修改</h2><p> 默认文章格式是: <a href="http://xxx.com/2015/07/06/your-title/" target="_blank" rel="noopener">http://xxx.com/2015/07/06/your-title/</a> 的格式的,可以修改成 <a href="http://xxx.com/posts/programming/2016-03-18-hello-world.html" target="_blank" rel="noopener">http://xxx.com/posts/programming/2016-03-18-hello-world.html</a> 这样的格式</p>
+<p> 根目录下的 _config.yml 文件<br> <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="symbol">permalink:</span> posts/<span class="symbol">:category/</span><span class="symbol">:year-</span><span class="symbol">:month-</span><span class="symbol">:day-</span><span class="symbol">:title</span>.html</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="修改文章底部的那个带-号的标签"><a href="#修改文章底部的那个带-号的标签" class="headerlink" title="修改文章底部的那个带#号的标签"></a>修改文章底部的那个带#号的标签</h2><p> 改成下图</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/5308475-9f1817d2d7627f7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p> 修改模板 <code>/themes/next/layout/_macro/post.swig</code> ，搜索 <code>rel=&quot;tag&quot;&gt;#</code> ，将 # 换成 <code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code> </p>
+<h2 id="隐藏网页底部powered-By-Hexo-强力驱动"><a href="#隐藏网页底部powered-By-Hexo-强力驱动" class="headerlink" title="隐藏网页底部powered By Hexo / 强力驱动"></a>隐藏网页底部powered By Hexo / 强力驱动</h2><p> 打开 themes/next/layout/_partials/footer.swig,隐藏之间的代码即可，或者直接删除。<br> <img src="http://upload-images.jianshu.io/upload_images/5308475-8e8340c7a0489bce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="左侧侧边栏加上展开的分类"><a href="#左侧侧边栏加上展开的分类" class="headerlink" title="左侧侧边栏加上展开的分类"></a>左侧侧边栏加上展开的分类</h2><p> 打开 themes/next/layout/_macro/sidebar.swig<br> 添加内容<br> <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="APPLESCRIPT"><figure class="iseeu highlight /applescript"><table><tr><td class="code"><pre><span class="line"> &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"category-all-page"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"category-all"</span>&gt;</span><br><span class="line">        &#123;&#123; list_categories(&#123;depth: <span class="number">1</span>&#125;) &#125;&#125;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure></div></p>
+<p> 参考<a href="https://hexo.io/zh-cn/docs/helpers.html#list-categories" target="_blank" rel="noopener">hexo API</a></p>
+<h2 id="添加自定义的css样式"><a href="#添加自定义的css样式" class="headerlink" title="添加自定义的css样式"></a>添加自定义的css样式</h2><p> <code>themes\next\layout\_partials\head.swig</code></p>
+<ul>
+<li>添加样式支持<br>为了不把原先文件搞得太乱，这里添加自己的样式文件<br>在 <code>themes\next\source\css</code> 文件夹下，打开main.styl文件，在最后添加：<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight /scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//My Layer</span></span><br><span class="line"><span class="comment">//--------------------------------------------------</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">"_my/style"</span>;</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<h2 id="首页改成-archives"><a href="#首页改成-archives" class="headerlink" title="首页改成 archives"></a>首页改成 archives</h2><p>我是简单粗暴的将 <code>themes\next\layout</code> 下的 index.swig 的内容改掉，将 archive.swig 的文件内容复制了过来</p>
+<h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>安装hexo-generator-searchdb插件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-searchdb <span class="comment">--save</span></span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment">#主题配置文件下，这里改成 true</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="首页阅读全文"><a href="#首页阅读全文" class="headerlink" title="首页阅读全文"></a>首页阅读全文</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#主题配置文件下，这里改成true</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">150</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><p><a href="https://eggsywelsh.github.io/2016/11/10/hexo%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" target="_blank" rel="noopener">参考文章</a><br><a href="https://blog.shadowy.me/2018/03/16/hexo-next-macpanel-improved/" target="_blank" rel="noopener">参考文章</a></p>
+<p>在 themes/next 目录下打开 _config.yml 配置文件，找到 highlight_theme 属性</p>
+<p>这里呢可以配置的属性有normal | night | night eighties | night blue | night bright，你可以挨个试一试，看下效果，选择你喜欢的一个属性</p>
+<p>光有这个配置还不行，在你的hexo/目录下_config.yml文件中中，找到，并设置如下</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">true</span> <span class="comment">#修改为true</span></span><br><span class="line">  <span class="attr">tab_replace:</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="开启评论"><a href="#开启评论" class="headerlink" title="开启评论"></a>开启评论</h2><p>在 themes/next 目录下打开 _config.yml 配置文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disqus:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#设置为 true</span></span><br><span class="line">  <span class="attr">shortname:</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h2><p>参考文章：<a href="https://blog.csdn.net/Calvin_zhou/article/details/78820718" target="_blank" rel="noopener">https://blog.csdn.net/Calvin_zhou/article/details/78820718</a></p>
+<h2 id="文章添加阅读次数，访问量"><a href="#文章添加阅读次数，访问量" class="headerlink" title="文章添加阅读次数，访问量"></a>文章添加阅读次数，访问量</h2><p><a href="https://blog.csdn.net/xr469786706/article/details/78166227" target="_blank" rel="noopener">参考文章</a></p>
+<p>打开 \themes\next\ _config.yml 文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#改为 true 开启</span></span><br><span class="line">  <span class="attr">site_uv:</span> <span class="literal">true</span> <span class="comment">#访问人数</span></span><br><span class="line">  <span class="attr">site_uv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-user"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">site_uv_footer:</span></span><br><span class="line">  <span class="attr">site_pv:</span> <span class="literal">true</span> <span class="comment">#总访问量</span></span><br><span class="line">  <span class="attr">site_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-eye"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">site_pv_footer:</span></span><br><span class="line">  <span class="attr">page_pv:</span> <span class="literal">true</span> <span class="comment">#单篇文章浏览量</span></span><br><span class="line">  <span class="attr">page_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-file-o"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">page_pv_footer:</span></span><br></pre></td></tr></table></figure></div></p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>
