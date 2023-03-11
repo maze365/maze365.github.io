@@ -85,126 +85,6 @@
       </tags>
   </entry>
   <entry>
-    <title>纯 html 文件中怎么使用 sass</title>
-    <url>/%E7%BA%AF-html-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-sass.html</url>
-    <content><![CDATA[<p>sass 是一种流行的 CSS 预处理器，它能够让开发者使用嵌套语法和变量，以及一些其他的便利功能，来更加高效地编写 CSS 样式表。</p>
-<blockquote>
-<p>没有使用 npm 安装 sass，在平时的纯 html 页面中，要怎么才能使用 sass</p>
-</blockquote>
-<h1 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h1><p><a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">http://www.ruby-lang.org/zh_cn/downloads/</a></p>
-<h1 id="安装-sass"><a href="#安装-sass" class="headerlink" title="安装 sass"></a>安装 sass</h1><p>cmd 命令行输入下面的命令</p>
-<pre><code>gem install sass
-</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><blockquote>
-<p>文件夹名称不能是中文，否则会编译失败</p>
-</blockquote>
-<ul>
-<li>单文件编译</li>
-</ul>
-<!---->
-<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
-</code></pre><ul>
-<li><p>多文件编译<br>sass sass/\:css/（表示“sass”文件夹中所有的”.scss”文件编译成”.css”文件，并且将这些css文件放到“css”文件夹中）</p>
-</li>
-<li><p>自动监测（主要使用）<br><code>sass --watch&lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css</code>（.scss文件每次修改按ctrl+s保存都会实时的反映到输出的.css文件中）</p>
-</li>
-</ul>
-<!---->
-<pre><code>:expanded 普通样式
-:compact 一个样式一行
-:compressed 所有样式一行
-</code></pre><p>先打开命令行工具，进入到具体的文件夹，然后再执行使用命令。</p>
-<p>例子：<br>我有一个项目放在了 <code>E</code> 盘，名称叫 <code>sass-project</code>，里面有一个 <code>sass</code> 和 <code>css</code> 文件夹。<br>打开 <code>cmd</code>,<code>E:</code>进入到 E 盘，然后使用 <code>cd</code> 进入到 <code>sass-project</code>文件夹，接下来执行下面的命令就行</p>
-<pre><code>sass --watch sass:css --style compact
-</code></pre><!---->
-<pre><code>ctrl+c 停止
-</code></pre><p><img src="/images/2023-3-11-1.png" alt="image"></p>
-<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre><code>　　$blue : #1875e7;　
-　　div {
-　　　color : $blue;
-　　}
-</code></pre><h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><pre><code>　　body {
-　　　　margin: (14px/2);
-　　　　top: 50px + 100px;
-　　　　right: $var * 10%;
-　　}
-</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><pre><code>　　div {
-　　　　h1 {
-　　　　　　color:red;
-　　　　}
-　　}
-　　border-color属性
-　　p { 
-　　　　border: {
-　　　　　　color: red;
-　　　　}
-　　}
-　　a:hover
-　　a {
-　　　　&amp;:hover { color: #ffb3ff; }
-　　}
-</code></pre><h2 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><pre><code>.class1 {
-　　　　border: 1px solid #ddd;
-　　}
-　　.class2 {
-　　　　@extend .class1;
-　　　　font-size:120%;
-　　}
-</code></pre><h3 id="Mixin-重用代码块-可以指定参数和缺省值"><a href="#Mixin-重用代码块-可以指定参数和缺省值" class="headerlink" title="Mixin (重用代码块) 可以指定参数和缺省值"></a>Mixin (重用代码块) 可以指定参数和缺省值</h3><pre><code>　　@mixin left {
-　　　　float: left;
-　　　　margin-left: 10px;
-　　}
-　　div {
-　　　　@include left;
-　　}
-</code></pre><p>eg: mixin的实例，用来生成浏览器前缀</p>
-<pre><code>　　@mixin rounded($vert, $horz, $radius: 10px) {
-　　　　border-#{$vert}-#{$horz}-radius: $radius;
-　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
-　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
-　　}
-　　&lt;!--调用--&gt;
-　　#navbar li { @include rounded(top, left); }
-　　#footer { @include rounded(top, left, 5px); }
-</code></pre><h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
-<pre><code>　　lighten(#cc3, 10%) // #d6d65c
-　　darken(#cc3, 10%) // #a3a329
-　　grayscale(#cc3) // #808080
-　　complement(#cc3) // #33c
-</code></pre><h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><pre><code>@import &quot;path/filename.scss&quot;;
-@import &quot;foo.css&quot;;
-</code></pre><h1 id="支持中文注释方法"><a href="#支持中文注释方法" class="headerlink" title="支持中文注释方法"></a>支持中文注释方法</h1><ul>
-<li>在 scss 文件头加上 <code>@charset &quot;utf-8&quot;;</code></li>
-<li>查看出错的 css 文件</li>
-</ul>
-<!---->
-<pre><code>Backtrace:
-sass/shop.scss:4
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1090:in `rescue in block in find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1087:in `block in find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each_with_index&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:820:in `rescue in check_sass_encoding&apos;
-</code></pre><p>得到路径 <code>C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass</code></p>
-<p>里面有一个文件<code>engine.rb</code>打开</p>
-<pre><code>require &apos;sass/scss&apos;
-require &apos;sass/stack&apos;
-require &apos;sass/error&apos;
-require &apos;sass/importers&apos;
-require &apos;sass/shared&apos;
-require &apos;sass/media&apos;
-require &apos;sass/supports&apos;
-</code></pre><p>我们在一连串的 require 后面加上代码</p>
-<pre><code>Encoding.default_external = Encoding.find(&apos;utf-8&apos;)
-</code></pre><p>最后再重启 sass 一下就好了</p>
-<p>更详细的使用可以参考：<a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/06/sass.html</a></p>
-]]></content>
-      <tags>
-        <tag>sass</tag>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用 GitHub + hexo 搭建博客</title>
     <url>/%E7%94%A8-GitHub-hexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2.html</url>
     <content><![CDATA[<ul>
@@ -333,6 +213,126 @@ require &apos;sass/supports&apos;
 ]]></content>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>纯 html 文件中怎么使用 sass</title>
+    <url>/%E7%BA%AF-html-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-sass.html</url>
+    <content><![CDATA[<p>sass 是一种流行的 CSS 预处理器，它能够让开发者使用嵌套语法和变量，以及一些其他的便利功能，来更加高效地编写 CSS 样式表。</p>
+<blockquote>
+<p>没有使用 npm 安装 sass，在平时的纯 html 页面中，要怎么才能使用 sass</p>
+</blockquote>
+<h1 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h1><p><a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">http://www.ruby-lang.org/zh_cn/downloads/</a></p>
+<h1 id="安装-sass"><a href="#安装-sass" class="headerlink" title="安装 sass"></a>安装 sass</h1><p>cmd 命令行输入下面的命令</p>
+<pre><code>gem install sass
+</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><blockquote>
+<p>文件夹名称不能是中文，否则会编译失败</p>
+</blockquote>
+<ul>
+<li>单文件编译</li>
+</ul>
+<!---->
+<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
+</code></pre><ul>
+<li><p>多文件编译<br>sass sass/\:css/（表示“sass”文件夹中所有的”.scss”文件编译成”.css”文件，并且将这些css文件放到“css”文件夹中）</p>
+</li>
+<li><p>自动监测（主要使用）<br><code>sass --watch&lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css</code>（.scss文件每次修改按ctrl+s保存都会实时的反映到输出的.css文件中）</p>
+</li>
+</ul>
+<!---->
+<pre><code>:expanded 普通样式
+:compact 一个样式一行
+:compressed 所有样式一行
+</code></pre><p>先打开命令行工具，进入到具体的文件夹，然后再执行使用命令。</p>
+<p>例子：<br>我有一个项目放在了 <code>E</code> 盘，名称叫 <code>sass-project</code>，里面有一个 <code>sass</code> 和 <code>css</code> 文件夹。<br>打开 <code>cmd</code>,<code>E:</code>进入到 E 盘，然后使用 <code>cd</code> 进入到 <code>sass-project</code>文件夹，接下来执行下面的命令就行</p>
+<pre><code>sass --watch sass:css --style compact
+</code></pre><!---->
+<pre><code>ctrl+c 停止
+</code></pre><p><img src="/images/2023-3-11-1.png" alt="image"></p>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre><code>　　$blue : #1875e7;　
+　　div {
+　　　color : $blue;
+　　}
+</code></pre><h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><pre><code>　　body {
+　　　　margin: (14px/2);
+　　　　top: 50px + 100px;
+　　　　right: $var * 10%;
+　　}
+</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><pre><code>　　div {
+　　　　h1 {
+　　　　　　color:red;
+　　　　}
+　　}
+　　border-color属性
+　　p { 
+　　　　border: {
+　　　　　　color: red;
+　　　　}
+　　}
+　　a:hover
+　　a {
+　　　　&amp;:hover { color: #ffb3ff; }
+　　}
+</code></pre><h2 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><pre><code>.class1 {
+　　　　border: 1px solid #ddd;
+　　}
+　　.class2 {
+　　　　@extend .class1;
+　　　　font-size:120%;
+　　}
+</code></pre><h3 id="Mixin-重用代码块-可以指定参数和缺省值"><a href="#Mixin-重用代码块-可以指定参数和缺省值" class="headerlink" title="Mixin (重用代码块) 可以指定参数和缺省值"></a>Mixin (重用代码块) 可以指定参数和缺省值</h3><pre><code>　　@mixin left {
+　　　　float: left;
+　　　　margin-left: 10px;
+　　}
+　　div {
+　　　　@include left;
+　　}
+</code></pre><p>eg: mixin的实例，用来生成浏览器前缀</p>
+<pre><code>　　@mixin rounded($vert, $horz, $radius: 10px) {
+　　　　border-#{$vert}-#{$horz}-radius: $radius;
+　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
+　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
+　　}
+　　&lt;!--调用--&gt;
+　　#navbar li { @include rounded(top, left); }
+　　#footer { @include rounded(top, left, 5px); }
+</code></pre><h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
+<pre><code>　　lighten(#cc3, 10%) // #d6d65c
+　　darken(#cc3, 10%) // #a3a329
+　　grayscale(#cc3) // #808080
+　　complement(#cc3) // #33c
+</code></pre><h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><pre><code>@import &quot;path/filename.scss&quot;;
+@import &quot;foo.css&quot;;
+</code></pre><h1 id="支持中文注释方法"><a href="#支持中文注释方法" class="headerlink" title="支持中文注释方法"></a>支持中文注释方法</h1><ul>
+<li>在 scss 文件头加上 <code>@charset &quot;utf-8&quot;;</code></li>
+<li>查看出错的 css 文件</li>
+</ul>
+<!---->
+<pre><code>Backtrace:
+sass/shop.scss:4
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1090:in `rescue in block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1087:in `block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each_with_index&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:820:in `rescue in check_sass_encoding&apos;
+</code></pre><p>得到路径 <code>C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass</code></p>
+<p>里面有一个文件<code>engine.rb</code>打开</p>
+<pre><code>require &apos;sass/scss&apos;
+require &apos;sass/stack&apos;
+require &apos;sass/error&apos;
+require &apos;sass/importers&apos;
+require &apos;sass/shared&apos;
+require &apos;sass/media&apos;
+require &apos;sass/supports&apos;
+</code></pre><p>我们在一连串的 require 后面加上代码</p>
+<pre><code>Encoding.default_external = Encoding.find(&apos;utf-8&apos;)
+</code></pre><p>最后再重启 sass 一下就好了</p>
+<p>更详细的使用可以参考：<a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/06/sass.html</a></p>
+]]></content>
+      <tags>
+        <tag>sass</tag>
+        <tag>css</tag>
       </tags>
   </entry>
 </search>
