@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>AI 相关工具</title>
+    <url>/AI-%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7.html</url>
+    <content><![CDATA[<p>最近关于 AI 的热度非常高，我也去试用了一下，很厉害，非常惊喜。它的发展上限非常高。<br>推荐几款工具，可以尝试使用下。</p>
+<ul>
+<li><p><a href="https://yiyan.baidu.com/" target="_blank" rel="noopener">文心一言</a><br>这个是百度的 AI 聊天页面，不过需要申请，现在申请人数很多，审批也很慢。<br>用了几次，发现文心一言对于上下文的理解比较弱，</p>
+</li>
+<li><p><a href="https://chatdoc.com/chatdoc/" target="_blank" rel="noopener">chatdoc</a><br>这是一款用 AI 开发出来的工具，可以用来解读 PDF，上传 PDF 之后，可以随便问里面相关的内容，是一款很方便的工具。<br>每天限制 5 篇，但没有网络的限制。</p>
+</li>
+<li><p><a href="https://www.notion.so/zh-cn" target="_blank" rel="noopener">Notion</a><br>这个是一款国外开发的笔记工具，像国内的 wolai 就是参考这个笔记工具开发的。Notion 内置了 AI，也就是说不需要去注册 ChatGPT 账号就可以使用了。记得不要用网易邮箱注册账号。<br>不过它只有英文版，想使用中文版的话需要下载它的客户端，然后导入一个中文的翻译文件，网上有相关的教程。我的建议是使用网页版就可以，所谓的客户端实际上还是一个网页，目前优化不是很好，winddows 端缩小化再打开，会白屏几秒。</p>
+</li>
+<li><p><a href="https://www.cursor.so/" target="_blank" rel="noopener">Cursor | Build Fast</a><br>这是一款 AI 编程的软件，应该是 openAI 官方开发的，建议程序员都可以尝试使用下，特别是初学者感觉用处应该最大。<br>相关使用教程可以看这个，非常容易，只需要两个快捷键 ctrl + k，ctrl + l <a href="https://zhuanlan.zhihu.com/p/615818924" target="_blank" rel="noopener">不用科学上网，免费的GPT-4 IDE工具Cursor保姆级使用教程 - 知乎 (zhihu.com)</a></p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo 自定义主题</title>
     <url>/hexo%20%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98.html</url>
     <content><![CDATA[<p>参考文章：<a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html</a></p>
@@ -44,21 +63,7 @@
       </tags>
   </entry>
   <entry>
-    <title>sublime 插件删除不成功</title>
-    <url>/sublime%20%E6%8F%92%E4%BB%B6%E5%88%A0%E9%99%A4%E4%B8%8D%E6%88%90%E5%8A%9F.html</url>
-    <content><![CDATA[<p>删除 sublime 插件步骤：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+P调出命令面板，输入<span class="keyword">remove</span>，调出<span class="keyword">Remove</span> Package选项并回车，选择要删除的插件并回车；</span><br></pre></td></tr></table></figure></div></p>
-<p>打开 <code>preferences</code> - <code>package settings</code> 查看，插件还在，浏览程序包也在。<br>直接删除插件包，插件包重新生成了。</p>
-<p>用 <code>ctrl+~</code> 查看控制台，发现了下面的报错信息。<br><code>ImportError: No module named &#39;package_control&#39;</code></p>
-<p>以下是解决方法：<br>打开<code>设置-用户</code>的配置文件（非汉化版应该是 <code>user settings</code>）<br><img src="/images/sublime1.png" alt></p>
-<p>删除其中一行代码，保存<br><img src="/images/sublime2.png" alt></p>
-<p>再重新执行删除的步骤，成功。</p>
-]]></content>
-      <tags>
-        <tag>sublime</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python 文本转成 excel.md</title>
+    <title>python 文本转成 excel</title>
     <url>/python-%E6%96%87%E6%9C%AC%E8%BD%AC%E6%88%90-excel.html</url>
     <content><![CDATA[<p>环境：<br>python：2.7</p>
 <h1 id="安装-pip"><a href="#安装-pip" class="headerlink" title="安装 pip"></a>安装 pip</h1><p>在windows下安装pip： 在C:\python27\scirpts下运行<code>easy_install pip</code>进行安装。</p>
@@ -105,6 +110,20 @@
 ]]></content>
       <tags>
         <tag>electron</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sublime 插件删除不成功</title>
+    <url>/sublime%20%E6%8F%92%E4%BB%B6%E5%88%A0%E9%99%A4%E4%B8%8D%E6%88%90%E5%8A%9F.html</url>
+    <content><![CDATA[<p>删除 sublime 插件步骤：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+P调出命令面板，输入<span class="keyword">remove</span>，调出<span class="keyword">Remove</span> Package选项并回车，选择要删除的插件并回车；</span><br></pre></td></tr></table></figure></div></p>
+<p>打开 <code>preferences</code> - <code>package settings</code> 查看，插件还在，浏览程序包也在。<br>直接删除插件包，插件包重新生成了。</p>
+<p>用 <code>ctrl+~</code> 查看控制台，发现了下面的报错信息。<br><code>ImportError: No module named &#39;package_control&#39;</code></p>
+<p>以下是解决方法：<br>打开<code>设置-用户</code>的配置文件（非汉化版应该是 <code>user settings</code>）<br><img src="/images/sublime1.png" alt></p>
+<p>删除其中一行代码，保存<br><img src="/images/sublime2.png" alt></p>
+<p>再重新执行删除的步骤，成功。</p>
+]]></content>
+      <tags>
+        <tag>sublime</tag>
       </tags>
   </entry>
   <entry>
