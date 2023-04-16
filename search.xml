@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Claude 使用教程</title>
+    <url>/Claude-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.html</url>
+    <content><![CDATA[<p>Claude 是由前 openAI 员工开发的聊天机器人，最重要的一点是不用科学上网。</p>
+<p><a href="https://www.anthropic.com/" target="_blank" rel="noopener">Claude官网</a></p>
+<p>Slack 内置了 Claude 的应用，我们可以在 slack 内置一下这个应用。</p>
+<p>注意，申请 Claude 和注册 Slack 都需要用到邮箱，我们两个地方用同一个邮箱就可以。不能用网易和 qq 邮箱，可以注册个 outlook 邮箱。</p>
+<h1 id="申请-Claude"><a href="#申请-Claude" class="headerlink" title="申请 Claude"></a>申请 Claude</h1><p>在<a href="https://www.anthropic.com/" target="_blank" rel="noopener">官网</a>上找到 <code>Meet Claude</code> 按钮，等待跳转页面，再点击 <code>Request Access</code> 按钮，弹出一个弹窗，需要我们填写申请资料。只需要填写红色 * 的项。<br>填完之后点击 <code>Submit</code> 点击提交，这个时候会提示申请成功，可以看到一串英文，里面有 <code>Success</code> 就是成功了。<br>这个申请完基本都会提示成功，很快就能用。</p>
+<h1 id="注册-Slack"><a href="#注册-Slack" class="headerlink" title="注册 Slack"></a>注册 Slack</h1><p>进入网站<a href="https://www.anthropic.com/claude-in-slack" target="_blank" rel="noopener">Claude in Slack | Anthropic</a>，<br>点击 <code>Add to Slack</code><br><img src="images/Pastedimage20230413152916.png" alt></p>
+<p>创建工作区<br><img src="images/Pastedimage20230413153034.png" alt><br>这个时候输入我们的邮箱，会收到邮件验证码，填写就行。</p>
+<p>再点击允许，将 Claude 和 Slack 关联在一起。</p>
+<h1 id="添加应用"><a href="#添加应用" class="headerlink" title="添加应用"></a>添加应用</h1><p>我们进入到 <a href="https://slack.com" target="_blank" rel="noopener">Slack</a> 页面，类似聊天的界面，我们可以看到左侧会有个应用，下方默认是空的，我们点添加应用，跳转到下图的页面，在右边的搜索栏里面搜索 <code>Claude</code>，将它添加到我们的应用中。<br><img src="images/20230413153527.png" alt></p>
+<p>接着你再点击 Claude 和它聊天就可以了。<br><img src="images/20230413161533.png" alt></p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AI 相关工具</title>
     <url>/AI-%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7.html</url>
     <content><![CDATA[<p>最近关于 AI 的热度非常高，我也去试用了一下，很厉害，非常惊喜。它的发展上限非常高。<br>推荐几款工具，可以尝试使用下。</p>
@@ -24,26 +42,17 @@
       </tags>
   </entry>
   <entry>
-    <title>python 文本转成 excel</title>
-    <url>/python-%E6%96%87%E6%9C%AC%E8%BD%AC%E6%88%90-excel.html</url>
-    <content><![CDATA[<p>环境：<br>python：2.7</p>
-<h1 id="安装-pip"><a href="#安装-pip" class="headerlink" title="安装 pip"></a>安装 pip</h1><p>在windows下安装pip： 在C:\python27\scirpts下运行<code>easy_install pip</code>进行安装。</p>
-<p>如果不知道是哪个路径，去设置变量那里看看就知道</p>
-<h1 id="安装-pandas-和-openpyxl"><a href="#安装-pandas-和-openpyxl" class="headerlink" title="安装 pandas 和 openpyxl"></a>安装 pandas 和 openpyxl</h1><p>可以使用国内镜像安装</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line">pip install pandas -i <span class="string">https:</span><span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br></pre></td></tr></table></figure></div>
-<p>pip install openpyxl -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
-<p>同时需要设置环境参数，<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="MEL"><figure class="iseeu highlight /mel"><table><tr><td class="code"><pre><span class="line">.../<span class="keyword">python</span>  这个是 <span class="keyword">python</span> 的环境参数</span><br><span class="line"><span class="comment">// 需要加多一个</span></span><br><span class="line">../<span class="keyword">python</span>/Script</span><br></pre></td></tr></table></figure></div></p>
-<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>可以使用 Pandas 库的 sort_values() 方法对 DataFrame 进行排序。</p>
-<p>例如，如果要按 project 列进行排序，可以这样写：</p>
-<p>Copy code<br>df = df.sort_values(‘project’)<br>这将按 project 列的值对 DataFrame 进行排序。</p>
-<p>如果要按多列进行排序，可以使用 by 参数指定排序列，例如：</p>
-<p>Copy code<br>df = df.sort_values(by=[‘project’, ‘date’])<br>这将按 project 列和 date 列的值对 DataFrame 进行排序。</p>
-<p>如果要按降序排序，可以使用 ascending 参数设置为 False，例如：</p>
-<p>Copy code<br>df = df.sort_values(by=’project’, ascending=False)<br>这将按 project 列的值从大到小对 DataFrame 进行排序。</p>
-<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  # 必须加上这个，否则就识别不了中文</span></span><br><span class="line"><span class="comment"># 引入一些库，需要使用 pip 安装</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> openpyxl.utils.dataframe <span class="keyword">import</span> dataframe_to_rows</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> Workbook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个是 text，也就是我的工作日报的格式，用这个来解析成 excel</span></span><br><span class="line">text = <span class="string">"""</span></span><br><span class="line"><span class="string"># 日期</span></span><br><span class="line"><span class="string">项目名称</span></span><br><span class="line"><span class="string">- [x] 工作项1</span></span><br><span class="line"><span class="string">- [x] 工作项2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将工作日报文本转换为 DataFrame</span></span><br><span class="line">df = pd.DataFrame(columns=[<span class="string">'date'</span>, <span class="string">'project'</span>, <span class="string">'task'</span>])</span><br><span class="line"></span><br><span class="line">lines = text.strip().split(<span class="string">'\n'</span>)</span><br><span class="line">project_str = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    <span class="keyword">if</span> line.startswith(<span class="string">'#'</span>):</span><br><span class="line">        date = <span class="string">'2022-'</span> + line[<span class="number">1</span>:].strip()</span><br><span class="line">        project_str = <span class="string">''</span></span><br><span class="line">    <span class="keyword">elif</span> line.startswith(<span class="string">'-'</span>):</span><br><span class="line">        task = line.replace(<span class="string">'- [x] '</span>, <span class="string">''</span>)</span><br><span class="line">        df = df.append(&#123;<span class="string">'date'</span>: date, <span class="string">'project'</span>: project_str, <span class="string">'task'</span>: task&#125;, ignore_index=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        project_str = line</span><br><span class="line">df = df.sort_values(by=<span class="string">'project'</span>, ascending=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 将 DataFrame 写入 Excel 文件</span></span><br><span class="line">wb = Workbook()</span><br><span class="line">ws = wb.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> dataframe_to_rows(df, index=<span class="literal">False</span>, header=<span class="literal">True</span>):</span><br><span class="line">    ws.append(r)</span><br><span class="line"></span><br><span class="line">wb.save(<span class="string">"work_log.xlsx"</span>)</span><br></pre></td></tr></table></figure></div>
+    <title>sublime 插件删除不成功</title>
+    <url>/sublime%20%E6%8F%92%E4%BB%B6%E5%88%A0%E9%99%A4%E4%B8%8D%E6%88%90%E5%8A%9F.html</url>
+    <content><![CDATA[<p>删除 sublime 插件步骤：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+P调出命令面板，输入<span class="keyword">remove</span>，调出<span class="keyword">Remove</span> Package选项并回车，选择要删除的插件并回车；</span><br></pre></td></tr></table></figure></div></p>
+<p>打开 <code>preferences</code> - <code>package settings</code> 查看，插件还在，浏览程序包也在。<br>直接删除插件包，插件包重新生成了。</p>
+<p>用 <code>ctrl+~</code> 查看控制台，发现了下面的报错信息。<br><code>ImportError: No module named &#39;package_control&#39;</code></p>
+<p>以下是解决方法：<br>打开<code>设置-用户</code>的配置文件（非汉化版应该是 <code>user settings</code>）<br><img src="/images/sublime1.png" alt></p>
+<p>删除其中一行代码，保存<br><img src="/images/sublime2.png" alt></p>
+<p>再重新执行删除的步骤，成功。</p>
 ]]></content>
       <tags>
-        <tag>python</tag>
+        <tag>sublime</tag>
       </tags>
   </entry>
   <entry>
@@ -90,137 +99,26 @@
       </tags>
   </entry>
   <entry>
-    <title>sublime 插件删除不成功</title>
-    <url>/sublime%20%E6%8F%92%E4%BB%B6%E5%88%A0%E9%99%A4%E4%B8%8D%E6%88%90%E5%8A%9F.html</url>
-    <content><![CDATA[<p>删除 sublime 插件步骤：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+P调出命令面板，输入<span class="keyword">remove</span>，调出<span class="keyword">Remove</span> Package选项并回车，选择要删除的插件并回车；</span><br></pre></td></tr></table></figure></div></p>
-<p>打开 <code>preferences</code> - <code>package settings</code> 查看，插件还在，浏览程序包也在。<br>直接删除插件包，插件包重新生成了。</p>
-<p>用 <code>ctrl+~</code> 查看控制台，发现了下面的报错信息。<br><code>ImportError: No module named &#39;package_control&#39;</code></p>
-<p>以下是解决方法：<br>打开<code>设置-用户</code>的配置文件（非汉化版应该是 <code>user settings</code>）<br><img src="/images/sublime1.png" alt></p>
-<p>删除其中一行代码，保存<br><img src="/images/sublime2.png" alt></p>
-<p>再重新执行删除的步骤，成功。</p>
+    <title>python 文本转成 excel</title>
+    <url>/python-%E6%96%87%E6%9C%AC%E8%BD%AC%E6%88%90-excel.html</url>
+    <content><![CDATA[<p>环境：<br>python：2.7</p>
+<h1 id="安装-pip"><a href="#安装-pip" class="headerlink" title="安装 pip"></a>安装 pip</h1><p>在windows下安装pip： 在C:\python27\scirpts下运行<code>easy_install pip</code>进行安装。</p>
+<p>如果不知道是哪个路径，去设置变量那里看看就知道</p>
+<h1 id="安装-pandas-和-openpyxl"><a href="#安装-pandas-和-openpyxl" class="headerlink" title="安装 pandas 和 openpyxl"></a>安装 pandas 和 openpyxl</h1><p>可以使用国内镜像安装</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line">pip install pandas -i <span class="string">https:</span><span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br></pre></td></tr></table></figure></div>
+<p>pip install openpyxl -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
+<p>同时需要设置环境参数，<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="MEL"><figure class="iseeu highlight /mel"><table><tr><td class="code"><pre><span class="line">.../<span class="keyword">python</span>  这个是 <span class="keyword">python</span> 的环境参数</span><br><span class="line"><span class="comment">// 需要加多一个</span></span><br><span class="line">../<span class="keyword">python</span>/Script</span><br></pre></td></tr></table></figure></div></p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>可以使用 Pandas 库的 sort_values() 方法对 DataFrame 进行排序。</p>
+<p>例如，如果要按 project 列进行排序，可以这样写：</p>
+<p>Copy code<br>df = df.sort_values(‘project’)<br>这将按 project 列的值对 DataFrame 进行排序。</p>
+<p>如果要按多列进行排序，可以使用 by 参数指定排序列，例如：</p>
+<p>Copy code<br>df = df.sort_values(by=[‘project’, ‘date’])<br>这将按 project 列和 date 列的值对 DataFrame 进行排序。</p>
+<p>如果要按降序排序，可以使用 ascending 参数设置为 False，例如：</p>
+<p>Copy code<br>df = df.sort_values(by=’project’, ascending=False)<br>这将按 project 列的值从大到小对 DataFrame 进行排序。</p>
+<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  # 必须加上这个，否则就识别不了中文</span></span><br><span class="line"><span class="comment"># 引入一些库，需要使用 pip 安装</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> openpyxl.utils.dataframe <span class="keyword">import</span> dataframe_to_rows</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> Workbook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个是 text，也就是我的工作日报的格式，用这个来解析成 excel</span></span><br><span class="line">text = <span class="string">"""</span></span><br><span class="line"><span class="string"># 日期</span></span><br><span class="line"><span class="string">项目名称</span></span><br><span class="line"><span class="string">- [x] 工作项1</span></span><br><span class="line"><span class="string">- [x] 工作项2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将工作日报文本转换为 DataFrame</span></span><br><span class="line">df = pd.DataFrame(columns=[<span class="string">'date'</span>, <span class="string">'project'</span>, <span class="string">'task'</span>])</span><br><span class="line"></span><br><span class="line">lines = text.strip().split(<span class="string">'\n'</span>)</span><br><span class="line">project_str = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    <span class="keyword">if</span> line.startswith(<span class="string">'#'</span>):</span><br><span class="line">        date = <span class="string">'2022-'</span> + line[<span class="number">1</span>:].strip()</span><br><span class="line">        project_str = <span class="string">''</span></span><br><span class="line">    <span class="keyword">elif</span> line.startswith(<span class="string">'-'</span>):</span><br><span class="line">        task = line.replace(<span class="string">'- [x] '</span>, <span class="string">''</span>)</span><br><span class="line">        df = df.append(&#123;<span class="string">'date'</span>: date, <span class="string">'project'</span>: project_str, <span class="string">'task'</span>: task&#125;, ignore_index=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        project_str = line</span><br><span class="line">df = df.sort_values(by=<span class="string">'project'</span>, ascending=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 将 DataFrame 写入 Excel 文件</span></span><br><span class="line">wb = Workbook()</span><br><span class="line">ws = wb.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> dataframe_to_rows(df, index=<span class="literal">False</span>, header=<span class="literal">True</span>):</span><br><span class="line">    ws.append(r)</span><br><span class="line"></span><br><span class="line">wb.save(<span class="string">"work_log.xlsx"</span>)</span><br></pre></td></tr></table></figure></div>
 ]]></content>
       <tags>
-        <tag>sublime</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>纯 html 文件中怎么使用 sass</title>
-    <url>/%E7%BA%AF-html-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-sass.html</url>
-    <content><![CDATA[<p>sass 是一种流行的 CSS 预处理器，它能够让开发者使用嵌套语法和变量，以及一些其他的便利功能，来更加高效地编写 CSS 样式表。</p>
-<blockquote>
-<p>没有使用 npm 安装 sass，在平时的纯 html 页面中，要怎么才能使用 sass</p>
-</blockquote>
-<h1 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h1><p><a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">http://www.ruby-lang.org/zh_cn/downloads/</a></p>
-<h1 id="安装-sass"><a href="#安装-sass" class="headerlink" title="安装 sass"></a>安装 sass</h1><p>cmd 命令行输入下面的命令</p>
-<pre><code>gem install sass
-</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><blockquote>
-<p>文件夹名称不能是中文，否则会编译失败</p>
-</blockquote>
-<ul>
-<li>单文件编译</li>
-</ul>
-<!---->
-<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
-</code></pre><ul>
-<li><p>多文件编译<br>sass sass/\:css/（表示“sass”文件夹中所有的”.scss”文件编译成”.css”文件，并且将这些css文件放到“css”文件夹中）</p>
-</li>
-<li><p>自动监测（主要使用）<br><code>sass --watch&lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css</code>（.scss文件每次修改按ctrl+s保存都会实时的反映到输出的.css文件中）</p>
-</li>
-</ul>
-<!---->
-<pre><code>:expanded 普通样式
-:compact 一个样式一行
-:compressed 所有样式一行
-</code></pre><p>先打开命令行工具，进入到具体的文件夹，然后再执行使用命令。</p>
-<p>例子：<br>我有一个项目放在了 <code>E</code> 盘，名称叫 <code>sass-project</code>，里面有一个 <code>sass</code> 和 <code>css</code> 文件夹。<br>打开 <code>cmd</code>,<code>E:</code>进入到 E 盘，然后使用 <code>cd</code> 进入到 <code>sass-project</code>文件夹，接下来执行下面的命令就行</p>
-<pre><code>sass --watch sass:css --style compact
-</code></pre><!---->
-<pre><code>ctrl+c 停止
-</code></pre><p><img src="/images/2023-3-11-1.png" alt="image"></p>
-<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre><code>　　$blue : #1875e7;　
-　　div {
-　　　color : $blue;
-　　}
-</code></pre><h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><pre><code>　　body {
-　　　　margin: (14px/2);
-　　　　top: 50px + 100px;
-　　　　right: $var * 10%;
-　　}
-</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><pre><code>　　div {
-　　　　h1 {
-　　　　　　color:red;
-　　　　}
-　　}
-　　border-color属性
-　　p { 
-　　　　border: {
-　　　　　　color: red;
-　　　　}
-　　}
-　　a:hover
-　　a {
-　　　　&amp;:hover { color: #ffb3ff; }
-　　}
-</code></pre><h2 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><pre><code>.class1 {
-　　　　border: 1px solid #ddd;
-　　}
-　　.class2 {
-　　　　@extend .class1;
-　　　　font-size:120%;
-　　}
-</code></pre><h3 id="Mixin-重用代码块-可以指定参数和缺省值"><a href="#Mixin-重用代码块-可以指定参数和缺省值" class="headerlink" title="Mixin (重用代码块) 可以指定参数和缺省值"></a>Mixin (重用代码块) 可以指定参数和缺省值</h3><pre><code>　　@mixin left {
-　　　　float: left;
-　　　　margin-left: 10px;
-　　}
-　　div {
-　　　　@include left;
-　　}
-</code></pre><p>eg: mixin的实例，用来生成浏览器前缀</p>
-<pre><code>　　@mixin rounded($vert, $horz, $radius: 10px) {
-　　　　border-#{$vert}-#{$horz}-radius: $radius;
-　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
-　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
-　　}
-　　&lt;!--调用--&gt;
-　　#navbar li { @include rounded(top, left); }
-　　#footer { @include rounded(top, left, 5px); }
-</code></pre><h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
-<pre><code>　　lighten(#cc3, 10%) // #d6d65c
-　　darken(#cc3, 10%) // #a3a329
-　　grayscale(#cc3) // #808080
-　　complement(#cc3) // #33c
-</code></pre><h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><pre><code>@import &quot;path/filename.scss&quot;;
-@import &quot;foo.css&quot;;
-</code></pre><h1 id="支持中文注释方法"><a href="#支持中文注释方法" class="headerlink" title="支持中文注释方法"></a>支持中文注释方法</h1><ul>
-<li>在 scss 文件头加上 <code>@charset &quot;utf-8&quot;;</code></li>
-<li>查看出错的 css 文件</li>
-</ul>
-<!---->
-<pre><code>Backtrace:
-sass/shop.scss:4
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1090:in `rescue in block in find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1087:in `block in find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each_with_index&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:820:in `rescue in check_sass_encoding&apos;
-</code></pre><p>得到路径 <code>C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass</code></p>
-<p>里面有一个文件<code>engine.rb</code>打开</p>
-<pre><code>require &apos;sass/scss&apos;
-require &apos;sass/stack&apos;
-require &apos;sass/error&apos;
-require &apos;sass/importers&apos;
-require &apos;sass/shared&apos;
-require &apos;sass/media&apos;
-require &apos;sass/supports&apos;
-</code></pre><p>我们在一连串的 require 后面加上代码</p>
-<pre><code>Encoding.default_external = Encoding.find(&apos;utf-8&apos;)
-</code></pre><p>最后再重启 sass 一下就好了</p>
-<p>更详细的使用可以参考：<a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/06/sass.html</a></p>
-]]></content>
-      <tags>
-        <tag>sass</tag>
-        <tag>css</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -379,6 +277,126 @@ require &apos;sass/supports&apos;
 ]]></content>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>纯 html 文件中怎么使用 sass</title>
+    <url>/%E7%BA%AF-html-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-sass.html</url>
+    <content><![CDATA[<p>sass 是一种流行的 CSS 预处理器，它能够让开发者使用嵌套语法和变量，以及一些其他的便利功能，来更加高效地编写 CSS 样式表。</p>
+<blockquote>
+<p>没有使用 npm 安装 sass，在平时的纯 html 页面中，要怎么才能使用 sass</p>
+</blockquote>
+<h1 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h1><p><a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">http://www.ruby-lang.org/zh_cn/downloads/</a></p>
+<h1 id="安装-sass"><a href="#安装-sass" class="headerlink" title="安装 sass"></a>安装 sass</h1><p>cmd 命令行输入下面的命令</p>
+<pre><code>gem install sass
+</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><blockquote>
+<p>文件夹名称不能是中文，否则会编译失败</p>
+</blockquote>
+<ul>
+<li>单文件编译</li>
+</ul>
+<!---->
+<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
+</code></pre><ul>
+<li><p>多文件编译<br>sass sass/\:css/（表示“sass”文件夹中所有的”.scss”文件编译成”.css”文件，并且将这些css文件放到“css”文件夹中）</p>
+</li>
+<li><p>自动监测（主要使用）<br><code>sass --watch&lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css</code>（.scss文件每次修改按ctrl+s保存都会实时的反映到输出的.css文件中）</p>
+</li>
+</ul>
+<!---->
+<pre><code>:expanded 普通样式
+:compact 一个样式一行
+:compressed 所有样式一行
+</code></pre><p>先打开命令行工具，进入到具体的文件夹，然后再执行使用命令。</p>
+<p>例子：<br>我有一个项目放在了 <code>E</code> 盘，名称叫 <code>sass-project</code>，里面有一个 <code>sass</code> 和 <code>css</code> 文件夹。<br>打开 <code>cmd</code>,<code>E:</code>进入到 E 盘，然后使用 <code>cd</code> 进入到 <code>sass-project</code>文件夹，接下来执行下面的命令就行</p>
+<pre><code>sass --watch sass:css --style compact
+</code></pre><!---->
+<pre><code>ctrl+c 停止
+</code></pre><p><img src="/images/2023-3-11-1.png" alt="image"></p>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre><code>　　$blue : #1875e7;　
+　　div {
+　　　color : $blue;
+　　}
+</code></pre><h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><pre><code>　　body {
+　　　　margin: (14px/2);
+　　　　top: 50px + 100px;
+　　　　right: $var * 10%;
+　　}
+</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><pre><code>　　div {
+　　　　h1 {
+　　　　　　color:red;
+　　　　}
+　　}
+　　border-color属性
+　　p { 
+　　　　border: {
+　　　　　　color: red;
+　　　　}
+　　}
+　　a:hover
+　　a {
+　　　　&amp;:hover { color: #ffb3ff; }
+　　}
+</code></pre><h2 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><pre><code>.class1 {
+　　　　border: 1px solid #ddd;
+　　}
+　　.class2 {
+　　　　@extend .class1;
+　　　　font-size:120%;
+　　}
+</code></pre><h3 id="Mixin-重用代码块-可以指定参数和缺省值"><a href="#Mixin-重用代码块-可以指定参数和缺省值" class="headerlink" title="Mixin (重用代码块) 可以指定参数和缺省值"></a>Mixin (重用代码块) 可以指定参数和缺省值</h3><pre><code>　　@mixin left {
+　　　　float: left;
+　　　　margin-left: 10px;
+　　}
+　　div {
+　　　　@include left;
+　　}
+</code></pre><p>eg: mixin的实例，用来生成浏览器前缀</p>
+<pre><code>　　@mixin rounded($vert, $horz, $radius: 10px) {
+　　　　border-#{$vert}-#{$horz}-radius: $radius;
+　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
+　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
+　　}
+　　&lt;!--调用--&gt;
+　　#navbar li { @include rounded(top, left); }
+　　#footer { @include rounded(top, left, 5px); }
+</code></pre><h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
+<pre><code>　　lighten(#cc3, 10%) // #d6d65c
+　　darken(#cc3, 10%) // #a3a329
+　　grayscale(#cc3) // #808080
+　　complement(#cc3) // #33c
+</code></pre><h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><pre><code>@import &quot;path/filename.scss&quot;;
+@import &quot;foo.css&quot;;
+</code></pre><h1 id="支持中文注释方法"><a href="#支持中文注释方法" class="headerlink" title="支持中文注释方法"></a>支持中文注释方法</h1><ul>
+<li>在 scss 文件头加上 <code>@charset &quot;utf-8&quot;;</code></li>
+<li>查看出错的 css 文件</li>
+</ul>
+<!---->
+<pre><code>Backtrace:
+sass/shop.scss:4
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1090:in `rescue in block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1087:in `block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each_with_index&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:820:in `rescue in check_sass_encoding&apos;
+</code></pre><p>得到路径 <code>C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass</code></p>
+<p>里面有一个文件<code>engine.rb</code>打开</p>
+<pre><code>require &apos;sass/scss&apos;
+require &apos;sass/stack&apos;
+require &apos;sass/error&apos;
+require &apos;sass/importers&apos;
+require &apos;sass/shared&apos;
+require &apos;sass/media&apos;
+require &apos;sass/supports&apos;
+</code></pre><p>我们在一连串的 require 后面加上代码</p>
+<pre><code>Encoding.default_external = Encoding.find(&apos;utf-8&apos;)
+</code></pre><p>最后再重启 sass 一下就好了</p>
+<p>更详细的使用可以参考：<a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/06/sass.html</a></p>
+]]></content>
+      <tags>
+        <tag>sass</tag>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
