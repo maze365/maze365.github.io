@@ -19,49 +19,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo 自定义主题</title>
-    <url>/hexo%20%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98.html</url>
-    <content><![CDATA[<p>参考文章：<a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html</a></p>
-<p>NexT官方主题配置：<a href="https://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">https://theme-next.iissnan.com/theme-settings.html</a></p>
-<p>第三方服务集成：<a href="http://theme-next.iissnan.com/third-party-services.html#comment-system" target="_blank" rel="noopener">http://theme-next.iissnan.com/third-party-services.html#comment-system</a></p>
-<h2 id="menu-再多加一个-tags"><a href="#menu-再多加一个-tags" class="headerlink" title="menu 再多加一个 tags"></a>menu 再多加一个 tags</h2><p>找到<code>themes/next/_config.yml</code>，打开<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DTS"><figure class="iseeu highlight /dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">menu:</span></span><br><span class="line"><span class="symbol">  home:</span> / || home</span><br><span class="line">  <span class="meta">#about: /about/ || user</span></span><br><span class="line"><span class="symbol">  tags:</span> <span class="meta-keyword">/tags/</span> || tags  <span class="comment">//将注释去除掉</span></span><br><span class="line">  <span class="meta">#categories: /categories/ || th</span></span><br><span class="line"><span class="symbol">  archives:</span> <span class="meta-keyword">/archives/</span> || archive</span><br><span class="line">  <span class="meta">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="meta">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="meta">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure></div></p>
-<p>点开链接，提示 <code>Cannot GET /tags/</code>，不要慌，不能获取tags，创建一个就OK！</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="code"><pre><span class="line">$ hexo new<span class="built_in"> page </span><span class="string">'name'</span> # 我们这里要创建的是tags，所以这里name改为tags就好</span><br></pre></td></tr></table></figure></div>
-<p>在你的网站根目录下面的 source 文件夹会生成 tags 文件夹。</p>
-<p>修改 tags 文件夹中的 index.md 文件，新增 type 属性，如下：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="number">-09</span><span class="number">-27</span> <span class="number">11</span><span class="string">:56:43</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure></div></p>
-<p>当你新建一篇博文的时候，增加上tags和categories属性值，就能在tags和categories界面检索到你的文章了。</p>
-<h2 id="文章链接格式修改"><a href="#文章链接格式修改" class="headerlink" title="文章链接格式修改"></a>文章链接格式修改</h2><p> 默认文章格式是: <a href="http://xxx.com/2015/07/06/your-title/" target="_blank" rel="noopener">http://xxx.com/2015/07/06/your-title/</a> 的格式的,可以修改成 <a href="http://xxx.com/posts/programming/2016-03-18-hello-world.html" target="_blank" rel="noopener">http://xxx.com/posts/programming/2016-03-18-hello-world.html</a> 这样的格式</p>
-<p> 根目录下的 _config.yml 文件<br> <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="symbol">permalink:</span> posts/<span class="symbol">:category/</span><span class="symbol">:year-</span><span class="symbol">:month-</span><span class="symbol">:day-</span><span class="symbol">:title</span>.html</span><br></pre></td></tr></table></figure></div></p>
-<h2 id="修改文章底部的那个带-号的标签"><a href="#修改文章底部的那个带-号的标签" class="headerlink" title="修改文章底部的那个带#号的标签"></a>修改文章底部的那个带#号的标签</h2><p> 改成下图</p>
-<p> <img src="http://upload-images.jianshu.io/upload_images/5308475-9f1817d2d7627f7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p> 修改模板 <code>/themes/next/layout/_macro/post.swig</code> ，搜索 <code>rel=&quot;tag&quot;&gt;#</code> ，将 # 换成 <code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code> </p>
-<h2 id="隐藏网页底部powered-By-Hexo-强力驱动"><a href="#隐藏网页底部powered-By-Hexo-强力驱动" class="headerlink" title="隐藏网页底部powered By Hexo / 强力驱动"></a>隐藏网页底部powered By Hexo / 强力驱动</h2><p> 打开 themes/next/layout/_partials/footer.swig,隐藏之间的代码即可，或者直接删除。<br> <img src="http://upload-images.jianshu.io/upload_images/5308475-8e8340c7a0489bce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<h2 id="左侧侧边栏加上展开的分类"><a href="#左侧侧边栏加上展开的分类" class="headerlink" title="左侧侧边栏加上展开的分类"></a>左侧侧边栏加上展开的分类</h2><p> 打开 themes/next/layout/_macro/sidebar.swig<br> 添加内容<br> <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="APPLESCRIPT"><figure class="iseeu highlight /applescript"><table><tr><td class="code"><pre><span class="line"> &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"category-all-page"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"category-all"</span>&gt;</span><br><span class="line">        &#123;&#123; list_categories(&#123;depth: <span class="number">1</span>&#125;) &#125;&#125;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure></div></p>
-<p> 参考<a href="https://hexo.io/zh-cn/docs/helpers.html#list-categories" target="_blank" rel="noopener">hexo API</a></p>
-<h2 id="添加自定义的css样式"><a href="#添加自定义的css样式" class="headerlink" title="添加自定义的css样式"></a>添加自定义的css样式</h2><p> <code>themes\next\layout\_partials\head.swig</code></p>
-<ul>
-<li>添加样式支持<br>为了不把原先文件搞得太乱，这里添加自己的样式文件<br>在 <code>themes\next\source\css</code> 文件夹下，打开main.styl文件，在最后添加：<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight /scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//My Layer</span></span><br><span class="line"><span class="comment">//--------------------------------------------------</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">"_my/style"</span>;</span><br></pre></td></tr></table></figure></div>
-</li>
-</ul>
-<h2 id="首页改成-archives"><a href="#首页改成-archives" class="headerlink" title="首页改成 archives"></a>首页改成 archives</h2><p>我是简单粗暴的将 <code>themes\next\layout</code> 下的 index.swig 的内容改掉，将 archive.swig 的文件内容复制了过来</p>
-<h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>安装hexo-generator-searchdb插件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-searchdb <span class="comment">--save</span></span><br></pre></td></tr></table></figure></div></p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment">#主题配置文件下，这里改成 true</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="首页阅读全文"><a href="#首页阅读全文" class="headerlink" title="首页阅读全文"></a>首页阅读全文</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#主题配置文件下，这里改成true</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">150</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><p><a href="https://eggsywelsh.github.io/2016/11/10/hexo%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" target="_blank" rel="noopener">参考文章</a><br><a href="https://blog.shadowy.me/2018/03/16/hexo-next-macpanel-improved/" target="_blank" rel="noopener">参考文章</a></p>
-<p>在 themes/next 目录下打开 _config.yml 配置文件，找到 highlight_theme 属性</p>
-<p>这里呢可以配置的属性有normal | night | night eighties | night blue | night bright，你可以挨个试一试，看下效果，选择你喜欢的一个属性</p>
-<p>光有这个配置还不行，在你的hexo/目录下_config.yml文件中中，找到，并设置如下</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">true</span> <span class="comment">#修改为true</span></span><br><span class="line">  <span class="attr">tab_replace:</span></span><br></pre></td></tr></table></figure></div>
-<h2 id="开启评论"><a href="#开启评论" class="headerlink" title="开启评论"></a>开启评论</h2><p>在 themes/next 目录下打开 _config.yml 配置文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disqus:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#设置为 true</span></span><br><span class="line">  <span class="attr">shortname:</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></div></p>
-<h2 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h2><p>参考文章：<a href="https://blog.csdn.net/Calvin_zhou/article/details/78820718" target="_blank" rel="noopener">https://blog.csdn.net/Calvin_zhou/article/details/78820718</a></p>
-<h2 id="文章添加阅读次数，访问量"><a href="#文章添加阅读次数，访问量" class="headerlink" title="文章添加阅读次数，访问量"></a>文章添加阅读次数，访问量</h2><p><a href="https://blog.csdn.net/xr469786706/article/details/78166227" target="_blank" rel="noopener">参考文章</a></p>
-<p>打开 \themes\next\ _config.yml 文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#改为 true 开启</span></span><br><span class="line">  <span class="attr">site_uv:</span> <span class="literal">true</span> <span class="comment">#访问人数</span></span><br><span class="line">  <span class="attr">site_uv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-user"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">site_uv_footer:</span></span><br><span class="line">  <span class="attr">site_pv:</span> <span class="literal">true</span> <span class="comment">#总访问量</span></span><br><span class="line">  <span class="attr">site_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-eye"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">site_pv_footer:</span></span><br><span class="line">  <span class="attr">page_pv:</span> <span class="literal">true</span> <span class="comment">#单篇文章浏览量</span></span><br><span class="line">  <span class="attr">page_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-file-o"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">page_pv_footer:</span></span><br></pre></td></tr></table></figure></div></p>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AI 相关工具</title>
     <url>/AI-%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7.html</url>
     <content><![CDATA[<p>最近关于 AI 的热度非常高，我也去试用了一下，很厉害，非常惊喜。它的发展上限非常高。<br>推荐几款工具，可以尝试使用下。</p>
@@ -92,6 +49,20 @@
       </tags>
   </entry>
   <entry>
+    <title>sublime 插件删除不成功</title>
+    <url>/sublime%20%E6%8F%92%E4%BB%B6%E5%88%A0%E9%99%A4%E4%B8%8D%E6%88%90%E5%8A%9F.html</url>
+    <content><![CDATA[<p>删除 sublime 插件步骤：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+P调出命令面板，输入<span class="keyword">remove</span>，调出<span class="keyword">Remove</span> Package选项并回车，选择要删除的插件并回车；</span><br></pre></td></tr></table></figure></div></p>
+<p>打开 <code>preferences</code> - <code>package settings</code> 查看，插件还在，浏览程序包也在。<br>直接删除插件包，插件包重新生成了。</p>
+<p>用 <code>ctrl+~</code> 查看控制台，发现了下面的报错信息。<br><code>ImportError: No module named &#39;package_control&#39;</code></p>
+<p>以下是解决方法：<br>打开<code>设置-用户</code>的配置文件（非汉化版应该是 <code>user settings</code>）<br><img src="/images/sublime1.png" alt></p>
+<p>删除其中一行代码，保存<br><img src="/images/sublime2.png" alt></p>
+<p>再重新执行删除的步骤，成功。</p>
+]]></content>
+      <tags>
+        <tag>sublime</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python 文本转成 excel</title>
     <url>/python-%E6%96%87%E6%9C%AC%E8%BD%AC%E6%88%90-excel.html</url>
     <content><![CDATA[<p>环境：<br>python：2.7</p>
@@ -112,126 +83,6 @@
 ]]></content>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>纯 html 文件中怎么使用 sass</title>
-    <url>/%E7%BA%AF-html-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-sass.html</url>
-    <content><![CDATA[<p>sass 是一种流行的 CSS 预处理器，它能够让开发者使用嵌套语法和变量，以及一些其他的便利功能，来更加高效地编写 CSS 样式表。</p>
-<blockquote>
-<p>没有使用 npm 安装 sass，在平时的纯 html 页面中，要怎么才能使用 sass</p>
-</blockquote>
-<h1 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h1><p><a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">http://www.ruby-lang.org/zh_cn/downloads/</a></p>
-<h1 id="安装-sass"><a href="#安装-sass" class="headerlink" title="安装 sass"></a>安装 sass</h1><p>cmd 命令行输入下面的命令</p>
-<pre><code>gem install sass
-</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><blockquote>
-<p>文件夹名称不能是中文，否则会编译失败</p>
-</blockquote>
-<ul>
-<li>单文件编译</li>
-</ul>
-<!---->
-<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
-</code></pre><ul>
-<li><p>多文件编译<br>sass sass/\:css/（表示“sass”文件夹中所有的”.scss”文件编译成”.css”文件，并且将这些css文件放到“css”文件夹中）</p>
-</li>
-<li><p>自动监测（主要使用）<br><code>sass --watch&lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css</code>（.scss文件每次修改按ctrl+s保存都会实时的反映到输出的.css文件中）</p>
-</li>
-</ul>
-<!---->
-<pre><code>:expanded 普通样式
-:compact 一个样式一行
-:compressed 所有样式一行
-</code></pre><p>先打开命令行工具，进入到具体的文件夹，然后再执行使用命令。</p>
-<p>例子：<br>我有一个项目放在了 <code>E</code> 盘，名称叫 <code>sass-project</code>，里面有一个 <code>sass</code> 和 <code>css</code> 文件夹。<br>打开 <code>cmd</code>,<code>E:</code>进入到 E 盘，然后使用 <code>cd</code> 进入到 <code>sass-project</code>文件夹，接下来执行下面的命令就行</p>
-<pre><code>sass --watch sass:css --style compact
-</code></pre><!---->
-<pre><code>ctrl+c 停止
-</code></pre><p><img src="/images/2023-3-11-1.png" alt="image"></p>
-<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre><code>　　$blue : #1875e7;　
-　　div {
-　　　color : $blue;
-　　}
-</code></pre><h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><pre><code>　　body {
-　　　　margin: (14px/2);
-　　　　top: 50px + 100px;
-　　　　right: $var * 10%;
-　　}
-</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><pre><code>　　div {
-　　　　h1 {
-　　　　　　color:red;
-　　　　}
-　　}
-　　border-color属性
-　　p { 
-　　　　border: {
-　　　　　　color: red;
-　　　　}
-　　}
-　　a:hover
-　　a {
-　　　　&amp;:hover { color: #ffb3ff; }
-　　}
-</code></pre><h2 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><pre><code>.class1 {
-　　　　border: 1px solid #ddd;
-　　}
-　　.class2 {
-　　　　@extend .class1;
-　　　　font-size:120%;
-　　}
-</code></pre><h3 id="Mixin-重用代码块-可以指定参数和缺省值"><a href="#Mixin-重用代码块-可以指定参数和缺省值" class="headerlink" title="Mixin (重用代码块) 可以指定参数和缺省值"></a>Mixin (重用代码块) 可以指定参数和缺省值</h3><pre><code>　　@mixin left {
-　　　　float: left;
-　　　　margin-left: 10px;
-　　}
-　　div {
-　　　　@include left;
-　　}
-</code></pre><p>eg: mixin的实例，用来生成浏览器前缀</p>
-<pre><code>　　@mixin rounded($vert, $horz, $radius: 10px) {
-　　　　border-#{$vert}-#{$horz}-radius: $radius;
-　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
-　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
-　　}
-　　&lt;!--调用--&gt;
-　　#navbar li { @include rounded(top, left); }
-　　#footer { @include rounded(top, left, 5px); }
-</code></pre><h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
-<pre><code>　　lighten(#cc3, 10%) // #d6d65c
-　　darken(#cc3, 10%) // #a3a329
-　　grayscale(#cc3) // #808080
-　　complement(#cc3) // #33c
-</code></pre><h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><pre><code>@import &quot;path/filename.scss&quot;;
-@import &quot;foo.css&quot;;
-</code></pre><h1 id="支持中文注释方法"><a href="#支持中文注释方法" class="headerlink" title="支持中文注释方法"></a>支持中文注释方法</h1><ul>
-<li>在 scss 文件头加上 <code>@charset &quot;utf-8&quot;;</code></li>
-<li>查看出错的 css 文件</li>
-</ul>
-<!---->
-<pre><code>Backtrace:
-sass/shop.scss:4
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1090:in `rescue in block in find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1087:in `block in find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each_with_index&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:820:in `rescue in check_sass_encoding&apos;
-</code></pre><p>得到路径 <code>C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass</code></p>
-<p>里面有一个文件<code>engine.rb</code>打开</p>
-<pre><code>require &apos;sass/scss&apos;
-require &apos;sass/stack&apos;
-require &apos;sass/error&apos;
-require &apos;sass/importers&apos;
-require &apos;sass/shared&apos;
-require &apos;sass/media&apos;
-require &apos;sass/supports&apos;
-</code></pre><p>我们在一连串的 require 后面加上代码</p>
-<pre><code>Encoding.default_external = Encoding.find(&apos;utf-8&apos;)
-</code></pre><p>最后再重启 sass 一下就好了</p>
-<p>更详细的使用可以参考：<a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/06/sass.html</a></p>
-]]></content>
-      <tags>
-        <tag>sass</tag>
-        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -366,17 +217,54 @@ require &apos;sass/supports&apos;
       </tags>
   </entry>
   <entry>
-    <title>sublime 插件删除不成功</title>
-    <url>/sublime%20%E6%8F%92%E4%BB%B6%E5%88%A0%E9%99%A4%E4%B8%8D%E6%88%90%E5%8A%9F.html</url>
-    <content><![CDATA[<p>删除 sublime 插件步骤：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMAKE"><figure class="iseeu highlight /cmake"><table><tr><td class="code"><pre><span class="line">Ctrl+Shift+P调出命令面板，输入<span class="keyword">remove</span>，调出<span class="keyword">Remove</span> Package选项并回车，选择要删除的插件并回车；</span><br></pre></td></tr></table></figure></div></p>
-<p>打开 <code>preferences</code> - <code>package settings</code> 查看，插件还在，浏览程序包也在。<br>直接删除插件包，插件包重新生成了。</p>
-<p>用 <code>ctrl+~</code> 查看控制台，发现了下面的报错信息。<br><code>ImportError: No module named &#39;package_control&#39;</code></p>
-<p>以下是解决方法：<br>打开<code>设置-用户</code>的配置文件（非汉化版应该是 <code>user settings</code>）<br><img src="/images/sublime1.png" alt></p>
-<p>删除其中一行代码，保存<br><img src="/images/sublime2.png" alt></p>
-<p>再重新执行删除的步骤，成功。</p>
+    <title>解除端口占用</title>
+    <url>/%E8%A7%A3%E9%99%A4%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8.html</url>
+    <content><![CDATA[<p>打开 dos 命令窗口输入一下命令</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">netstat -o -n -a <span class="string">| findstr :4000</span></span><br></pre></td></tr></table></figure>
+<p>可以看到输出如下：<br><img src="images/20220902172812.png" alt><br>可以看到 LISTENING 同时端口是 4000 那一行，最后面带着一串数字，数字是 3628，这个时候我们输出一行命令，解除掉占用<br><img src="images/20230409134012.png" alt><br><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">taskkill <span class="string">/F</span> <span class="string">/PID</span> 3628</span><br></pre></td></tr></table></figure></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>hexo 自定义主题</title>
+    <url>/hexo%20%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98.html</url>
+    <content><![CDATA[<p>参考文章：<a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html</a></p>
+<p>NexT官方主题配置：<a href="https://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">https://theme-next.iissnan.com/theme-settings.html</a></p>
+<p>第三方服务集成：<a href="http://theme-next.iissnan.com/third-party-services.html#comment-system" target="_blank" rel="noopener">http://theme-next.iissnan.com/third-party-services.html#comment-system</a></p>
+<h2 id="menu-再多加一个-tags"><a href="#menu-再多加一个-tags" class="headerlink" title="menu 再多加一个 tags"></a>menu 再多加一个 tags</h2><p>找到<code>themes/next/_config.yml</code>，打开<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DTS"><figure class="iseeu highlight /dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">menu:</span></span><br><span class="line"><span class="symbol">  home:</span> / || home</span><br><span class="line">  <span class="meta">#about: /about/ || user</span></span><br><span class="line"><span class="symbol">  tags:</span> <span class="meta-keyword">/tags/</span> || tags  <span class="comment">//将注释去除掉</span></span><br><span class="line">  <span class="meta">#categories: /categories/ || th</span></span><br><span class="line"><span class="symbol">  archives:</span> <span class="meta-keyword">/archives/</span> || archive</span><br><span class="line">  <span class="meta">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="meta">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="meta">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure></div></p>
+<p>点开链接，提示 <code>Cannot GET /tags/</code>，不要慌，不能获取tags，创建一个就OK！</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ROUTEROS"><figure class="iseeu highlight /routeros"><table><tr><td class="code"><pre><span class="line">$ hexo new<span class="built_in"> page </span><span class="string">'name'</span> # 我们这里要创建的是tags，所以这里name改为tags就好</span><br></pre></td></tr></table></figure></div>
+<p>在你的网站根目录下面的 source 文件夹会生成 tags 文件夹。</p>
+<p>修改 tags 文件夹中的 index.md 文件，新增 type 属性，如下：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="number">-09</span><span class="number">-27</span> <span class="number">11</span><span class="string">:56:43</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure></div></p>
+<p>当你新建一篇博文的时候，增加上tags和categories属性值，就能在tags和categories界面检索到你的文章了。</p>
+<h2 id="文章链接格式修改"><a href="#文章链接格式修改" class="headerlink" title="文章链接格式修改"></a>文章链接格式修改</h2><p> 默认文章格式是: <a href="http://xxx.com/2015/07/06/your-title/" target="_blank" rel="noopener">http://xxx.com/2015/07/06/your-title/</a> 的格式的,可以修改成 <a href="http://xxx.com/posts/programming/2016-03-18-hello-world.html" target="_blank" rel="noopener">http://xxx.com/posts/programming/2016-03-18-hello-world.html</a> 这样的格式</p>
+<p> 根目录下的 _config.yml 文件<br> <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ELIXIR"><figure class="iseeu highlight /elixir"><table><tr><td class="code"><pre><span class="line"><span class="symbol">permalink:</span> posts/<span class="symbol">:category/</span><span class="symbol">:year-</span><span class="symbol">:month-</span><span class="symbol">:day-</span><span class="symbol">:title</span>.html</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="修改文章底部的那个带-号的标签"><a href="#修改文章底部的那个带-号的标签" class="headerlink" title="修改文章底部的那个带#号的标签"></a>修改文章底部的那个带#号的标签</h2><p> 改成下图</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/5308475-9f1817d2d7627f7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p> 修改模板 <code>/themes/next/layout/_macro/post.swig</code> ，搜索 <code>rel=&quot;tag&quot;&gt;#</code> ，将 # 换成 <code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code> </p>
+<h2 id="隐藏网页底部powered-By-Hexo-强力驱动"><a href="#隐藏网页底部powered-By-Hexo-强力驱动" class="headerlink" title="隐藏网页底部powered By Hexo / 强力驱动"></a>隐藏网页底部powered By Hexo / 强力驱动</h2><p> 打开 themes/next/layout/_partials/footer.swig,隐藏之间的代码即可，或者直接删除。<br> <img src="http://upload-images.jianshu.io/upload_images/5308475-8e8340c7a0489bce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="左侧侧边栏加上展开的分类"><a href="#左侧侧边栏加上展开的分类" class="headerlink" title="左侧侧边栏加上展开的分类"></a>左侧侧边栏加上展开的分类</h2><p> 打开 themes/next/layout/_macro/sidebar.swig<br> 添加内容<br> <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="APPLESCRIPT"><figure class="iseeu highlight /applescript"><table><tr><td class="code"><pre><span class="line"> &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"category-all-page"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"category-all"</span>&gt;</span><br><span class="line">        &#123;&#123; list_categories(&#123;depth: <span class="number">1</span>&#125;) &#125;&#125;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure></div></p>
+<p> 参考<a href="https://hexo.io/zh-cn/docs/helpers.html#list-categories" target="_blank" rel="noopener">hexo API</a></p>
+<h2 id="添加自定义的css样式"><a href="#添加自定义的css样式" class="headerlink" title="添加自定义的css样式"></a>添加自定义的css样式</h2><p> <code>themes\next\layout\_partials\head.swig</code></p>
+<ul>
+<li>添加样式支持<br>为了不把原先文件搞得太乱，这里添加自己的样式文件<br>在 <code>themes\next\source\css</code> 文件夹下，打开main.styl文件，在最后添加：<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SCSS"><figure class="iseeu highlight /scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//My Layer</span></span><br><span class="line"><span class="comment">//--------------------------------------------------</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">"_my/style"</span>;</span><br></pre></td></tr></table></figure></div>
+</li>
+</ul>
+<h2 id="首页改成-archives"><a href="#首页改成-archives" class="headerlink" title="首页改成 archives"></a>首页改成 archives</h2><p>我是简单粗暴的将 <code>themes\next\layout</code> 下的 index.swig 的内容改掉，将 archive.swig 的文件内容复制了过来</p>
+<h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>安装hexo-generator-searchdb插件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SQL"><figure class="iseeu highlight /sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-searchdb <span class="comment">--save</span></span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment">#主题配置文件下，这里改成 true</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="首页阅读全文"><a href="#首页阅读全文" class="headerlink" title="首页阅读全文"></a>首页阅读全文</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#主题配置文件下，这里改成true</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">150</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><p><a href="https://eggsywelsh.github.io/2016/11/10/hexo%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" target="_blank" rel="noopener">参考文章</a><br><a href="https://blog.shadowy.me/2018/03/16/hexo-next-macpanel-improved/" target="_blank" rel="noopener">参考文章</a></p>
+<p>在 themes/next 目录下打开 _config.yml 配置文件，找到 highlight_theme 属性</p>
+<p>这里呢可以配置的属性有normal | night | night eighties | night blue | night bright，你可以挨个试一试，看下效果，选择你喜欢的一个属性</p>
+<p>光有这个配置还不行，在你的hexo/目录下_config.yml文件中中，找到，并设置如下</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">true</span> <span class="comment">#修改为true</span></span><br><span class="line">  <span class="attr">tab_replace:</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="开启评论"><a href="#开启评论" class="headerlink" title="开启评论"></a>开启评论</h2><p>在 themes/next 目录下打开 _config.yml 配置文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disqus:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#设置为 true</span></span><br><span class="line">  <span class="attr">shortname:</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></div></p>
+<h2 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h2><p>参考文章：<a href="https://blog.csdn.net/Calvin_zhou/article/details/78820718" target="_blank" rel="noopener">https://blog.csdn.net/Calvin_zhou/article/details/78820718</a></p>
+<h2 id="文章添加阅读次数，访问量"><a href="#文章添加阅读次数，访问量" class="headerlink" title="文章添加阅读次数，访问量"></a>文章添加阅读次数，访问量</h2><p><a href="https://blog.csdn.net/xr469786706/article/details/78166227" target="_blank" rel="noopener">参考文章</a></p>
+<p>打开 \themes\next\ _config.yml 文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#改为 true 开启</span></span><br><span class="line">  <span class="attr">site_uv:</span> <span class="literal">true</span> <span class="comment">#访问人数</span></span><br><span class="line">  <span class="attr">site_uv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-user"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">site_uv_footer:</span></span><br><span class="line">  <span class="attr">site_pv:</span> <span class="literal">true</span> <span class="comment">#总访问量</span></span><br><span class="line">  <span class="attr">site_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-eye"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">site_pv_footer:</span></span><br><span class="line">  <span class="attr">page_pv:</span> <span class="literal">true</span> <span class="comment">#单篇文章浏览量</span></span><br><span class="line">  <span class="attr">page_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-file-o"&gt;&lt;/i&gt;</span></span><br><span class="line">  <span class="attr">page_pv_footer:</span></span><br></pre></td></tr></table></figure></div></p>
 ]]></content>
       <tags>
-        <tag>sublime</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -407,11 +295,193 @@ require &apos;sass/supports&apos;
       </tags>
   </entry>
   <entry>
-    <title>解除端口占用</title>
-    <url>/%E8%A7%A3%E9%99%A4%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8.html</url>
-    <content><![CDATA[<p>打开 dos 命令窗口输入一下命令</p>
-<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">netstat -o -n -a <span class="string">| findstr :4000</span></span><br></pre></td></tr></table></figure>
-<p>可以看到输出如下：<br><img src="images/20220902172812.png" alt><br>可以看到 LISTENING 同时端口是 4000 那一行，最后面带着一串数字，数字是 3628，这个时候我们输出一行命令，解除掉占用<br><img src="images/20230409134012.png" alt><br><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">taskkill <span class="string">/F</span> <span class="string">/PID</span> 3628</span><br></pre></td></tr></table></figure></p>
+    <title>纯 html 文件中怎么使用 sass</title>
+    <url>/%E7%BA%AF-html-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-sass.html</url>
+    <content><![CDATA[<p>sass 是一种流行的 CSS 预处理器，它能够让开发者使用嵌套语法和变量，以及一些其他的便利功能，来更加高效地编写 CSS 样式表。</p>
+<blockquote>
+<p>没有使用 npm 安装 sass，在平时的纯 html 页面中，要怎么才能使用 sass</p>
+</blockquote>
+<h1 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h1><p><a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">http://www.ruby-lang.org/zh_cn/downloads/</a></p>
+<h1 id="安装-sass"><a href="#安装-sass" class="headerlink" title="安装 sass"></a>安装 sass</h1><p>cmd 命令行输入下面的命令</p>
+<pre><code>gem install sass
+</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><blockquote>
+<p>文件夹名称不能是中文，否则会编译失败</p>
+</blockquote>
+<ul>
+<li>单文件编译</li>
+</ul>
+<!---->
+<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
+</code></pre><ul>
+<li><p>多文件编译<br>sass sass/\:css/（表示“sass”文件夹中所有的”.scss”文件编译成”.css”文件，并且将这些css文件放到“css”文件夹中）</p>
+</li>
+<li><p>自动监测（主要使用）<br><code>sass --watch&lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css</code>（.scss文件每次修改按ctrl+s保存都会实时的反映到输出的.css文件中）</p>
+</li>
+</ul>
+<!---->
+<pre><code>:expanded 普通样式
+:compact 一个样式一行
+:compressed 所有样式一行
+</code></pre><p>先打开命令行工具，进入到具体的文件夹，然后再执行使用命令。</p>
+<p>例子：<br>我有一个项目放在了 <code>E</code> 盘，名称叫 <code>sass-project</code>，里面有一个 <code>sass</code> 和 <code>css</code> 文件夹。<br>打开 <code>cmd</code>,<code>E:</code>进入到 E 盘，然后使用 <code>cd</code> 进入到 <code>sass-project</code>文件夹，接下来执行下面的命令就行</p>
+<pre><code>sass --watch sass:css --style compact
+</code></pre><!---->
+<pre><code>ctrl+c 停止
+</code></pre><p><img src="/images/2023-3-11-1.png" alt="image"></p>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre><code>　　$blue : #1875e7;　
+　　div {
+　　　color : $blue;
+　　}
+</code></pre><h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><pre><code>　　body {
+　　　　margin: (14px/2);
+　　　　top: 50px + 100px;
+　　　　right: $var * 10%;
+　　}
+</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><pre><code>　　div {
+　　　　h1 {
+　　　　　　color:red;
+　　　　}
+　　}
+　　border-color属性
+　　p { 
+　　　　border: {
+　　　　　　color: red;
+　　　　}
+　　}
+　　a:hover
+　　a {
+　　　　&amp;:hover { color: #ffb3ff; }
+　　}
+</code></pre><h2 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><pre><code>.class1 {
+　　　　border: 1px solid #ddd;
+　　}
+　　.class2 {
+　　　　@extend .class1;
+　　　　font-size:120%;
+　　}
+</code></pre><h3 id="Mixin-重用代码块-可以指定参数和缺省值"><a href="#Mixin-重用代码块-可以指定参数和缺省值" class="headerlink" title="Mixin (重用代码块) 可以指定参数和缺省值"></a>Mixin (重用代码块) 可以指定参数和缺省值</h3><pre><code>　　@mixin left {
+　　　　float: left;
+　　　　margin-left: 10px;
+　　}
+　　div {
+　　　　@include left;
+　　}
+</code></pre><p>eg: mixin的实例，用来生成浏览器前缀</p>
+<pre><code>　　@mixin rounded($vert, $horz, $radius: 10px) {
+　　　　border-#{$vert}-#{$horz}-radius: $radius;
+　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
+　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
+　　}
+　　&lt;!--调用--&gt;
+　　#navbar li { @include rounded(top, left); }
+　　#footer { @include rounded(top, left, 5px); }
+</code></pre><h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
+<pre><code>　　lighten(#cc3, 10%) // #d6d65c
+　　darken(#cc3, 10%) // #a3a329
+　　grayscale(#cc3) // #808080
+　　complement(#cc3) // #33c
+</code></pre><h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><pre><code>@import &quot;path/filename.scss&quot;;
+@import &quot;foo.css&quot;;
+</code></pre><h1 id="支持中文注释方法"><a href="#支持中文注释方法" class="headerlink" title="支持中文注释方法"></a>支持中文注释方法</h1><ul>
+<li>在 scss 文件头加上 <code>@charset &quot;utf-8&quot;;</code></li>
+<li>查看出错的 css 文件</li>
+</ul>
+<!---->
+<pre><code>Backtrace:
+sass/shop.scss:4
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1090:in `rescue in block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1087:in `block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each_with_index&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:820:in `rescue in check_sass_encoding&apos;
+</code></pre><p>得到路径 <code>C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass</code></p>
+<p>里面有一个文件<code>engine.rb</code>打开</p>
+<pre><code>require &apos;sass/scss&apos;
+require &apos;sass/stack&apos;
+require &apos;sass/error&apos;
+require &apos;sass/importers&apos;
+require &apos;sass/shared&apos;
+require &apos;sass/media&apos;
+require &apos;sass/supports&apos;
+</code></pre><p>我们在一连串的 require 后面加上代码</p>
+<pre><code>Encoding.default_external = Encoding.find(&apos;utf-8&apos;)
+</code></pre><p>最后再重启 sass 一下就好了</p>
+<p>更详细的使用可以参考：<a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/06/sass.html</a></p>
 ]]></content>
+      <tags>
+        <tag>sass</tag>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用 C# 开发小软件.md</title>
+    <url>/%E7%94%A8C-%E5%BC%80%E5%8F%91%E5%B0%8F%E8%BD%AF%E4%BB%B6.html</url>
+    <content><![CDATA[<p>之前同事发给我一个软件，是  C# 写的，非常的小巧，比 electron 小太多了。最近突发奇想想要自己尝试写一个小软件。</p>
+<p>需求如下：<br>三个按钮，第一个按钮叫记录，第二个按钮叫暂停，点击记录按钮记录当前时间，显示在页面上，点击暂停按钮记录当前时间显示在页面上，并计算两个时间的时间差，以时-分的格式显示在软件上。 继续点击记录和暂停按钮，继续计算时间差，并和上一次记录的时间差进行一个累加同样显示在页面上。 最后一个按钮命名清空，可以清空页面上所有文本信息。</p>
+<p>开发环境：Visual Studio 2015</p>
+<h2 id="步骤-1-创建-Windows-窗体应用程序"><a href="#步骤-1-创建-Windows-窗体应用程序" class="headerlink" title="步骤 1 - 创建 Windows 窗体应用程序"></a>步骤 1 - 创建 Windows 窗体应用程序</h2><p>首先，我们需要创建一个新的 Windows 窗体应用程序。打开 Visual Studio，并在菜单中选择 “文件” -&gt; “新建” -&gt; “项目”。在 “新建项目” 对话框中，选择 “Windows 窗体应用程序” 并为其命名（例如：TimeRecorder）。然后，点击 “确定” 按钮创建新项目。这个时候 Visual Studio 会自动为我们创建一个空的窗体应用程序。</p>
+<h2 id="步骤-2-添加-UI-控件"><a href="#步骤-2-添加-UI-控件" class="headerlink" title="步骤 2 - 添加 UI 控件"></a>步骤 2 - 添加 UI 控件</h2><p>接下来，我们需要向窗体中添加三个按钮(Button)和一些文本框(Label)用于显示时间记录信息。在 Visual Studio 的工具箱中，找到按钮控件并拖动三个按钮到窗体上。另外，也从工具箱中拖动三个文本框控件到窗体上，一个用于显示开始时间，另一个用于显示结束时间，还有一个显示时间差。</p>
+<p><img src="images/20230422_1.png" alt></p>
+<h2 id="步骤-3-编写事件处理程序"><a href="#步骤-3-编写事件处理程序" class="headerlink" title="步骤 3 - 编写事件处理程序"></a>步骤 3 - 编写事件处理程序</h2><p>当用户单击任何一个按钮时，需要调用一个事件处理程序来执行相应的操作。双击按钮，Visual Studio 将自动在源代码文件中创建事件处理程序。</p>
+<p>首先，在窗体类中添加成员变量来保存开始和结束时间：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Form1</span> : <span class="title">Form</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> DateTime startTime;</span><br><span class="line">    <span class="keyword">private</span> DateTime endTime;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>接下来，定义每个按钮的单击事件处理程序。记录按钮单击事件将保存当前时间并在开始时间文本框中显示它：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">btnRecord_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    startTime = DateTime.Now;</span><br><span class="line">    txtStart.Text = startTime.ToString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>暂停按钮单击事件将保存当前时间并在结束时间文本框中显示它。然后计算时间差，并在时间差文本框中显示它：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="MATHEMATICA"><figure class="iseeu highlight /mathematica"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">private void btnPause_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    endTime = DateTime.<span class="keyword">Now</span>;</span><br><span class="line">    txtEnd.<span class="keyword">Text</span> = endTime.<span class="keyword">ToString</span>();</span><br><span class="line"></span><br><span class="line">    TimeSpan timeDiff = endTime - startTime;</span><br><span class="line">    txtTimeDiff.<span class="keyword">Text</span> = string.<span class="keyword">Format</span>(<span class="string">"&#123;0:00&#125;:&#123;1:00&#125;"</span>,</span><br><span class="line">        (int)timeDiff.TotalHours, timeDiff.Minutes);</span><br><span class="line"></span><br><span class="line">    startTime = DateTime.<span class="keyword">MinValue</span>;</span><br><span class="line">    endTime = DateTime.<span class="keyword">MinValue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>最后一个按钮是清空按钮，它将清空所有文本框：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="ARMASM"><figure class="iseeu highlight /armasm"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">private</span> void <span class="keyword">btnClear_Click(object </span>sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    txtStart<span class="meta">.Text</span> = <span class="string">""</span><span class="comment">;</span></span><br><span class="line">    txtEnd<span class="meta">.Text</span> = <span class="string">""</span><span class="comment">;</span></span><br><span class="line">    txtTimeDiff<span class="meta">.Text</span> = <span class="string">""</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="步骤-4-绑定按钮"><a href="#步骤-4-绑定按钮" class="headerlink" title="步骤 4 - 绑定按钮"></a>步骤 4 - 绑定按钮</h2><p>在程序中，文本框我们使用了 <code>txtStart</code>，’txtEnd’，’txtTimeDiff’ 三个，我们需要做下绑定。</p>
+<p>单机一下设计图的 label，在右边找到 Name 属性，分别依次改成上面三个值。</p>
+<p><img src="images/20230422_2.png" alt></p>
+<h2 id="步骤-5-运行程序"><a href="#步骤-5-运行程序" class="headerlink" title="步骤 5 - 运行程序"></a>步骤 5 - 运行程序</h2><p>现在，我们已经完成了这个简单的应用程序的开发。按 F5 键运行应用程序，然后单击记录按钮来记录时间。单击暂停按钮来结束计时并显示时间差。可以一次又一次地按下记录和暂停按钮以记录更多时间段。最后，单击清空按钮清空所有文本框。</p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p>以下是完整的 C# 代码，可以复制并粘贴到 Form1.cs 文件中：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">setTime</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Form1</span> : <span class="title">Form</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> DateTime startTime;</span><br><span class="line">        <span class="keyword">private</span> DateTime endTime;</span><br><span class="line">        <span class="keyword">private</span> TimeSpan totalTimeDiff;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Form1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line">            button2.Enabled = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">btnRecord_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            startTime = DateTime.Now;</span><br><span class="line">            txtStart.Text = <span class="string">"开始："</span> + startTime.ToString();</span><br><span class="line">            txtEnd.Text = <span class="string">""</span>;</span><br><span class="line">            button1.Enabled = <span class="literal">false</span>; <span class="comment">// 禁止按钮点击</span></span><br><span class="line">            button2.Enabled = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">btnPause_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            endTime = DateTime.Now;</span><br><span class="line">            txtEnd.Text = <span class="string">"结束："</span> + endTime.ToString();</span><br><span class="line"></span><br><span class="line">            TimeSpan timeDiff = endTime - startTime;</span><br><span class="line">            totalTimeDiff += timeDiff;</span><br><span class="line">            txtTimeDiff.Text = <span class="string">"时间差："</span> + <span class="keyword">string</span>.Format(<span class="string">"&#123;0:00&#125;:&#123;1:00&#125;:&#123;2:00&#125;"</span>,</span><br><span class="line">                (<span class="keyword">int</span>)totalTimeDiff.TotalHours, totalTimeDiff.Minutes, totalTimeDiff.Seconds);</span><br><span class="line"></span><br><span class="line">            startTime = DateTime.MinValue;</span><br><span class="line">            endTime = DateTime.MinValue;</span><br><span class="line">            button1.Enabled = <span class="literal">true</span>;</span><br><span class="line">            button2.Enabled = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">btnClear_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            txtStart.Text = <span class="string">""</span>;</span><br><span class="line">            txtEnd.Text = <span class="string">""</span>;</span><br><span class="line">            txtTimeDiff.Text = <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>注意：上述代码中的按钮单击事件处理程序是自动生成的，需要将它们与相应的按钮相关联。可以在 Visual Studio 的属性窗口中为每个按钮选择相应的事件处理程序。</p>
+<p>可以在下图箭头所指的 click 右边可以修改按钮的事件名，将其关联起来。</p>
+<p><img src="images/20230422_3.png" alt></p>
+<p>如果是使用 Visual Studio 开发 Windows 窗体应用程序，可以在设计模式下双击按钮或者单击按钮然后在属性窗口中选择单击事件，在下拉菜单中选择对应的事件处理方法即可。</p>
+<p>具体步骤如下：</p>
+<ol>
+<li>在 Visual Studio 中打开相应的窗体设计器。</li>
+<li>选择要添加事件处理程序的按钮。</li>
+<li>在属性窗口中查找事件属性（通常以“Events”为后缀）。</li>
+<li>单击事件属性旁边的下拉箭头，选择相应的事件处理程序。</li>
+<li>双击所选的事件处理程序名称，Visual Studio 将自动生成该事件的处理方法（这通常是一个空方法）。</li>
+<li>在生成的方法中编写处理逻辑。</li>
+</ol>
+<p>注意：如果使用 C# 手动编写代码而不是通过设计器来添加事件处理程序，也可以在程序的入口点手动绑定按钮事件和处理程序。例如，在 Form1 类的构造函数中添加以下代码来绑定按钮单击事件：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HAXE"><figure class="iseeu highlight /haxe"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> Form1()</span><br><span class="line">&#123;</span><br><span class="line">    InitializeComponent();</span><br><span class="line">    <span class="built_in">this</span>.btnRecord.Click += <span class="keyword">new</span> <span class="type">EventHandler</span>(btnRecord_Click);</span><br><span class="line">    <span class="built_in">this</span>.btnPause.Click += <span class="keyword">new</span> <span class="type">EventHandler</span>(btnPause_Click);</span><br><span class="line">    <span class="built_in">this</span>.btnClear.Click += <span class="keyword">new</span> <span class="type">EventHandler</span>(btnClear_Click);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="打包程序"><a href="#打包程序" class="headerlink" title="打包程序"></a>打包程序</h2><p>使用 Visual Studio 的发布功能。具体步骤:</p>
+<ol>
+<li>在解决方案资源管理器中右键你的项目,选择 “发布”。</li>
+<li>在发布向导中选择 “文件夹” 作为发布目标。这会直接发布成文件夹。</li>
+<li>选中或取消选中需要发布的文件。一般保留默认选择即可。</li>
+<li>点击发布按钮,选择发布位置。发布过程完成后,会在指定位置生成项目文件夹。 </li>
+<li>将此项目文件夹压缩为 zip 文件。用户只需下载解压此 zip 文件,直接运行项目文件夹内的 exe 文件即可运行程序。</li>
+<li>如果需要,也可以在发布后进一步使用 ILMerger、Costura 等工具将程序文件合并成单个 exe,以简化部署。  </li>
+<li>还可以通过修改项目属性,更改输出类型为“Windows 应用程序”或“控制台应用程序”等，从而生成独立的 exe 可执行文件。 使用 Visual Studio 的一键发布功能,可以非常便捷地将 C# 项目打包为展示版本或发布版本。生成的文件夹或压缩包中包含项目运行所需的所有文件，用户只需要一键运行即可。 这种简单的发布方式适用于许多基本的应用程序,如果需要更专业的安装程序，可以使用 Installer 或 ClickOnce 等方式。</li>
+</ol>
+<p><img src="images/20230422_4.png" alt></p>
+<p><img src="images/20230422_5.png" alt></p>
+<p>使用 Visual Studio 发布功能生成的程序文件夹或者压缩包并非标准的安装程序，所以无法自动在桌面或开始菜单中生成快捷方式。 如果需要生成带有自动快捷方式和菜单项的标准安装程序，可以使用其它方法打包程序，方法如下:</p>
+<ol>
+<li>Installer 项目 - 可以生成 MSI 安装包,双击后可以自动安装程序，在桌面、开始菜单生成快捷方式和菜单项。适用于较复杂的应用程序安装,需要安装多个文件和注册表entries等。</li>
+<li>ClickOnce 部署 - 可以生成基于浏览器的安装程序,点击后自动安装应用程序,并在桌面生成快捷方式。适用于较简单的应用程序,无需管理员权限安装。</li>
+<li>Inno Setup - 这是一个开源软件,可以生成 exe 安装程序。安装后在桌面和开始菜单生成快捷方式。操作较简单，但功能也较简单,不支持复杂的安装步骤。</li>
+<li>Advanced Installer - 这是一个付费软件，可以生成 MSI 或 exe 安装程序。功能强大,可以实现复杂的安装步骤和界面，安装后自动创建快捷方式和菜单。</li>
+</ol>
+<h2 id="修改图标"><a href="#修改图标" class="headerlink" title="修改图标"></a>修改图标</h2><p>要为应用程序修改图标,可以通过以下几种方法:</p>
+<ol>
+<li>修改项目属性中的应用程序图标: 在解决方案资源管理器中右键你的项目,选择“属性”。在弹出的属性页中,选中“应用程序”选项卡。在“图标”下，点击“更改图标”按钮，选择新的图标文件并确定即可。 这会更改 exe 文件和安装程序的默认图标。</li>
+<li>软件左上角的小图标,称为任务栏图标或通知区图标。要修改这个图标，可以: 将新图标文件添加到 Visual Studio 解决方案资源管理器中的 “图标” 或 “图像”文件夹。然后:</li>
+</ol>
+<ul>
+<li>双击新图标,选择“资源嵌入”选项。这会将图标嵌入到项目资源中。</li>
+<li>打开主窗体(Form1)，在属性窗口点击“图标”属性旁的省略号按钮 (…)。</li>
+<li>在“选择资源”对话框中，选择刚才嵌入的图标资源,确定。 这会更改主窗体和生成的 exe 的图标。</li>
+</ul>
+<p><img src="images/20230422_6.png" alt></p>
+<p><img src="images/20230422_7.png" alt></p>
+]]></content>
+      <tags>
+        <tag>C#</tag>
+      </tags>
   </entry>
 </search>
