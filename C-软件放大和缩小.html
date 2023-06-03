@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="vscode,git,">
+  <meta name="keywords" content="C#,">
 
 
 
@@ -79,33 +79,20 @@
 
 
 
-<meta name="description" content="在 vscode 中 安装了一个 Git 插件，叫 GitLens，这个插件真的太好用了。好久之前就安装上的，但是都没有细看，今天用到了它里面的一些功能，感觉这个软件做得太棒了。稍微写了一下使用方法。 GitLens 设置使用 ctrl+shift+P，输入 GitLens: Open Settings点击后会弹出 GitLens 的设置页面，可以进行一些自定义的设置。 查看提交信息我们打开我的文">
-<meta name="keywords" content="vscode,git">
+<meta name="description" content="在软件开发中，实现界面放大和缩小是一项很常见的功能。今天我们来看一下如何开发这样的功能。首先，我们需要一个变量来存储软件当前是放大还是缩小状态，这里使用isMinimized。然后定义正常大小 normalSize 和缩小后的大小 minimizedSize 两个变量。1234bool isMinimized = false; // 放大和缩小的状态判断Size normalSize = new">
+<meta name="keywords" content="C#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitLens 使用教程">
-<meta property="og:url" content="https://maze365.github.io/GitLens-使用教程.html">
+<meta property="og:title" content="C# 软件放大和缩小">
+<meta property="og:url" content="https://maze365.github.io/C-软件放大和缩小.html">
 <meta property="og:site_name" content="maze365&#39;s Blog">
-<meta property="og:description" content="在 vscode 中 安装了一个 Git 插件，叫 GitLens，这个插件真的太好用了。好久之前就安装上的，但是都没有细看，今天用到了它里面的一些功能，感觉这个软件做得太棒了。稍微写了一下使用方法。 GitLens 设置使用 ctrl+shift+P，输入 GitLens: Open Settings点击后会弹出 GitLens 的设置页面，可以进行一些自定义的设置。 查看提交信息我们打开我的文">
+<meta property="og:description" content="在软件开发中，实现界面放大和缩小是一项很常见的功能。今天我们来看一下如何开发这样的功能。首先，我们需要一个变量来存储软件当前是放大还是缩小状态，这里使用isMinimized。然后定义正常大小 normalSize 和缩小后的大小 minimizedSize 两个变量。1234bool isMinimized = false; // 放大和缩小的状态判断Size normalSize = new">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_9.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_11.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_1.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_3.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_4.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_16.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_12.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_14.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_15.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_6.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_7.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_18.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_19.png">
-<meta property="og:image" content="https://maze365.github.io/images/20230514_20.png">
-<meta property="og:updated_time" content="2023-05-14T11:18:53.167Z">
+<meta property="og:image" content="https://maze365.github.io/images/20230525_3.png">
+<meta property="og:updated_time" content="2023-06-03T00:23:25.955Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GitLens 使用教程">
-<meta name="twitter:description" content="在 vscode 中 安装了一个 Git 插件，叫 GitLens，这个插件真的太好用了。好久之前就安装上的，但是都没有细看，今天用到了它里面的一些功能，感觉这个软件做得太棒了。稍微写了一下使用方法。 GitLens 设置使用 ctrl+shift+P，输入 GitLens: Open Settings点击后会弹出 GitLens 的设置页面，可以进行一些自定义的设置。 查看提交信息我们打开我的文">
-<meta name="twitter:image" content="https://maze365.github.io/images/20230514_9.png">
+<meta name="twitter:title" content="C# 软件放大和缩小">
+<meta name="twitter:description" content="在软件开发中，实现界面放大和缩小是一项很常见的功能。今天我们来看一下如何开发这样的功能。首先，我们需要一个变量来存储软件当前是放大还是缩小状态，这里使用isMinimized。然后定义正常大小 normalSize 和缩小后的大小 minimizedSize 两个变量。1234bool isMinimized = false; // 放大和缩小的状态判断Size normalSize = new">
+<meta name="twitter:image" content="https://maze365.github.io/images/20230525_3.png">
 
 
 
@@ -135,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://maze365.github.io/GitLens-使用教程.html">
+  <link rel="canonical" href="https://maze365.github.io/C-软件放大和缩小.html">
 
 
 
 
 
-  <title>GitLens 使用教程 | maze365's Blog</title>
+  <title>C# 软件放大和缩小 | maze365's Blog</title>
   
 
 
@@ -270,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://maze365.github.io/GitLens-使用教程.html">
+    <link itemprop="mainEntityOfPage" href="https://maze365.github.io/C-软件放大和缩小.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="maze365">
@@ -287,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GitLens 使用教程</h1>
+          <h1 class="post-title" itemprop="name headline">C# 软件放大和缩小</h1>
         
 
         <div class="post-meta">
@@ -297,8 +284,8 @@
                 <i class="fa fa-clock-o"></i>
               </span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-05-14T19:13:28+08:00">
-                2023-05-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-06-03T08:22:45+08:00">
+                2023-06-03
               </time>
             
 
@@ -314,9 +301,7 @@
               <i class="fa fa-tag"></i>
             </span>
             
-              <span>vscode </span>
-            
-              <span>git </span>
+              <span>C# </span>
             
           
 
@@ -351,34 +336,11 @@
       
 
       
-        <p>在 vscode 中 安装了一个 Git 插件，叫 GitLens，这个插件真的太好用了。<br>好久之前就安装上的，但是都没有细看，今天用到了它里面的一些功能，感觉这个软件做得太棒了。稍微写了一下使用方法。</p>
-<h1 id="GitLens-设置"><a href="#GitLens-设置" class="headerlink" title="GitLens 设置"></a>GitLens 设置</h1><p>使用 ctrl+shift+P，输入 GitLens: Open Settings<br><img src="images/20230514_9.png" alt><br>点击后会弹出 GitLens 的设置页面，可以进行一些自定义的设置。<br><img src="images/20230514_11.png" alt></p>
-<h1 id="查看提交信息"><a href="#查看提交信息" class="headerlink" title="查看提交信息"></a>查看提交信息</h1><p>我们打开我的文本页面，鼠标随便点击某一行，在鼠标停顿的位置后方有一行灰色的注释，内容包括作者姓名，相关日期和提交信息。<br><img src="images/20230514_1.png" alt><br>悬停在注释上面会有更加详细的信息，hash，提交日期，完整的提交信息。这些信息可以让你一眼看到每行代码最后是由谁在什么时候提交的，非常方便代码审查或追踪代码来源。<br><img src="images/20230514_3.png" alt></p>
-<h1 id="Toggle-File-Blame"><a href="#Toggle-File-Blame" class="headerlink" title="Toggle File Blame"></a>Toggle File Blame</h1><h2 id="Toggle-File-Blame-1"><a href="#Toggle-File-Blame-1" class="headerlink" title="Toggle File Blame"></a>Toggle File Blame</h2><p>如果我不想只看当前一行后面的注释信息，而是想要查看整个文档文本后面的注释信息，通过点击软件右上角的图标，选择 Toggle File Blame。<br><img src="images/20230514_4.png" alt><br>此时能看到每行文字最后的信息，同样支持悬停。<br><img src="images/20230514_16.png" alt><br>想要关闭的话再点一下右上角的刚刚点击的按钮或者按 ESC 退出。</p>
-<h2 id="Toggle-File-Heatmap"><a href="#Toggle-File-Heatmap" class="headerlink" title="Toggle File Heatmap"></a>Toggle File Heatmap</h2><p><img src="images/20230514_12.png" alt><br>Toggle File Heatmap可以为文件添加热度图信息，以视觉方式显示文件每行被更改的频率。当你选择Toggle File Heatmap,在弹出的窗口中，最左侧会显示三种颜色的竖条：</p>
-<ul>
-<li>蓝色：表示该行未更改或更改少的行。  </li>
-<li>红色：表示该行更改频繁的行。  </li>
-<li>紫色：表示该行注释或空行。<br>·颜色越深表示该行被更改的次数越多。这让你一眼就能看出文件哪些部分被更改最频繁。<br><img src="images/20230514_14.png" alt></li>
-</ul>
-<h2 id="Toggle-File-Changes"><a href="#Toggle-File-Changes" class="headerlink" title="Toggle File Changes"></a>Toggle File Changes</h2><p>这个可以让人能很快就知道哪行代码发生了改变。<br>编辑器中会高亮显示自上次 Git 提交后被更改的所有内容。</p>
-<ul>
-<li>添加的内容会以绿色高亮  </li>
-<li>删除的内容会以红色高亮  </li>
-<li>修改的内容会以蓝色高亮<br><img src="images/20230514_15.png" alt><h1 id="查看上一次提交"><a href="#查看上一次提交" class="headerlink" title="查看上一次提交"></a>查看上一次提交</h1>下方的按钮，点击后可以打开上一次提交的更改。<br><img src="images/20230514_6.png" alt></li>
-</ul>
-<p>如果按住 Alt 的同时点击上方圈住的箭头。会跳出更多的 git 提交历史对比列表，这些提交都是本文件的历史提交记录。（这个功能和 vscode 默认的 TIMELINE 功能是一样的。）<br><img src="images/20230514_7.png" alt></p>
-<h1 id="左侧菜单"><a href="#左侧菜单" class="headerlink" title="左侧菜单"></a>左侧菜单</h1><p>选中后可以上移和下移重新排序菜单项。<br>或者移动到最左侧的按钮栏使其单独成为一个侧边栏按钮。<br><img src="images/20230514_18.png" alt></p>
-<h2 id="SEARCH-amp-COMPARE"><a href="#SEARCH-amp-COMPARE" class="headerlink" title="SEARCH &amp; COMPARE"></a>SEARCH &amp; COMPARE</h2><p>它可以在当前文件或整个仓库中搜索特定的代码，并与 Git tag 或分支进行比较。<br>可以让某个以前的分支与当前版本的代码进行对比。<br><img src="images/20230514_19.png" alt><br>选择钉图标后，就能一直固定这个对比，重启软件也不会消失。<br><img src="images/20230514_20.png" alt></p>
-<h2 id="STASHES"><a href="#STASHES" class="headerlink" title="STASHES"></a>STASHES</h2><p>这个经常会用到，我们平时在开发自己的代码，开发到一半，此时需要修改线上分支，又不想要上传这部分代码，会使用临时的 stashes 来暂存起来。</p>
-<p>因为我最近用这个功能挺多，但是都是在同一个 git 仓库上，stashes 不小心存太多了，现在想要恢复，又不知道里面到底是改了什么文件，就可以用这个 GitLens 的这个功能，能看到保存的文件修改了哪些内容，用来决定要不要恢复这个存储。</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li>WORDTREES<br>工作树，和 git 分支有点像。</li>
-<li>TAGS<br>标签</li>
-<li>FILE HISTRORY<br>当前文件修改的历史记录</li>
-<li>COMMITS<br>提交的历史记录。</li>
-<li>COMMITS DETAILS<br>上一次提交的详细信息。</li>
-</ul>
+        <p>在软件开发中，实现界面放大和缩小是一项很常见的功能。今天我们来看一下如何开发这样的功能。<br>首先，我们需要一个变量来存储软件当前是放大还是缩小状态，这里使用isMinimized。然后定义正常大小 normalSize 和缩小后的大小 minimizedSize 两个变量。<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="GRADLE"><figure class="iseeu highlight /gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">bool isMinimized = <span class="keyword">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line"><span class="keyword">Size</span> normalSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小 </span></span><br><span class="line"><span class="keyword">Size</span> minimizedSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br></pre></td></tr></table></figure></div></p>
+<p>在窗口加载时,我们先设置默认大小为 normalSize，并将按钮文本设置为“最小化”。<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">this.Size</span> = normalSize<span class="comment">;</span></span><br><span class="line"><span class="attr">minimizeButton.Text</span> = <span class="string">"最小化"</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div></p>
+<p>当点击按钮时,我们需要判断当前状态。如果是正常大小,就缩小窗口并更新变量和按钮文本。如果是缩小状态,就还原大小。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="NIX"><figure class="iseeu highlight /nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!isMinimized) </span><br><span class="line">&#123;</span><br><span class="line">    // 最小化 </span><br><span class="line">    this.<span class="attr">Size</span> = minimizedSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">false</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"还原"</span>;</span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">&#123;</span><br><span class="line">    // 还原</span><br><span class="line">    this.<span class="attr">Size</span> = normalSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">true</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"最小化"</span>; </span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img src="images/20230525_3.png" alt><br>下方是完整的示例代码：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WindowsFormsApp1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Form1</span> : <span class="title">Form</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">bool</span> isMinimized = <span class="literal">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line">        Size normalSize = <span class="keyword">new</span> Size(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小</span></span><br><span class="line">        Size minimizedSize = <span class="keyword">new</span> Size(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Form1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">            minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">// 点击放大缩小按钮的判断事件</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">minimizeButton_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!isMinimized)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 最小化</span></span><br><span class="line">                <span class="keyword">this</span>.Size = minimizedSize;</span><br><span class="line">                label1.Visible = <span class="literal">false</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"还原"</span>;</span><br><span class="line">                isMinimized = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 还原</span></span><br><span class="line">                <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">                label1.Visible = <span class="literal">true</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">                isMinimized = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 
       
     </div>
@@ -403,8 +365,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/定时器-requestAnimationFrame.html" rel="next" title="定时器 requestAnimationFrame">
-                <i class="fa fa-chevron-left"></i> 定时器 requestAnimationFrame
+              <a href="/隐藏文件管理资源器左侧的坚果云快捷方式.html" rel="next" title="隐藏文件管理资源器左侧的坚果云快捷方式">
+                <i class="fa fa-chevron-left"></i> 隐藏文件管理资源器左侧的坚果云快捷方式
               </a>
             
           </div>
@@ -412,10 +374,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/隐藏文件管理资源器左侧的坚果云快捷方式.html" rel="prev" title="隐藏文件管理资源器左侧的坚果云快捷方式">
-                隐藏文件管理资源器左侧的坚果云快捷方式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -470,19 +428,12 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            标签
-          </li>
-        </ul>
-      
 
       
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="category-all-page">
+          
+          <p class="site-author-name">标签</p>
           
           <div class="tag-cloud-tags">
             <a href="/tags/AI/" style="font-size: 30px;">AI</a> <a href="/tags/C/" style="font-size: 30px;">C#</a> <a href="/tags/JS/" style="font-size: 14px;">JS</a> <a href="/tags/css/" style="font-size: 14px;">css</a> <a href="/tags/electron/" style="font-size: 14px;">electron</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/hexo/" style="font-size: 30px;">hexo</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/sass/" style="font-size: 14px;">sass</a> <a href="/tags/sublime/" style="font-size: 14px;">sublime</a> <a href="/tags/vscode/" style="font-size: 14px;">vscode</a>
@@ -540,22 +491,6 @@
         -->
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitLens-设置"><span class="nav-text">GitLens 设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看提交信息"><span class="nav-text">查看提交信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Toggle-File-Blame"><span class="nav-text">Toggle File Blame</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Toggle-File-Blame-1"><span class="nav-text">Toggle File Blame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Toggle-File-Heatmap"><span class="nav-text">Toggle File Heatmap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Toggle-File-Changes"><span class="nav-text">Toggle File Changes</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看上一次提交"><span class="nav-text">查看上一次提交</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#左侧菜单"><span class="nav-text">左侧菜单</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SEARCH-amp-COMPARE"><span class="nav-text">SEARCH &amp; COMPARE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#STASHES"><span class="nav-text">STASHES</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-text">其他</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
