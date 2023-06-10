@@ -31,19 +31,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C# 软件放大和缩小</title>
-    <url>/C-%E8%BD%AF%E4%BB%B6%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F.html</url>
-    <content><![CDATA[<p>在软件开发中，实现界面放大和缩小是一项很常见的功能。今天我们来看一下如何开发这样的功能。<br>首先，我们需要一个变量来存储软件当前是放大还是缩小状态，这里使用isMinimized。然后定义正常大小 normalSize 和缩小后的大小 minimizedSize 两个变量。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GRADLE"><figure class="iseeu highlight /gradle"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">bool isMinimized = <span class="keyword">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line"><span class="keyword">Size</span> normalSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小 </span></span><br><span class="line"><span class="keyword">Size</span> minimizedSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br></pre></td></tr></table></figure></div></p>
-<p>在窗口加载时,我们先设置默认大小为 normalSize，并将按钮文本设置为“最小化”。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">this.Size</span> = normalSize<span class="comment">;</span></span><br><span class="line"><span class="attr">minimizeButton.Text</span> = <span class="string">"最小化"</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div></p>
-<p>当点击按钮时,我们需要判断当前状态。如果是正常大小,就缩小窗口并更新变量和按钮文本。如果是缩小状态,就还原大小。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="NIX"><figure class="iseeu highlight /nix"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!isMinimized) </span><br><span class="line">&#123;</span><br><span class="line">    // 最小化 </span><br><span class="line">    this.<span class="attr">Size</span> = minimizedSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">false</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"还原"</span>;</span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">&#123;</span><br><span class="line">    // 还原</span><br><span class="line">    this.<span class="attr">Size</span> = normalSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">true</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"最小化"</span>; </span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p><img src="images/20230525_3.png" alt><br>下方是完整的示例代码：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WindowsFormsApp1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Form1</span> : <span class="title">Form</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">bool</span> isMinimized = <span class="literal">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line">        Size normalSize = <span class="keyword">new</span> Size(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小</span></span><br><span class="line">        Size minimizedSize = <span class="keyword">new</span> Size(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Form1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">            minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">// 点击放大缩小按钮的判断事件</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">minimizeButton_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!isMinimized)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 最小化</span></span><br><span class="line">                <span class="keyword">this</span>.Size = minimizedSize;</span><br><span class="line">                label1.Visible = <span class="literal">false</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"还原"</span>;</span><br><span class="line">                isMinimized = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 还原</span></span><br><span class="line">                <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">                label1.Visible = <span class="literal">true</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">                isMinimized = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
-]]></content>
-      <tags>
-        <tag>C#</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Claude 使用教程</title>
     <url>/Claude-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.html</url>
     <content><![CDATA[<p>Claude 是由前 openAI 员工开发的聊天机器人，最重要的一点是不用科学上网。</p>
@@ -59,6 +46,42 @@
 ]]></content>
       <tags>
         <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C# 软件放大和缩小</title>
+    <url>/C-%E8%BD%AF%E4%BB%B6%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F.html</url>
+    <content><![CDATA[<p>在软件开发中，实现界面放大和缩小是一项很常见的功能。今天我们来看一下如何开发这样的功能。<br>首先，我们需要一个变量来存储软件当前是放大还是缩小状态，这里使用isMinimized。然后定义正常大小 normalSize 和缩小后的大小 minimizedSize 两个变量。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GRADLE"><figure class="iseeu highlight /gradle"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">bool isMinimized = <span class="keyword">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line"><span class="keyword">Size</span> normalSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小 </span></span><br><span class="line"><span class="keyword">Size</span> minimizedSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br></pre></td></tr></table></figure></div></p>
+<p>在窗口加载时,我们先设置默认大小为 normalSize，并将按钮文本设置为“最小化”。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">this.Size</span> = normalSize<span class="comment">;</span></span><br><span class="line"><span class="attr">minimizeButton.Text</span> = <span class="string">"最小化"</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div></p>
+<p>当点击按钮时,我们需要判断当前状态。如果是正常大小,就缩小窗口并更新变量和按钮文本。如果是缩小状态,就还原大小。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="NIX"><figure class="iseeu highlight /nix"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!isMinimized) </span><br><span class="line">&#123;</span><br><span class="line">    // 最小化 </span><br><span class="line">    this.<span class="attr">Size</span> = minimizedSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">false</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"还原"</span>;</span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">&#123;</span><br><span class="line">    // 还原</span><br><span class="line">    this.<span class="attr">Size</span> = normalSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">true</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"最小化"</span>; </span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img src="images/20230525_3.png" alt><br>下方是完整的示例代码：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WindowsFormsApp1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Form1</span> : <span class="title">Form</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">bool</span> isMinimized = <span class="literal">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line">        Size normalSize = <span class="keyword">new</span> Size(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小</span></span><br><span class="line">        Size minimizedSize = <span class="keyword">new</span> Size(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Form1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">            minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">// 点击放大缩小按钮的判断事件</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">minimizeButton_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!isMinimized)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 最小化</span></span><br><span class="line">                <span class="keyword">this</span>.Size = minimizedSize;</span><br><span class="line">                label1.Visible = <span class="literal">false</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"还原"</span>;</span><br><span class="line">                isMinimized = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 还原</span></span><br><span class="line">                <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">                label1.Visible = <span class="literal">true</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">                isMinimized = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+]]></content>
+      <tags>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python 文本转成 excel</title>
+    <url>/python-%E6%96%87%E6%9C%AC%E8%BD%AC%E6%88%90-excel.html</url>
+    <content><![CDATA[<p>环境：<br>python：2.7</p>
+<h1 id="安装-pip"><a href="#安装-pip" class="headerlink" title="安装 pip"></a>安装 pip</h1><p>在windows下安装pip： 在C:\python27\scirpts下运行<code>easy_install pip</code>进行安装。</p>
+<p>如果不知道是哪个路径，去设置变量那里看看就知道</p>
+<h1 id="安装-pandas-和-openpyxl"><a href="#安装-pandas-和-openpyxl" class="headerlink" title="安装 pandas 和 openpyxl"></a>安装 pandas 和 openpyxl</h1><p>可以使用国内镜像安装</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line">pip install pandas -i <span class="string">https:</span><span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br></pre></td></tr></table></figure></div>
+<p>pip install openpyxl -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
+<p>同时需要设置环境参数，<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="MEL"><figure class="iseeu highlight /mel"><table><tr><td class="code"><pre><span class="line">.../<span class="keyword">python</span>  这个是 <span class="keyword">python</span> 的环境参数</span><br><span class="line"><span class="comment">// 需要加多一个</span></span><br><span class="line">../<span class="keyword">python</span>/Script</span><br></pre></td></tr></table></figure></div></p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>可以使用 Pandas 库的 sort_values() 方法对 DataFrame 进行排序。</p>
+<p>例如，如果要按 project 列进行排序，可以这样写：</p>
+<p>Copy code<br>df = df.sort_values(‘project’)<br>这将按 project 列的值对 DataFrame 进行排序。</p>
+<p>如果要按多列进行排序，可以使用 by 参数指定排序列，例如：</p>
+<p>Copy code<br>df = df.sort_values(by=[‘project’, ‘date’])<br>这将按 project 列和 date 列的值对 DataFrame 进行排序。</p>
+<p>如果要按降序排序，可以使用 ascending 参数设置为 False，例如：</p>
+<p>Copy code<br>df = df.sort_values(by=’project’, ascending=False)<br>这将按 project 列的值从大到小对 DataFrame 进行排序。</p>
+<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  # 必须加上这个，否则就识别不了中文</span></span><br><span class="line"><span class="comment"># 引入一些库，需要使用 pip 安装</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> openpyxl.utils.dataframe <span class="keyword">import</span> dataframe_to_rows</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> Workbook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个是 text，也就是我的工作日报的格式，用这个来解析成 excel</span></span><br><span class="line">text = <span class="string">"""</span></span><br><span class="line"><span class="string"># 日期</span></span><br><span class="line"><span class="string">项目名称</span></span><br><span class="line"><span class="string">- [x] 工作项1</span></span><br><span class="line"><span class="string">- [x] 工作项2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将工作日报文本转换为 DataFrame</span></span><br><span class="line">df = pd.DataFrame(columns=[<span class="string">'date'</span>, <span class="string">'project'</span>, <span class="string">'task'</span>])</span><br><span class="line"></span><br><span class="line">lines = text.strip().split(<span class="string">'\n'</span>)</span><br><span class="line">project_str = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    <span class="keyword">if</span> line.startswith(<span class="string">'#'</span>):</span><br><span class="line">        date = <span class="string">'2022-'</span> + line[<span class="number">1</span>:].strip()</span><br><span class="line">        project_str = <span class="string">''</span></span><br><span class="line">    <span class="keyword">elif</span> line.startswith(<span class="string">'-'</span>):</span><br><span class="line">        task = line.replace(<span class="string">'- [x] '</span>, <span class="string">''</span>)</span><br><span class="line">        df = df.append(&#123;<span class="string">'date'</span>: date, <span class="string">'project'</span>: project_str, <span class="string">'task'</span>: task&#125;, ignore_index=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        project_str = line</span><br><span class="line">df = df.sort_values(by=<span class="string">'project'</span>, ascending=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 将 DataFrame 写入 Excel 文件</span></span><br><span class="line">wb = Workbook()</span><br><span class="line">ws = wb.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> dataframe_to_rows(df, index=<span class="literal">False</span>, header=<span class="literal">True</span>):</span><br><span class="line">    ws.append(r)</span><br><span class="line"></span><br><span class="line">wb.save(<span class="string">"work_log.xlsx"</span>)</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -113,29 +136,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python 文本转成 excel</title>
-    <url>/python-%E6%96%87%E6%9C%AC%E8%BD%AC%E6%88%90-excel.html</url>
-    <content><![CDATA[<p>环境：<br>python：2.7</p>
-<h1 id="安装-pip"><a href="#安装-pip" class="headerlink" title="安装 pip"></a>安装 pip</h1><p>在windows下安装pip： 在C:\python27\scirpts下运行<code>easy_install pip</code>进行安装。</p>
-<p>如果不知道是哪个路径，去设置变量那里看看就知道</p>
-<h1 id="安装-pandas-和-openpyxl"><a href="#安装-pandas-和-openpyxl" class="headerlink" title="安装 pandas 和 openpyxl"></a>安装 pandas 和 openpyxl</h1><p>可以使用国内镜像安装</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line">pip install pandas -i <span class="string">https:</span><span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br></pre></td></tr></table></figure></div>
-<p>pip install openpyxl -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
-<p>同时需要设置环境参数，<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="MEL"><figure class="iseeu highlight /mel"><table><tr><td class="code"><pre><span class="line">.../<span class="keyword">python</span>  这个是 <span class="keyword">python</span> 的环境参数</span><br><span class="line"><span class="comment">// 需要加多一个</span></span><br><span class="line">../<span class="keyword">python</span>/Script</span><br></pre></td></tr></table></figure></div></p>
-<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>可以使用 Pandas 库的 sort_values() 方法对 DataFrame 进行排序。</p>
-<p>例如，如果要按 project 列进行排序，可以这样写：</p>
-<p>Copy code<br>df = df.sort_values(‘project’)<br>这将按 project 列的值对 DataFrame 进行排序。</p>
-<p>如果要按多列进行排序，可以使用 by 参数指定排序列，例如：</p>
-<p>Copy code<br>df = df.sort_values(by=[‘project’, ‘date’])<br>这将按 project 列和 date 列的值对 DataFrame 进行排序。</p>
-<p>如果要按降序排序，可以使用 ascending 参数设置为 False，例如：</p>
-<p>Copy code<br>df = df.sort_values(by=’project’, ascending=False)<br>这将按 project 列的值从大到小对 DataFrame 进行排序。</p>
-<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  # 必须加上这个，否则就识别不了中文</span></span><br><span class="line"><span class="comment"># 引入一些库，需要使用 pip 安装</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> openpyxl.utils.dataframe <span class="keyword">import</span> dataframe_to_rows</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> Workbook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个是 text，也就是我的工作日报的格式，用这个来解析成 excel</span></span><br><span class="line">text = <span class="string">"""</span></span><br><span class="line"><span class="string"># 日期</span></span><br><span class="line"><span class="string">项目名称</span></span><br><span class="line"><span class="string">- [x] 工作项1</span></span><br><span class="line"><span class="string">- [x] 工作项2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将工作日报文本转换为 DataFrame</span></span><br><span class="line">df = pd.DataFrame(columns=[<span class="string">'date'</span>, <span class="string">'project'</span>, <span class="string">'task'</span>])</span><br><span class="line"></span><br><span class="line">lines = text.strip().split(<span class="string">'\n'</span>)</span><br><span class="line">project_str = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    <span class="keyword">if</span> line.startswith(<span class="string">'#'</span>):</span><br><span class="line">        date = <span class="string">'2022-'</span> + line[<span class="number">1</span>:].strip()</span><br><span class="line">        project_str = <span class="string">''</span></span><br><span class="line">    <span class="keyword">elif</span> line.startswith(<span class="string">'-'</span>):</span><br><span class="line">        task = line.replace(<span class="string">'- [x] '</span>, <span class="string">''</span>)</span><br><span class="line">        df = df.append(&#123;<span class="string">'date'</span>: date, <span class="string">'project'</span>: project_str, <span class="string">'task'</span>: task&#125;, ignore_index=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        project_str = line</span><br><span class="line">df = df.sort_values(by=<span class="string">'project'</span>, ascending=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 将 DataFrame 写入 Excel 文件</span></span><br><span class="line">wb = Workbook()</span><br><span class="line">ws = wb.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> dataframe_to_rows(df, index=<span class="literal">False</span>, header=<span class="literal">True</span>):</span><br><span class="line">    ws.append(r)</span><br><span class="line"></span><br><span class="line">wb.save(<span class="string">"work_log.xlsx"</span>)</span><br></pre></td></tr></table></figure></div>
-]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo 自定义主题</title>
     <url>/hexo%20%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98.html</url>
     <content><![CDATA[<p>参考文章：<a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html</a></p>
@@ -179,30 +179,123 @@
       </tags>
   </entry>
   <entry>
-    <title>vue-electron 批量生成 pdf</title>
-    <url>/vue-electron%20%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%20pdf.html</url>
-    <content><![CDATA[<blockquote>
-<p>最近有个需求，需要批量下载 pdf，单份还好，但多份时会超时。<br>需要改成一份一份下载，先选择下载的存储路径，再自动下载到选择的目录中，一开始使用了 will-download，但在测试过程中，测服下载速度很慢，发现保存地址还是会弹出来，下载一次弹出一份。<br>因此打算试试利用 electron 原来的生成 pdf 功能</p>
-</blockquote>
+    <title>纯 html 文件中怎么使用 sass</title>
+    <url>/%E7%BA%AF-html-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-sass.html</url>
+    <content><![CDATA[<p>sass 是一种流行的 CSS 预处理器，它能够让开发者使用嵌套语法和变量，以及一些其他的便利功能，来更加高效地编写 CSS 样式表。</p>
 <blockquote>
-<p>计划利用一个隐藏窗口来生成PDF，打开隐藏窗口后，加载数据，判断加载完成后，开始生成 PDF 页面，会涉及到 electron 的打开新窗口、选择文件夹、生成 PDF 三个功能</p>
+<p>没有使用 npm 安装 sass，在平时的纯 html 页面中，要怎么才能使用 sass</p>
 </blockquote>
-<p>官方API</p>
+<h1 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h1><p><a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">http://www.ruby-lang.org/zh_cn/downloads/</a></p>
+<h1 id="安装-sass"><a href="#安装-sass" class="headerlink" title="安装 sass"></a>安装 sass</h1><p>cmd 命令行输入下面的命令</p>
+<pre><code>gem install sass
+</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><blockquote>
+<p>文件夹名称不能是中文，否则会编译失败</p>
+</blockquote>
 <ul>
-<li>选择存储目录 <a href="https://www.electronjs.org/docs/api/dialog" target="_blank" rel="noopener">对话框 showOpenDialog</a></li>
-<li>打开新窗口 <a href="https://www.electronjs.org/docs/api/browser-window" target="_blank" rel="noopener">BrowserWindow</a></li>
-<li>生成 PDF <a href="https://www.electronjs.org/docs/api/web-contents#contentsprinttopdfoptions" target="_blank" rel="noopener">printToPDF</a></li>
-<li>窗口间通信 <a href="https://www.electronjs.org/docs/api/ipc-main" target="_blank" rel="noopener">ipcMain</a></li>
+<li>单文件编译</li>
 </ul>
-<h1 id="选择存储目录"><a href="#选择存储目录" class="headerlink" title="选择存储目录"></a>选择存储目录</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="TYPESCRIPT"><figure class="iseeu highlight /typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// html</span></span><br><span class="line">created: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 监听方法一般放在 created 就行</span></span><br><span class="line">    ipcRenderer.on(<span class="string">'selected-directory'</span>, <span class="function">(<span class="params">event, path</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.fileSavePath = path</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line">ipcRenderer.send(<span class="string">'select-file-dialog'</span>)</span><br><span class="line"></span><br><span class="line">beforeDestroy() &#123;</span><br><span class="line">    <span class="comment">// 因为 .on 监听方法会一直存在，导致多次监听，所以每次退出页面把监听移除掉就行了</span></span><br><span class="line">    ipcRenderer.removeAllListeners(<span class="string">'selected-directory'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="COFFEESCRIPT"><figure class="iseeu highlight /coffeescript"><table><tr><td class="code"><pre><span class="line">&lt;!--main.js--&gt;</span><br><span class="line">const &#123;ipcMain, dialog&#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</span><br><span class="line">ipcMain.<span class="literal">on</span>(<span class="string">'select-file-dialog'</span>, <span class="function"><span class="params">(event)</span> =&gt;</span> &#123;</span><br><span class="line">  dialog.showOpenDialog(&#123;</span><br><span class="line">    title: <span class="string">'选择文件夹'</span>,</span><br><span class="line">    buttonLabel: <span class="string">'确定'</span>,</span><br><span class="line">    properties: [<span class="string">'openFile'</span>, <span class="string">'openDirectory'</span>]</span><br><span class="line">  &#125;, <span class="function"><span class="params">(files)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (files) &#123;</span><br><span class="line">    <span class="regexp">//</span> 将得到的路径传回页面存起来</span><br><span class="line">      event.sender.send(<span class="string">'selected-directory'</span>, files)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-<h1 id="打开新窗口"><a href="#打开新窗口" class="headerlink" title="打开新窗口"></a>打开新窗口</h1><h2 id="主进程打开新窗口并跳到某个页面"><a href="#主进程打开新窗口并跳到某个页面" class="headerlink" title="主进程打开新窗口并跳到某个页面"></a>主进程打开新窗口并跳到某个页面</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="TYPESCRIPT"><figure class="iseeu highlight /typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;href&#125; = <span class="keyword">this</span>.$router.resolve(&#123;</span><br><span class="line">    name: urlName,</span><br><span class="line">    query: &#123; id: <span class="keyword">this</span>.id, pdfPath: <span class="keyword">this</span>.pdfPath&#125;</span><br><span class="line">&#125;);</span><br><span class="line">ipcRenderer.send(<span class="string">'open-window'</span>, <span class="string">`<span class="subst">$&#123;href&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sideWIndow</span><br><span class="line">ipcMain.on(<span class="string">'open-window'</span>, <span class="function">(<span class="params">event, _data</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="comment">// 判断下隐藏窗口是否存在，如果不存在才打开一个新窗口</span></span><br><span class="line">  <span class="keyword">if</span> (!sideWIndow) &#123;</span><br><span class="line">    sideWIndow = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">      width: <span class="number">1280</span>,</span><br><span class="line">      height: <span class="number">720</span>,</span><br><span class="line">      show: <span class="literal">false</span> <span class="comment">// 是否隐藏窗口，在测试过程中，可以先改成 true 来看跳转的页面是否正确</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 判断了下是否是开发环境</span></span><br><span class="line">  <span class="keyword">let</span> url = <span class="string">`file://<span class="subst">$&#123;__dirname&#125;</span>/index.html<span class="subst">$&#123;_data&#125;</span>`</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'development'</span>) &#123;</span><br><span class="line">    url = <span class="string">`http://localhost:9080<span class="subst">$&#123;_data&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 子窗口加载页面</span></span><br><span class="line">  sideWIndow.loadURL(url)</span><br><span class="line">  sideWIndow.on(<span class="string">'closed'</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    sideWIndow = <span class="literal">null</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 关闭窗口的指令</span></span><br><span class="line">ipcMain.on(<span class="string">'close-window'</span>, <span class="function">(<span class="params">event, _data</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (sideWIndow) &#123;</span><br><span class="line">    sideWIndow.close()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-<h2 id="关闭窗口"><a href="#关闭窗口" class="headerlink" title="关闭窗口"></a>关闭窗口</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="COFFEESCRIPT"><figure class="iseeu highlight /coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span> 退出此页面时，关闭窗口</span><br><span class="line">beforeDestroy() &#123;</span><br><span class="line">    ipcRenderer.send(<span class="string">'close-window'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> 主窗口有个关闭窗口事件，我们在这里也加个判断，把隐藏窗口一起关了</span><br><span class="line">mainWindow.<span class="literal">on</span>(<span class="string">'closed'</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    mainWindow = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">if</span> (sideWindow) &#123;</span><br><span class="line">      sideWindow.close()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-<h1 id="生成-pdf"><a href="#生成-pdf" class="headerlink" title="生成 pdf"></a>生成 pdf</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="MOONSCRIPT"><figure class="iseeu highlight /moonscript"><table><tr><td class="code"><pre><span class="line">// 这里生成报告页还是一份一份生成的，只要在前端遍历，有接收到生成成功的信号，就在下载下一份就可以了</span><br><span class="line">// html</span><br><span class="line">// 生成 PDF 需要一个存储路径，以及文件名</span><br><span class="line">ipcRenderer.send(<span class="string">'print-all-pdf'</span>, <span class="string">'E:\name.pdf'</span>)</span><br><span class="line">// 接收</span><br><span class="line">ipcRenderer.on(<span class="string">'wrote-all-pdf'</span>, <span class="function"><span class="params">(event, data)</span> =&gt;</span> &#123;</span><br><span class="line">    console.log(<span class="string">'报告下载成功！'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;!<span class="comment">--main.js--&gt;</span></span><br><span class="line">// 生成 PDF 放在同个页面新建窗口的同一个页面</span><br><span class="line">// mainWindow 是主窗口,用来接收子窗口下载报告成功的指令</span><br><span class="line">const fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">ipcMain.on(<span class="string">'print-all-pdf'</span>, <span class="function"><span class="params">(event, _data)</span> =&gt;</span> &#123;</span><br><span class="line">  const pdfPath = _data</span><br><span class="line">  sideWindow.webContents.printToPDF(&#123;&#125;, <span class="function"><span class="params">(<span class="built_in">error</span>, data)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">error</span>) console.<span class="built_in">error</span>(<span class="built_in">error</span>)</span><br><span class="line">    fs.writeFile(pdfPath, data, <span class="function"><span class="params">(<span class="built_in">error</span>)</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">error</span>) &#123;</span><br><span class="line">        console.<span class="built_in">error</span>(<span class="built_in">error</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">error</span>) &#123;</span><br><span class="line">        mainWindow.webContents.send(<span class="string">'wrote-all-pdf-err'</span>, pdfPath)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        mainWindow.webContents.send(<span class="string">'wrote-all-pdf'</span>, pdfPath)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">ipcMain.on(<span class="string">'print-err-pdf'</span>, <span class="function"><span class="params">(event, _data)</span> =&gt;</span> &#123;</span><br><span class="line">  mainWindow.webContents.send(<span class="string">'wrote-all-pdf-err'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-<p>在下载成功的时候，可以触发事件去下载下一份报告</p>
+<!---->
+<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
+</code></pre><ul>
+<li><p>多文件编译<br>sass sass/\:css/（表示“sass”文件夹中所有的”.scss”文件编译成”.css”文件，并且将这些css文件放到“css”文件夹中）</p>
+</li>
+<li><p>自动监测（主要使用）<br><code>sass --watch&lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css</code>（.scss文件每次修改按ctrl+s保存都会实时的反映到输出的.css文件中）</p>
+</li>
+</ul>
+<!---->
+<pre><code>:expanded 普通样式
+:compact 一个样式一行
+:compressed 所有样式一行
+</code></pre><p>先打开命令行工具，进入到具体的文件夹，然后再执行使用命令。</p>
+<p>例子：<br>我有一个项目放在了 <code>E</code> 盘，名称叫 <code>sass-project</code>，里面有一个 <code>sass</code> 和 <code>css</code> 文件夹。<br>打开 <code>cmd</code>,<code>E:</code>进入到 E 盘，然后使用 <code>cd</code> 进入到 <code>sass-project</code>文件夹，接下来执行下面的命令就行</p>
+<pre><code>sass --watch sass:css --style compact
+</code></pre><!---->
+<pre><code>ctrl+c 停止
+</code></pre><p><img src="/images/2023-3-11-1.png" alt="image"></p>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre><code>　　$blue : #1875e7;　
+　　div {
+　　　color : $blue;
+　　}
+</code></pre><h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><pre><code>　　body {
+　　　　margin: (14px/2);
+　　　　top: 50px + 100px;
+　　　　right: $var * 10%;
+　　}
+</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><pre><code>　　div {
+　　　　h1 {
+　　　　　　color:red;
+　　　　}
+　　}
+　　border-color属性
+　　p { 
+　　　　border: {
+　　　　　　color: red;
+　　　　}
+　　}
+　　a:hover
+　　a {
+　　　　&amp;:hover { color: #ffb3ff; }
+　　}
+</code></pre><h2 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><pre><code>.class1 {
+　　　　border: 1px solid #ddd;
+　　}
+　　.class2 {
+　　　　@extend .class1;
+　　　　font-size:120%;
+　　}
+</code></pre><h3 id="Mixin-重用代码块-可以指定参数和缺省值"><a href="#Mixin-重用代码块-可以指定参数和缺省值" class="headerlink" title="Mixin (重用代码块) 可以指定参数和缺省值"></a>Mixin (重用代码块) 可以指定参数和缺省值</h3><pre><code>　　@mixin left {
+　　　　float: left;
+　　　　margin-left: 10px;
+　　}
+　　div {
+　　　　@include left;
+　　}
+</code></pre><p>eg: mixin的实例，用来生成浏览器前缀</p>
+<pre><code>　　@mixin rounded($vert, $horz, $radius: 10px) {
+　　　　border-#{$vert}-#{$horz}-radius: $radius;
+　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
+　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
+　　}
+　　&lt;!--调用--&gt;
+　　#navbar li { @include rounded(top, left); }
+　　#footer { @include rounded(top, left, 5px); }
+</code></pre><h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
+<pre><code>　　lighten(#cc3, 10%) // #d6d65c
+　　darken(#cc3, 10%) // #a3a329
+　　grayscale(#cc3) // #808080
+　　complement(#cc3) // #33c
+</code></pre><h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><pre><code>@import &quot;path/filename.scss&quot;;
+@import &quot;foo.css&quot;;
+</code></pre><h1 id="支持中文注释方法"><a href="#支持中文注释方法" class="headerlink" title="支持中文注释方法"></a>支持中文注释方法</h1><ul>
+<li>在 scss 文件头加上 <code>@charset &quot;utf-8&quot;;</code></li>
+<li>查看出错的 css 文件</li>
+</ul>
+<!---->
+<pre><code>Backtrace:
+sass/shop.scss:4
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1090:in `rescue in block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1087:in `block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each_with_index&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:820:in `rescue in check_sass_encoding&apos;
+</code></pre><p>得到路径 <code>C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass</code></p>
+<p>里面有一个文件<code>engine.rb</code>打开</p>
+<pre><code>require &apos;sass/scss&apos;
+require &apos;sass/stack&apos;
+require &apos;sass/error&apos;
+require &apos;sass/importers&apos;
+require &apos;sass/shared&apos;
+require &apos;sass/media&apos;
+require &apos;sass/supports&apos;
+</code></pre><p>我们在一连串的 require 后面加上代码</p>
+<pre><code>Encoding.default_external = Encoding.find(&apos;utf-8&apos;)
+</code></pre><p>最后再重启 sass 一下就好了</p>
+<p>更详细的使用可以参考：<a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/06/sass.html</a></p>
 ]]></content>
       <tags>
-        <tag>electron</tag>
+        <tag>sass</tag>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -337,126 +430,6 @@
       </tags>
   </entry>
   <entry>
-    <title>纯 html 文件中怎么使用 sass</title>
-    <url>/%E7%BA%AF-html-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-sass.html</url>
-    <content><![CDATA[<p>sass 是一种流行的 CSS 预处理器，它能够让开发者使用嵌套语法和变量，以及一些其他的便利功能，来更加高效地编写 CSS 样式表。</p>
-<blockquote>
-<p>没有使用 npm 安装 sass，在平时的纯 html 页面中，要怎么才能使用 sass</p>
-</blockquote>
-<h1 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h1><p><a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">http://www.ruby-lang.org/zh_cn/downloads/</a></p>
-<h1 id="安装-sass"><a href="#安装-sass" class="headerlink" title="安装 sass"></a>安装 sass</h1><p>cmd 命令行输入下面的命令</p>
-<pre><code>gem install sass
-</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><blockquote>
-<p>文件夹名称不能是中文，否则会编译失败</p>
-</blockquote>
-<ul>
-<li>单文件编译</li>
-</ul>
-<!---->
-<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
-</code></pre><ul>
-<li><p>多文件编译<br>sass sass/\:css/（表示“sass”文件夹中所有的”.scss”文件编译成”.css”文件，并且将这些css文件放到“css”文件夹中）</p>
-</li>
-<li><p>自动监测（主要使用）<br><code>sass --watch&lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css</code>（.scss文件每次修改按ctrl+s保存都会实时的反映到输出的.css文件中）</p>
-</li>
-</ul>
-<!---->
-<pre><code>:expanded 普通样式
-:compact 一个样式一行
-:compressed 所有样式一行
-</code></pre><p>先打开命令行工具，进入到具体的文件夹，然后再执行使用命令。</p>
-<p>例子：<br>我有一个项目放在了 <code>E</code> 盘，名称叫 <code>sass-project</code>，里面有一个 <code>sass</code> 和 <code>css</code> 文件夹。<br>打开 <code>cmd</code>,<code>E:</code>进入到 E 盘，然后使用 <code>cd</code> 进入到 <code>sass-project</code>文件夹，接下来执行下面的命令就行</p>
-<pre><code>sass --watch sass:css --style compact
-</code></pre><!---->
-<pre><code>ctrl+c 停止
-</code></pre><p><img src="/images/2023-3-11-1.png" alt="image"></p>
-<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre><code>　　$blue : #1875e7;　
-　　div {
-　　　color : $blue;
-　　}
-</code></pre><h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><pre><code>　　body {
-　　　　margin: (14px/2);
-　　　　top: 50px + 100px;
-　　　　right: $var * 10%;
-　　}
-</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><pre><code>　　div {
-　　　　h1 {
-　　　　　　color:red;
-　　　　}
-　　}
-　　border-color属性
-　　p { 
-　　　　border: {
-　　　　　　color: red;
-　　　　}
-　　}
-　　a:hover
-　　a {
-　　　　&amp;:hover { color: #ffb3ff; }
-　　}
-</code></pre><h2 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><pre><code>.class1 {
-　　　　border: 1px solid #ddd;
-　　}
-　　.class2 {
-　　　　@extend .class1;
-　　　　font-size:120%;
-　　}
-</code></pre><h3 id="Mixin-重用代码块-可以指定参数和缺省值"><a href="#Mixin-重用代码块-可以指定参数和缺省值" class="headerlink" title="Mixin (重用代码块) 可以指定参数和缺省值"></a>Mixin (重用代码块) 可以指定参数和缺省值</h3><pre><code>　　@mixin left {
-　　　　float: left;
-　　　　margin-left: 10px;
-　　}
-　　div {
-　　　　@include left;
-　　}
-</code></pre><p>eg: mixin的实例，用来生成浏览器前缀</p>
-<pre><code>　　@mixin rounded($vert, $horz, $radius: 10px) {
-　　　　border-#{$vert}-#{$horz}-radius: $radius;
-　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
-　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
-　　}
-　　&lt;!--调用--&gt;
-　　#navbar li { @include rounded(top, left); }
-　　#footer { @include rounded(top, left, 5px); }
-</code></pre><h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
-<pre><code>　　lighten(#cc3, 10%) // #d6d65c
-　　darken(#cc3, 10%) // #a3a329
-　　grayscale(#cc3) // #808080
-　　complement(#cc3) // #33c
-</code></pre><h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><pre><code>@import &quot;path/filename.scss&quot;;
-@import &quot;foo.css&quot;;
-</code></pre><h1 id="支持中文注释方法"><a href="#支持中文注释方法" class="headerlink" title="支持中文注释方法"></a>支持中文注释方法</h1><ul>
-<li>在 scss 文件头加上 <code>@charset &quot;utf-8&quot;;</code></li>
-<li>查看出错的 css 文件</li>
-</ul>
-<!---->
-<pre><code>Backtrace:
-sass/shop.scss:4
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1090:in `rescue in block in find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1087:in `block in find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each_with_index&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:820:in `rescue in check_sass_encoding&apos;
-</code></pre><p>得到路径 <code>C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass</code></p>
-<p>里面有一个文件<code>engine.rb</code>打开</p>
-<pre><code>require &apos;sass/scss&apos;
-require &apos;sass/stack&apos;
-require &apos;sass/error&apos;
-require &apos;sass/importers&apos;
-require &apos;sass/shared&apos;
-require &apos;sass/media&apos;
-require &apos;sass/supports&apos;
-</code></pre><p>我们在一连串的 require 后面加上代码</p>
-<pre><code>Encoding.default_external = Encoding.find(&apos;utf-8&apos;)
-</code></pre><p>最后再重启 sass 一下就好了</p>
-<p>更详细的使用可以参考：<a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/06/sass.html</a></p>
-]]></content>
-      <tags>
-        <tag>sass</tag>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>定时器 requestAnimationFrame</title>
     <url>/%E5%AE%9A%E6%97%B6%E5%99%A8-requestAnimationFrame.html</url>
     <content><![CDATA[<p>requestAnimationFrame 是什么？<br>它是一个浏览器提供的 API，用于在浏览器重绘之前调用指定的回调函数。它可以让浏览器在重绘之前更新动画/视觉效果，从而实现平滑的动画效果。</p>
@@ -486,6 +459,33 @@ require &apos;sass/supports&apos;
 ]]></content>
       <tags>
         <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue-electron 批量生成 pdf</title>
+    <url>/vue-electron%20%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%20pdf.html</url>
+    <content><![CDATA[<blockquote>
+<p>最近有个需求，需要批量下载 pdf，单份还好，但多份时会超时。<br>需要改成一份一份下载，先选择下载的存储路径，再自动下载到选择的目录中，一开始使用了 will-download，但在测试过程中，测服下载速度很慢，发现保存地址还是会弹出来，下载一次弹出一份。<br>因此打算试试利用 electron 原来的生成 pdf 功能</p>
+</blockquote>
+<blockquote>
+<p>计划利用一个隐藏窗口来生成PDF，打开隐藏窗口后，加载数据，判断加载完成后，开始生成 PDF 页面，会涉及到 electron 的打开新窗口、选择文件夹、生成 PDF 三个功能</p>
+</blockquote>
+<p>官方API</p>
+<ul>
+<li>选择存储目录 <a href="https://www.electronjs.org/docs/api/dialog" target="_blank" rel="noopener">对话框 showOpenDialog</a></li>
+<li>打开新窗口 <a href="https://www.electronjs.org/docs/api/browser-window" target="_blank" rel="noopener">BrowserWindow</a></li>
+<li>生成 PDF <a href="https://www.electronjs.org/docs/api/web-contents#contentsprinttopdfoptions" target="_blank" rel="noopener">printToPDF</a></li>
+<li>窗口间通信 <a href="https://www.electronjs.org/docs/api/ipc-main" target="_blank" rel="noopener">ipcMain</a></li>
+</ul>
+<h1 id="选择存储目录"><a href="#选择存储目录" class="headerlink" title="选择存储目录"></a>选择存储目录</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="TYPESCRIPT"><figure class="iseeu highlight /typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// html</span></span><br><span class="line">created: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 监听方法一般放在 created 就行</span></span><br><span class="line">    ipcRenderer.on(<span class="string">'selected-directory'</span>, <span class="function">(<span class="params">event, path</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.fileSavePath = path</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line">ipcRenderer.send(<span class="string">'select-file-dialog'</span>)</span><br><span class="line"></span><br><span class="line">beforeDestroy() &#123;</span><br><span class="line">    <span class="comment">// 因为 .on 监听方法会一直存在，导致多次监听，所以每次退出页面把监听移除掉就行了</span></span><br><span class="line">    ipcRenderer.removeAllListeners(<span class="string">'selected-directory'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="COFFEESCRIPT"><figure class="iseeu highlight /coffeescript"><table><tr><td class="code"><pre><span class="line">&lt;!--main.js--&gt;</span><br><span class="line">const &#123;ipcMain, dialog&#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</span><br><span class="line">ipcMain.<span class="literal">on</span>(<span class="string">'select-file-dialog'</span>, <span class="function"><span class="params">(event)</span> =&gt;</span> &#123;</span><br><span class="line">  dialog.showOpenDialog(&#123;</span><br><span class="line">    title: <span class="string">'选择文件夹'</span>,</span><br><span class="line">    buttonLabel: <span class="string">'确定'</span>,</span><br><span class="line">    properties: [<span class="string">'openFile'</span>, <span class="string">'openDirectory'</span>]</span><br><span class="line">  &#125;, <span class="function"><span class="params">(files)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (files) &#123;</span><br><span class="line">    <span class="regexp">//</span> 将得到的路径传回页面存起来</span><br><span class="line">      event.sender.send(<span class="string">'selected-directory'</span>, files)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<h1 id="打开新窗口"><a href="#打开新窗口" class="headerlink" title="打开新窗口"></a>打开新窗口</h1><h2 id="主进程打开新窗口并跳到某个页面"><a href="#主进程打开新窗口并跳到某个页面" class="headerlink" title="主进程打开新窗口并跳到某个页面"></a>主进程打开新窗口并跳到某个页面</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="TYPESCRIPT"><figure class="iseeu highlight /typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;href&#125; = <span class="keyword">this</span>.$router.resolve(&#123;</span><br><span class="line">    name: urlName,</span><br><span class="line">    query: &#123; id: <span class="keyword">this</span>.id, pdfPath: <span class="keyword">this</span>.pdfPath&#125;</span><br><span class="line">&#125;);</span><br><span class="line">ipcRenderer.send(<span class="string">'open-window'</span>, <span class="string">`<span class="subst">$&#123;href&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sideWIndow</span><br><span class="line">ipcMain.on(<span class="string">'open-window'</span>, <span class="function">(<span class="params">event, _data</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="comment">// 判断下隐藏窗口是否存在，如果不存在才打开一个新窗口</span></span><br><span class="line">  <span class="keyword">if</span> (!sideWIndow) &#123;</span><br><span class="line">    sideWIndow = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">      width: <span class="number">1280</span>,</span><br><span class="line">      height: <span class="number">720</span>,</span><br><span class="line">      show: <span class="literal">false</span> <span class="comment">// 是否隐藏窗口，在测试过程中，可以先改成 true 来看跳转的页面是否正确</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 判断了下是否是开发环境</span></span><br><span class="line">  <span class="keyword">let</span> url = <span class="string">`file://<span class="subst">$&#123;__dirname&#125;</span>/index.html<span class="subst">$&#123;_data&#125;</span>`</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'development'</span>) &#123;</span><br><span class="line">    url = <span class="string">`http://localhost:9080<span class="subst">$&#123;_data&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 子窗口加载页面</span></span><br><span class="line">  sideWIndow.loadURL(url)</span><br><span class="line">  sideWIndow.on(<span class="string">'closed'</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    sideWIndow = <span class="literal">null</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 关闭窗口的指令</span></span><br><span class="line">ipcMain.on(<span class="string">'close-window'</span>, <span class="function">(<span class="params">event, _data</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (sideWIndow) &#123;</span><br><span class="line">    sideWIndow.close()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<h2 id="关闭窗口"><a href="#关闭窗口" class="headerlink" title="关闭窗口"></a>关闭窗口</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="COFFEESCRIPT"><figure class="iseeu highlight /coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span> 退出此页面时，关闭窗口</span><br><span class="line">beforeDestroy() &#123;</span><br><span class="line">    ipcRenderer.send(<span class="string">'close-window'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> 主窗口有个关闭窗口事件，我们在这里也加个判断，把隐藏窗口一起关了</span><br><span class="line">mainWindow.<span class="literal">on</span>(<span class="string">'closed'</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    mainWindow = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">if</span> (sideWindow) &#123;</span><br><span class="line">      sideWindow.close()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<h1 id="生成-pdf"><a href="#生成-pdf" class="headerlink" title="生成 pdf"></a>生成 pdf</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="MOONSCRIPT"><figure class="iseeu highlight /moonscript"><table><tr><td class="code"><pre><span class="line">// 这里生成报告页还是一份一份生成的，只要在前端遍历，有接收到生成成功的信号，就在下载下一份就可以了</span><br><span class="line">// html</span><br><span class="line">// 生成 PDF 需要一个存储路径，以及文件名</span><br><span class="line">ipcRenderer.send(<span class="string">'print-all-pdf'</span>, <span class="string">'E:\name.pdf'</span>)</span><br><span class="line">// 接收</span><br><span class="line">ipcRenderer.on(<span class="string">'wrote-all-pdf'</span>, <span class="function"><span class="params">(event, data)</span> =&gt;</span> &#123;</span><br><span class="line">    console.log(<span class="string">'报告下载成功！'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;!<span class="comment">--main.js--&gt;</span></span><br><span class="line">// 生成 PDF 放在同个页面新建窗口的同一个页面</span><br><span class="line">// mainWindow 是主窗口,用来接收子窗口下载报告成功的指令</span><br><span class="line">const fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">ipcMain.on(<span class="string">'print-all-pdf'</span>, <span class="function"><span class="params">(event, _data)</span> =&gt;</span> &#123;</span><br><span class="line">  const pdfPath = _data</span><br><span class="line">  sideWindow.webContents.printToPDF(&#123;&#125;, <span class="function"><span class="params">(<span class="built_in">error</span>, data)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">error</span>) console.<span class="built_in">error</span>(<span class="built_in">error</span>)</span><br><span class="line">    fs.writeFile(pdfPath, data, <span class="function"><span class="params">(<span class="built_in">error</span>)</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">error</span>) &#123;</span><br><span class="line">        console.<span class="built_in">error</span>(<span class="built_in">error</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">error</span>) &#123;</span><br><span class="line">        mainWindow.webContents.send(<span class="string">'wrote-all-pdf-err'</span>, pdfPath)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        mainWindow.webContents.send(<span class="string">'wrote-all-pdf'</span>, pdfPath)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">ipcMain.on(<span class="string">'print-err-pdf'</span>, <span class="function"><span class="params">(event, _data)</span> =&gt;</span> &#123;</span><br><span class="line">  mainWindow.webContents.send(<span class="string">'wrote-all-pdf-err'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>在下载成功的时候，可以触发事件去下载下一份报告</p>
+]]></content>
+      <tags>
+        <tag>electron</tag>
       </tags>
   </entry>
   <entry>
@@ -578,6 +578,21 @@ require &apos;sass/supports&apos;
 ]]></content>
       <tags>
         <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>echarts 增加可移动竖线</title>
+    <url>/echarts-%E5%A2%9E%E5%8A%A0%E5%8F%AF%E7%A7%BB%E5%8A%A8%E7%AB%96%E7%BA%BF.html</url>
+    <content><![CDATA[<p>实现逻辑：<br>在一个 echarts 折线图上，实现两条竖线可随意左右移动的功能，移动停止后，获得竖线此时在 x 轴上的位置。</p>
+<p>引入依赖文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/echarts.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> // 我的版本是 5.0.2</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> // 因为我的是一个 vue 项目，所以加了 vue，没有 vue 的话，普通的也是用同样的方法加载下图表就可以</span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LUA"><figure class="iseeu highlight /lua"><table><tr><td class="code"><pre><span class="line">let data = <span class="string">[[3, 100], [4, 100]]</span> // [x, y] x 是在 x 轴上的位置，y 是竖线的高度，需要比图表 y 轴最大值大</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">shape:</span> <span class="string">&#123;</span></span><br><span class="line">	<span class="attr">x1:</span> <span class="number">0</span><span class="string">,</span></span><br><span class="line">	<span class="attr">y1:</span> <span class="number">0</span><span class="string">,</span></span><br><span class="line">	<span class="attr">x2:</span> <span class="number">0</span><span class="string">,</span></span><br><span class="line">	<span class="attr">y2:</span> <span class="number">4000</span> <span class="string">//</span> <span class="string">竖线的高度</span></span><br><span class="line"><span class="string">&#125;,</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">x1、y1:线段起点</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">x2、y2:线段终点</span></span><br></pre></td></tr></table></figure></div>
+<p>draggable<br> // 设置为 true/false 以启用/禁用拖拽，也可以设置为 ‘horizontal’/‘vertical’ 限制只允许水平或垂直方向拖拽。<br> 设置成 true 时，它可以上下左右拖拽，不适合我们的情况，这里我们只要在 x 轴上左右水平拖动，所以设置成 horizontal</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="COFFEESCRIPT"><figure class="iseeu highlight /coffeescript"><table><tr><td class="code"><pre><span class="line">ondragend: <span class="function"><span class="params">(params)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="regexp">//</span> 这个是 x 轴的位置，如果想要变更成不可拖拽的 markline，可以利用这个</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.chart.convertFromPixel(<span class="string">'grid'</span>, params.target.position))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>完整代码如下：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>markline<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/echarts.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">class</span>=<span class="string">"chart"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main2"</span> <span class="attr">style</span>=<span class="string">"height: 430px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">    el: <span class="string">'#app'</span>,</span></span><br><span class="line">    data: &#123;</span><br><span class="line"><span class="actionscript">        chart: <span class="literal">null</span>,</span></span><br><span class="line"><span class="actionscript">        option1: <span class="literal">null</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    mounted() &#123;</span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.chart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main2'</span>));</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.option1 = &#123;</span></span><br><span class="line"><span class="actionscript">            color: [<span class="string">'#F8CB00'</span>],</span></span><br><span class="line">            grid: &#123;</span><br><span class="line">                left: 40,</span><br><span class="line">                top: 30,</span><br><span class="line">                bottom: 30,</span><br><span class="line">                right: 30,</span><br><span class="line"><span class="actionscript">                containLabel: <span class="literal">false</span></span></span><br><span class="line">            &#125;,</span><br><span class="line">            xAxis: [&#123;</span><br><span class="line"><span class="actionscript">                id: <span class="string">'2'</span>,</span></span><br><span class="line"><span class="actionscript">                type: <span class="string">'value'</span>,</span></span><br><span class="line">                min: 0,</span><br><span class="line">                max: 10,</span><br><span class="line">                axisTick: &#123;</span><br><span class="line"><span class="actionscript">                    alignWithLabel: <span class="literal">true</span></span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;],</span><br><span class="line">            yAxis: &#123;</span><br><span class="line"><span class="actionscript">                type: <span class="string">'value'</span>,</span></span><br><span class="line"><span class="actionscript">                id: <span class="string">'2'</span>,</span></span><br><span class="line">                min: 0,</span><br><span class="line">                max: 15,</span><br><span class="line">                interval: 3,</span><br><span class="line">                axisLabel: &#123;</span><br><span class="line"><span class="actionscript">                    formatter: <span class="string">'&#123;value&#125;'</span></span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            series: [&#123;</span><br><span class="line"><span class="actionscript">                id: <span class="string">'aaa'</span>,</span></span><br><span class="line"><span class="actionscript">                name: <span class="string">''</span>,</span></span><br><span class="line"><span class="actionscript">                type: <span class="string">'line'</span>,</span></span><br><span class="line"><span class="actionscript">                barWidth: <span class="string">'65%'</span>,</span></span><br><span class="line">                data: [[1, 8.1], [2, 13.3], [3, 1.5], [4, 14.6], [5, 10.8], [6, 9.0], [7, 9.2], [8, 9.3]],</span><br><span class="line">            &#125;],</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.chart.setOption(<span class="keyword">this</span>.option1);</span></span><br><span class="line"><span class="javascript">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">this</span>.setChart()</span></span><br><span class="line">        &#125;, 0)</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        setChart() &#123;</span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> data = [[<span class="number">3</span>, <span class="number">100</span>], [<span class="number">4</span>, <span class="number">100</span>]] <span class="comment">// [x, y] x 是在 x 轴上的位置，y 是竖线的高度，需要比图表 y 轴最大值大</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> graphicChart = &#123;</span></span><br><span class="line"><span class="javascript">                graphic: data.map(<span class="function">(<span class="params">item, dataIndex</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">                        type: <span class="string">'line'</span>,</span></span><br><span class="line">                        z: 100,</span><br><span class="line">                        shape: &#123;</span><br><span class="line">                            x1: 0,</span><br><span class="line">                            y1: 0,</span><br><span class="line">                            x2: 0,</span><br><span class="line"><span class="actionscript">                            y2: <span class="number">4000</span> <span class="comment">// 竖线的高度</span></span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        style: &#123;</span><br><span class="line"><span class="actionscript">                            stroke: <span class="string">'rgba(0,0,0,1)'</span>,</span></span><br><span class="line">                            lineWidth: 1,</span><br><span class="line">                            lineDash: [5, 3]</span><br><span class="line">                        &#125;,</span><br><span class="line"><span class="actionscript">                        bounding: <span class="string">'raw'</span>,</span></span><br><span class="line"><span class="actionscript">                        position: <span class="keyword">this</span>.chart.convertToPixel(<span class="string">'grid'</span>, item),</span></span><br><span class="line"><span class="actionscript">                        cursor: <span class="string">'e-resize'</span>, <span class="comment">// 鼠标修改成可以移动的状态</span></span></span><br><span class="line"><span class="actionscript">                        draggable: <span class="string">'horizontal'</span>, <span class="comment">// 竖线修改成可以移动的状态</span></span></span><br><span class="line"><span class="javascript">                        ondragend: <span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                            <span class="built_in">console</span>.log(<span class="keyword">this</span>.chart.convertFromPixel(<span class="string">'grid'</span>, params.target.position))</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line"><span class="actionscript">            <span class="keyword">this</span>.chart.setOption(graphicChart)</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></div></p>
+]]></content>
+      <tags>
+        <tag>echarts</tag>
       </tags>
   </entry>
 </search>
