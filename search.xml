@@ -31,6 +31,19 @@
       </tags>
   </entry>
   <entry>
+    <title>C# 软件放大和缩小</title>
+    <url>/C-%E8%BD%AF%E4%BB%B6%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F.html</url>
+    <content><![CDATA[<p>在软件开发中，实现界面放大和缩小是一项很常见的功能。今天我们来看一下如何开发这样的功能。<br>首先，我们需要一个变量来存储软件当前是放大还是缩小状态，这里使用isMinimized。然后定义正常大小 normalSize 和缩小后的大小 minimizedSize 两个变量。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GRADLE"><figure class="iseeu highlight /gradle"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">bool isMinimized = <span class="keyword">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line"><span class="keyword">Size</span> normalSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小 </span></span><br><span class="line"><span class="keyword">Size</span> minimizedSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br></pre></td></tr></table></figure></div></p>
+<p>在窗口加载时,我们先设置默认大小为 normalSize，并将按钮文本设置为“最小化”。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">this.Size</span> = normalSize<span class="comment">;</span></span><br><span class="line"><span class="attr">minimizeButton.Text</span> = <span class="string">"最小化"</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div></p>
+<p>当点击按钮时,我们需要判断当前状态。如果是正常大小,就缩小窗口并更新变量和按钮文本。如果是缩小状态,就还原大小。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="NIX"><figure class="iseeu highlight /nix"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!isMinimized) </span><br><span class="line">&#123;</span><br><span class="line">    // 最小化 </span><br><span class="line">    this.<span class="attr">Size</span> = minimizedSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">false</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"还原"</span>;</span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">&#123;</span><br><span class="line">    // 还原</span><br><span class="line">    this.<span class="attr">Size</span> = normalSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">true</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"最小化"</span>; </span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img src="images/20230525_3.png" alt><br>下方是完整的示例代码：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WindowsFormsApp1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Form1</span> : <span class="title">Form</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">bool</span> isMinimized = <span class="literal">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line">        Size normalSize = <span class="keyword">new</span> Size(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小</span></span><br><span class="line">        Size minimizedSize = <span class="keyword">new</span> Size(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Form1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">            minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">// 点击放大缩小按钮的判断事件</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">minimizeButton_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!isMinimized)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 最小化</span></span><br><span class="line">                <span class="keyword">this</span>.Size = minimizedSize;</span><br><span class="line">                label1.Visible = <span class="literal">false</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"还原"</span>;</span><br><span class="line">                isMinimized = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 还原</span></span><br><span class="line">                <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">                label1.Visible = <span class="literal">true</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">                isMinimized = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+]]></content>
+      <tags>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Claude 使用教程</title>
     <url>/Claude-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.html</url>
     <content><![CDATA[<p>Claude 是由前 openAI 员工开发的聊天机器人，最重要的一点是不用科学上网。</p>
@@ -46,42 +59,6 @@
 ]]></content>
       <tags>
         <tag>AI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C# 软件放大和缩小</title>
-    <url>/C-%E8%BD%AF%E4%BB%B6%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F.html</url>
-    <content><![CDATA[<p>在软件开发中，实现界面放大和缩小是一项很常见的功能。今天我们来看一下如何开发这样的功能。<br>首先，我们需要一个变量来存储软件当前是放大还是缩小状态，这里使用isMinimized。然后定义正常大小 normalSize 和缩小后的大小 minimizedSize 两个变量。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GRADLE"><figure class="iseeu highlight /gradle"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">bool isMinimized = <span class="keyword">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line"><span class="keyword">Size</span> normalSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小 </span></span><br><span class="line"><span class="keyword">Size</span> minimizedSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br></pre></td></tr></table></figure></div></p>
-<p>在窗口加载时,我们先设置默认大小为 normalSize，并将按钮文本设置为“最小化”。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">this.Size</span> = normalSize<span class="comment">;</span></span><br><span class="line"><span class="attr">minimizeButton.Text</span> = <span class="string">"最小化"</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div></p>
-<p>当点击按钮时,我们需要判断当前状态。如果是正常大小,就缩小窗口并更新变量和按钮文本。如果是缩小状态,就还原大小。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="NIX"><figure class="iseeu highlight /nix"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!isMinimized) </span><br><span class="line">&#123;</span><br><span class="line">    // 最小化 </span><br><span class="line">    this.<span class="attr">Size</span> = minimizedSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">false</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"还原"</span>;</span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">&#123;</span><br><span class="line">    // 还原</span><br><span class="line">    this.<span class="attr">Size</span> = normalSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">true</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"最小化"</span>; </span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p><img src="images/20230525_3.png" alt><br>下方是完整的示例代码：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WindowsFormsApp1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Form1</span> : <span class="title">Form</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">bool</span> isMinimized = <span class="literal">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line">        Size normalSize = <span class="keyword">new</span> Size(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小</span></span><br><span class="line">        Size minimizedSize = <span class="keyword">new</span> Size(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Form1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">            minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">// 点击放大缩小按钮的判断事件</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">minimizeButton_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!isMinimized)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 最小化</span></span><br><span class="line">                <span class="keyword">this</span>.Size = minimizedSize;</span><br><span class="line">                label1.Visible = <span class="literal">false</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"还原"</span>;</span><br><span class="line">                isMinimized = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 还原</span></span><br><span class="line">                <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">                label1.Visible = <span class="literal">true</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">                isMinimized = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
-]]></content>
-      <tags>
-        <tag>C#</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python 文本转成 excel</title>
-    <url>/python-%E6%96%87%E6%9C%AC%E8%BD%AC%E6%88%90-excel.html</url>
-    <content><![CDATA[<p>环境：<br>python：2.7</p>
-<h1 id="安装-pip"><a href="#安装-pip" class="headerlink" title="安装 pip"></a>安装 pip</h1><p>在windows下安装pip： 在C:\python27\scirpts下运行<code>easy_install pip</code>进行安装。</p>
-<p>如果不知道是哪个路径，去设置变量那里看看就知道</p>
-<h1 id="安装-pandas-和-openpyxl"><a href="#安装-pandas-和-openpyxl" class="headerlink" title="安装 pandas 和 openpyxl"></a>安装 pandas 和 openpyxl</h1><p>可以使用国内镜像安装</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line">pip install pandas -i <span class="string">https:</span><span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br></pre></td></tr></table></figure></div>
-<p>pip install openpyxl -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
-<p>同时需要设置环境参数，<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="MEL"><figure class="iseeu highlight /mel"><table><tr><td class="code"><pre><span class="line">.../<span class="keyword">python</span>  这个是 <span class="keyword">python</span> 的环境参数</span><br><span class="line"><span class="comment">// 需要加多一个</span></span><br><span class="line">../<span class="keyword">python</span>/Script</span><br></pre></td></tr></table></figure></div></p>
-<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>可以使用 Pandas 库的 sort_values() 方法对 DataFrame 进行排序。</p>
-<p>例如，如果要按 project 列进行排序，可以这样写：</p>
-<p>Copy code<br>df = df.sort_values(‘project’)<br>这将按 project 列的值对 DataFrame 进行排序。</p>
-<p>如果要按多列进行排序，可以使用 by 参数指定排序列，例如：</p>
-<p>Copy code<br>df = df.sort_values(by=[‘project’, ‘date’])<br>这将按 project 列和 date 列的值对 DataFrame 进行排序。</p>
-<p>如果要按降序排序，可以使用 ascending 参数设置为 False，例如：</p>
-<p>Copy code<br>df = df.sort_values(by=’project’, ascending=False)<br>这将按 project 列的值从大到小对 DataFrame 进行排序。</p>
-<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  # 必须加上这个，否则就识别不了中文</span></span><br><span class="line"><span class="comment"># 引入一些库，需要使用 pip 安装</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> openpyxl.utils.dataframe <span class="keyword">import</span> dataframe_to_rows</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> Workbook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个是 text，也就是我的工作日报的格式，用这个来解析成 excel</span></span><br><span class="line">text = <span class="string">"""</span></span><br><span class="line"><span class="string"># 日期</span></span><br><span class="line"><span class="string">项目名称</span></span><br><span class="line"><span class="string">- [x] 工作项1</span></span><br><span class="line"><span class="string">- [x] 工作项2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将工作日报文本转换为 DataFrame</span></span><br><span class="line">df = pd.DataFrame(columns=[<span class="string">'date'</span>, <span class="string">'project'</span>, <span class="string">'task'</span>])</span><br><span class="line"></span><br><span class="line">lines = text.strip().split(<span class="string">'\n'</span>)</span><br><span class="line">project_str = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    <span class="keyword">if</span> line.startswith(<span class="string">'#'</span>):</span><br><span class="line">        date = <span class="string">'2022-'</span> + line[<span class="number">1</span>:].strip()</span><br><span class="line">        project_str = <span class="string">''</span></span><br><span class="line">    <span class="keyword">elif</span> line.startswith(<span class="string">'-'</span>):</span><br><span class="line">        task = line.replace(<span class="string">'- [x] '</span>, <span class="string">''</span>)</span><br><span class="line">        df = df.append(&#123;<span class="string">'date'</span>: date, <span class="string">'project'</span>: project_str, <span class="string">'task'</span>: task&#125;, ignore_index=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        project_str = line</span><br><span class="line">df = df.sort_values(by=<span class="string">'project'</span>, ascending=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 将 DataFrame 写入 Excel 文件</span></span><br><span class="line">wb = Workbook()</span><br><span class="line">ws = wb.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> dataframe_to_rows(df, index=<span class="literal">False</span>, header=<span class="literal">True</span>):</span><br><span class="line">    ws.append(r)</span><br><span class="line"></span><br><span class="line">wb.save(<span class="string">"work_log.xlsx"</span>)</span><br></pre></td></tr></table></figure></div>
-]]></content>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -119,6 +96,94 @@
       <tags>
         <tag>vscode</tag>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Object 拷贝</title>
+    <url>/Object-%E6%8B%B7%E8%B4%9D.html</url>
+    <content><![CDATA[<h1 id="什么是对象的浅拷贝"><a href="#什么是对象的浅拷贝" class="headerlink" title="什么是对象的浅拷贝"></a>什么是对象的浅拷贝</h1><p>例子<br>当变量相等时，实际上指向的是同一个对象，所以改变 b 的属性值后。a 会被影响到<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="STYLUS"><figure class="iseeu highlight /stylus"><table><tr><td class="code"><pre><span class="line">let <span class="selector-tag">a</span> = &#123;age: <span class="number">16</span>&#125;</span><br><span class="line">let <span class="selector-tag">b</span> = a</span><br><span class="line"><span class="selector-tag">b</span><span class="selector-class">.age</span> = <span class="number">20</span></span><br><span class="line"><span class="comment">// a.age 也会变成 20</span></span><br></pre></td></tr></table></figure></div></p>
+<p>浅拷贝，可以使用以下方法<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LASSO"><figure class="iseeu highlight /lasso"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> c = &#123; <span class="params">...</span>a &#125;</span><br><span class="line"><span class="comment">// vue</span></span><br><span class="line"><span class="keyword">let</span> c = &#123; <span class="params">...</span>this.a &#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>当修改了 age，不会互相影响<br>浅拷贝时里面的嵌套对象是共享的，还是会被影响，深拷贝时里面的嵌套对象就不会被影响<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LASSO"><figure class="iseeu highlight /lasso"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  info: &#123;</span><br><span class="line">    age: <span class="number">30</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> c = &#123; <span class="params">...</span>b &#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>修改了 name，不会互相影响，如果修改了 info.age，则会互相影响</p>
+<h1 id="浅拷贝的方式"><a href="#浅拷贝的方式" class="headerlink" title="浅拷贝的方式"></a>浅拷贝的方式</h1><ol>
+<li>Object.assign():<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> c = <span class="built_in">Object</span>.assign(&#123;&#125;, b)</span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<p>这也会创建一个新的对象 c，并把 b 的所有属性拷贝到 c。<br>Object.assign() 是 ES6 提供的专门用于对象合并的方法，性能较好。</p>
+<ol start="2">
+<li>扩展运算符 spread 语法:<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> c = &#123; ...b &#125; <span class="comment">// 拷贝对象</span></span><br><span class="line"><span class="keyword">const</span> c = [ ... b] <span class="comment">// 拷贝数组</span></span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<p>我们已经讲过，这会创建一个新的对象 c，并拷贝 b 的属性到 c。<br>性能中等，略优于手动循环赋值，但不及 Object.assign()。</p>
+<ol start="3">
+<li>手动循环拷贝:<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> c = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> b) &#123;</span><br><span class="line">  c[key] = b[key]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<p>这手动循环 b 的属性，并拷贝到 c 中。<br>循环赋值的性能较差，不推荐使用。</p>
+<ol start="4">
+<li>使用 _.clone():<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> clone = _.clone(obj)</span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<p>如前所说，_.clone() 使用 Object.assign() 进行浅拷贝，性能较好。</p>
+<h1 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h1><ol>
+<li>JSON.parse(JSON.stringify(obj)):<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> c = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(b))</span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<p>这会把对象 b 转换为 JSON 字符串，然后解析该字符串得到一个新对象 c。在这个过程中，嵌套的对象也会被拷贝。</p>
+<ol start="2">
+<li>手动递归拷贝:<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> c = &#123;&#125;</span><br><span class="line"><span class="keyword">const</span> deepCopy = <span class="function"><span class="params">obj</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">'object'</span> || obj == <span class="literal">null</span>) <span class="keyword">return</span> obj</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    c[key] = deepCopy(obj[key])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> c</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> c = deepCopy(b)</span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<p>这定义了一个递归函数 deepCopy()，它会不断调用自己来拷贝嵌套的对象属性。</p>
+<ol start="3">
+<li>使用 lodash 的 _.cloneDeep():<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> c = _.cloneDeep(b)</span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<p>lodash 中的 _.cloneDeep() 可以完美拷贝一个对象及其嵌套对象。</p>
+<p>_.cloneDeep() &gt; 手动递归拷贝 &gt; JSON.parse(JSON.stringify(obj))<br>一些具体的性能对比数据:</p>
+<ul>
+<li>浅拷贝只需要 0.5ms  </li>
+<li>lodash _.cloneDeep 需要 5-10ms  </li>
+<li>JSON.parse(JSON.stringify(obj)) 需要 200-500ms</li>
+</ul>
+<ol>
+<li>首先考虑是否真的需要深拷贝 - 浅拷贝的性能是最好的，如果满足需求应首选浅拷贝  </li>
+<li>如果需要深拷贝，使用 lodash 的 _.cloneDeep() 方法  </li>
+<li>最后才考虑手动递归拷贝或者 JSON.parse(JSON.stringify(obj))</li>
+</ol>
+<h1 id="在-vue-中"><a href="#在-vue-中" class="headerlink" title="在 vue 中"></a>在 vue 中</h1><p>this.buttons 我需要做一个循环处理判断修改值，1. 直接用 this.buttons for 循环然后变化值，2. 先用变量进行深拷贝后 for 循环处理完值，再赋值回 this.buttons，这两种方式，哪种性能更高</p>
+<p>这两种方式的性能差异主要体现在:</p>
+<ol>
+<li>深拷贝的性能开销</li>
+<li>数组的变异(mutation)次数<br>如果直接循环 this.buttons 进行修改，那么数组的变异次数比较高，这会触发 Vue 的依赖追踪和更新机制,降低性能。<br>而先深拷贝一份，循环修改副本，最后再将副本赋值给 this.buttons，数组的变异只发生一次，所以性能会好一些。<br>所以，如果 this.buttons 数组较大，修改的次数也较多，那么推荐：<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> temp = _.cloneDeep(<span class="keyword">this</span>.buttons)</span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<p>// 循环修改 temp<br>this.buttons = temp<br>如果 this.buttons 较小，只需要做少量修改，那么直接循环修改也问题不大，性能差异不会很明显。<br>综上，建议是:</p>
+<ol>
+<li>如果只是少量修改，直接循环 this.buttons 也可以</li>
+<li>如果涉及大量修改，尤其是大数组，那么深拷贝到一个临时变量，循环修改临时变量,最后再赋值回 this.buttons 是一个更优的方案。</li>
+<li>也可以结合 computed property 进行优化,例如:<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  editedButtons() &#123;</span><br><span class="line">    <span class="keyword">let</span> temp = _.cloneDeep(<span class="keyword">this</span>.buttons)</span><br><span class="line">    <span class="comment">// 修改 temp</span></span><br><span class="line">    <span class="keyword">return</span> temp </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<p>在一般环境下,当数组长度达到100-500左右，如果进行大量修改(10-50次以上)，或在 1000 个数组更改其中一个项时，使用拷贝的方法性能会更好，那么使用深拷贝的方式会有比较明显的性能优势。<br>因此我们建议，基本上使用浅拷贝或深拷贝的方式来处理数组数据会比较好。</p>
+]]></content>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>echarts 增加可移动竖线</title>
+    <url>/echarts-%E5%A2%9E%E5%8A%A0%E5%8F%AF%E7%A7%BB%E5%8A%A8%E7%AB%96%E7%BA%BF.html</url>
+    <content><![CDATA[<p>实现逻辑：<br>在一个 echarts 折线图上，实现两条竖线可随意左右移动的功能，移动停止后，获得竖线此时在 x 轴上的位置。</p>
+<p>引入依赖文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/echarts.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> // 我的版本是 5.0.2</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> // 因为我的是一个 vue 项目，所以加了 vue，没有 vue 的话，普通的也是用同样的方法加载下图表就可以</span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LUA"><figure class="iseeu highlight /lua"><table><tr><td class="code"><pre><span class="line">let data = <span class="string">[[3, 100], [4, 100]]</span> // [x, y] x 是在 x 轴上的位置，y 是竖线的高度，需要比图表 y 轴最大值大</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">shape:</span> <span class="string">&#123;</span></span><br><span class="line">	<span class="attr">x1:</span> <span class="number">0</span><span class="string">,</span></span><br><span class="line">	<span class="attr">y1:</span> <span class="number">0</span><span class="string">,</span></span><br><span class="line">	<span class="attr">x2:</span> <span class="number">0</span><span class="string">,</span></span><br><span class="line">	<span class="attr">y2:</span> <span class="number">4000</span> <span class="string">//</span> <span class="string">竖线的高度</span></span><br><span class="line"><span class="string">&#125;,</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">x1、y1:线段起点</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">x2、y2:线段终点</span></span><br></pre></td></tr></table></figure></div>
+<p>draggable<br> // 设置为 true/false 以启用/禁用拖拽，也可以设置为 ‘horizontal’/‘vertical’ 限制只允许水平或垂直方向拖拽。<br> 设置成 true 时，它可以上下左右拖拽，不适合我们的情况，这里我们只要在 x 轴上左右水平拖动，所以设置成 horizontal</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="COFFEESCRIPT"><figure class="iseeu highlight /coffeescript"><table><tr><td class="code"><pre><span class="line">ondragend: <span class="function"><span class="params">(params)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="regexp">//</span> 这个是 x 轴的位置，如果想要变更成不可拖拽的 markline，可以利用这个</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.chart.convertFromPixel(<span class="string">'grid'</span>, params.target.position))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>完整代码如下：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>markline<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/echarts.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">class</span>=<span class="string">"chart"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main2"</span> <span class="attr">style</span>=<span class="string">"height: 430px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">    el: <span class="string">'#app'</span>,</span></span><br><span class="line">    data: &#123;</span><br><span class="line"><span class="actionscript">        chart: <span class="literal">null</span>,</span></span><br><span class="line"><span class="actionscript">        option1: <span class="literal">null</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    mounted() &#123;</span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.chart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main2'</span>));</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.option1 = &#123;</span></span><br><span class="line"><span class="actionscript">            color: [<span class="string">'#F8CB00'</span>],</span></span><br><span class="line">            grid: &#123;</span><br><span class="line">                left: 40,</span><br><span class="line">                top: 30,</span><br><span class="line">                bottom: 30,</span><br><span class="line">                right: 30,</span><br><span class="line"><span class="actionscript">                containLabel: <span class="literal">false</span></span></span><br><span class="line">            &#125;,</span><br><span class="line">            xAxis: [&#123;</span><br><span class="line"><span class="actionscript">                id: <span class="string">'2'</span>,</span></span><br><span class="line"><span class="actionscript">                type: <span class="string">'value'</span>,</span></span><br><span class="line">                min: 0,</span><br><span class="line">                max: 10,</span><br><span class="line">                axisTick: &#123;</span><br><span class="line"><span class="actionscript">                    alignWithLabel: <span class="literal">true</span></span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;],</span><br><span class="line">            yAxis: &#123;</span><br><span class="line"><span class="actionscript">                type: <span class="string">'value'</span>,</span></span><br><span class="line"><span class="actionscript">                id: <span class="string">'2'</span>,</span></span><br><span class="line">                min: 0,</span><br><span class="line">                max: 15,</span><br><span class="line">                interval: 3,</span><br><span class="line">                axisLabel: &#123;</span><br><span class="line"><span class="actionscript">                    formatter: <span class="string">'&#123;value&#125;'</span></span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            series: [&#123;</span><br><span class="line"><span class="actionscript">                id: <span class="string">'aaa'</span>,</span></span><br><span class="line"><span class="actionscript">                name: <span class="string">''</span>,</span></span><br><span class="line"><span class="actionscript">                type: <span class="string">'line'</span>,</span></span><br><span class="line"><span class="actionscript">                barWidth: <span class="string">'65%'</span>,</span></span><br><span class="line">                data: [[1, 8.1], [2, 13.3], [3, 1.5], [4, 14.6], [5, 10.8], [6, 9.0], [7, 9.2], [8, 9.3]],</span><br><span class="line">            &#125;],</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.chart.setOption(<span class="keyword">this</span>.option1);</span></span><br><span class="line"><span class="javascript">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">this</span>.setChart()</span></span><br><span class="line">        &#125;, 0)</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        setChart() &#123;</span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> data = [[<span class="number">3</span>, <span class="number">100</span>], [<span class="number">4</span>, <span class="number">100</span>]] <span class="comment">// [x, y] x 是在 x 轴上的位置，y 是竖线的高度，需要比图表 y 轴最大值大</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> graphicChart = &#123;</span></span><br><span class="line"><span class="javascript">                graphic: data.map(<span class="function">(<span class="params">item, dataIndex</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">                        type: <span class="string">'line'</span>,</span></span><br><span class="line">                        z: 100,</span><br><span class="line">                        shape: &#123;</span><br><span class="line">                            x1: 0,</span><br><span class="line">                            y1: 0,</span><br><span class="line">                            x2: 0,</span><br><span class="line"><span class="actionscript">                            y2: <span class="number">4000</span> <span class="comment">// 竖线的高度</span></span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        style: &#123;</span><br><span class="line"><span class="actionscript">                            stroke: <span class="string">'rgba(0,0,0,1)'</span>,</span></span><br><span class="line">                            lineWidth: 1,</span><br><span class="line">                            lineDash: [5, 3]</span><br><span class="line">                        &#125;,</span><br><span class="line"><span class="actionscript">                        bounding: <span class="string">'raw'</span>,</span></span><br><span class="line"><span class="actionscript">                        position: <span class="keyword">this</span>.chart.convertToPixel(<span class="string">'grid'</span>, item),</span></span><br><span class="line"><span class="actionscript">                        cursor: <span class="string">'e-resize'</span>, <span class="comment">// 鼠标修改成可以移动的状态</span></span></span><br><span class="line"><span class="actionscript">                        draggable: <span class="string">'horizontal'</span>, <span class="comment">// 竖线修改成可以移动的状态</span></span></span><br><span class="line"><span class="javascript">                        ondragend: <span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                            <span class="built_in">console</span>.log(<span class="keyword">this</span>.chart.convertFromPixel(<span class="string">'grid'</span>, params.target.position))</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line"><span class="actionscript">            <span class="keyword">this</span>.chart.setOption(graphicChart)</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></div></p>
+]]></content>
+      <tags>
+        <tag>echarts</tag>
       </tags>
   </entry>
   <entry>
@@ -179,123 +244,58 @@
       </tags>
   </entry>
   <entry>
-    <title>纯 html 文件中怎么使用 sass</title>
-    <url>/%E7%BA%AF-html-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-sass.html</url>
-    <content><![CDATA[<p>sass 是一种流行的 CSS 预处理器，它能够让开发者使用嵌套语法和变量，以及一些其他的便利功能，来更加高效地编写 CSS 样式表。</p>
-<blockquote>
-<p>没有使用 npm 安装 sass，在平时的纯 html 页面中，要怎么才能使用 sass</p>
-</blockquote>
-<h1 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h1><p><a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">http://www.ruby-lang.org/zh_cn/downloads/</a></p>
-<h1 id="安装-sass"><a href="#安装-sass" class="headerlink" title="安装 sass"></a>安装 sass</h1><p>cmd 命令行输入下面的命令</p>
-<pre><code>gem install sass
-</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><blockquote>
-<p>文件夹名称不能是中文，否则会编译失败</p>
-</blockquote>
+    <title>定时器 requestAnimationFrame</title>
+    <url>/%E5%AE%9A%E6%97%B6%E5%99%A8-requestAnimationFrame.html</url>
+    <content><![CDATA[<p>requestAnimationFrame 是什么？<br>它是一个浏览器提供的 API，用于在浏览器重绘之前调用指定的回调函数。它可以让浏览器在重绘之前更新动画/视觉效果，从而实现平滑的动画效果。</p>
+<p>使用场景：requestAnimationFrame 经常用来构建平滑的动画效果和视觉效果。比如页面滚动，CSS3 过渡和动画，canvas 动画等。</p>
+<p>原理：requestAnimationFrame 将回调函数加入浏览器的回调队列中,在下一次重绘之前调用。一般来说,屏幕刷新频率是 60Hz，也就是说每秒重新绘制 60 次。requestAnimationFrame 试图将重绘与此刷新频率同步，从而实现平滑的动画效果。</p>
+<p>与 setTimeout/setInterval 的比较：<br>requestAnimationFrame 与 setTimeout/setInterval 都可以实现定时执行代码的功能，但 requestAnimationFrame 有更好的性能表现。这是因为:</p>
 <ul>
-<li>单文件编译</li>
+<li>requestAnimationFrame 与屏幕刷新同步，只在需要重绘的时候执行回调，而 setTimeout 是按照固定时间间隔执行。</li>
+<li>requestAnimationFrame 会把多个回调集中在一起执行，减少重绘次数,而 setTimeout 会每个时间间隔就重绘一次。</li>
+<li>requestAnimationFrame 可以保证平滑的动画效果，而 setTimeout 可能由于间隔时间过长产生卡顿感。<br>所以,在不需要严格的时间间隔要求和需要平滑动画的场景下，requestAnimationFrame 是更好的选择。</li>
 </ul>
-<!---->
-<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
-</code></pre><ul>
-<li><p>多文件编译<br>sass sass/\:css/（表示“sass”文件夹中所有的”.scss”文件编译成”.css”文件，并且将这些css文件放到“css”文件夹中）</p>
-</li>
-<li><p>自动监测（主要使用）<br><code>sass --watch&lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css</code>（.scss文件每次修改按ctrl+s保存都会实时的反映到输出的.css文件中）</p>
-</li>
-</ul>
-<!---->
-<pre><code>:expanded 普通样式
-:compact 一个样式一行
-:compressed 所有样式一行
-</code></pre><p>先打开命令行工具，进入到具体的文件夹，然后再执行使用命令。</p>
-<p>例子：<br>我有一个项目放在了 <code>E</code> 盘，名称叫 <code>sass-project</code>，里面有一个 <code>sass</code> 和 <code>css</code> 文件夹。<br>打开 <code>cmd</code>,<code>E:</code>进入到 E 盘，然后使用 <code>cd</code> 进入到 <code>sass-project</code>文件夹，接下来执行下面的命令就行</p>
-<pre><code>sass --watch sass:css --style compact
-</code></pre><!---->
-<pre><code>ctrl+c 停止
-</code></pre><p><img src="/images/2023-3-11-1.png" alt="image"></p>
-<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre><code>　　$blue : #1875e7;　
-　　div {
-　　　color : $blue;
-　　}
-</code></pre><h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><pre><code>　　body {
-　　　　margin: (14px/2);
-　　　　top: 50px + 100px;
-　　　　right: $var * 10%;
-　　}
-</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><pre><code>　　div {
-　　　　h1 {
-　　　　　　color:red;
-　　　　}
-　　}
-　　border-color属性
-　　p { 
-　　　　border: {
-　　　　　　color: red;
-　　　　}
-　　}
-　　a:hover
-　　a {
-　　　　&amp;:hover { color: #ffb3ff; }
-　　}
-</code></pre><h2 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><pre><code>.class1 {
-　　　　border: 1px solid #ddd;
-　　}
-　　.class2 {
-　　　　@extend .class1;
-　　　　font-size:120%;
-　　}
-</code></pre><h3 id="Mixin-重用代码块-可以指定参数和缺省值"><a href="#Mixin-重用代码块-可以指定参数和缺省值" class="headerlink" title="Mixin (重用代码块) 可以指定参数和缺省值"></a>Mixin (重用代码块) 可以指定参数和缺省值</h3><pre><code>　　@mixin left {
-　　　　float: left;
-　　　　margin-left: 10px;
-　　}
-　　div {
-　　　　@include left;
-　　}
-</code></pre><p>eg: mixin的实例，用来生成浏览器前缀</p>
-<pre><code>　　@mixin rounded($vert, $horz, $radius: 10px) {
-　　　　border-#{$vert}-#{$horz}-radius: $radius;
-　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
-　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
-　　}
-　　&lt;!--调用--&gt;
-　　#navbar li { @include rounded(top, left); }
-　　#footer { @include rounded(top, left, 5px); }
-</code></pre><h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
-<pre><code>　　lighten(#cc3, 10%) // #d6d65c
-　　darken(#cc3, 10%) // #a3a329
-　　grayscale(#cc3) // #808080
-　　complement(#cc3) // #33c
-</code></pre><h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><pre><code>@import &quot;path/filename.scss&quot;;
-@import &quot;foo.css&quot;;
-</code></pre><h1 id="支持中文注释方法"><a href="#支持中文注释方法" class="headerlink" title="支持中文注释方法"></a>支持中文注释方法</h1><ul>
-<li>在 scss 文件头加上 <code>@charset &quot;utf-8&quot;;</code></li>
-<li>查看出错的 css 文件</li>
-</ul>
-<!---->
-<pre><code>Backtrace:
-sass/shop.scss:4
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1090:in `rescue in block in find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1087:in `block in find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each_with_index&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `find_encoding_error&apos;
-C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:820:in `rescue in check_sass_encoding&apos;
-</code></pre><p>得到路径 <code>C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass</code></p>
-<p>里面有一个文件<code>engine.rb</code>打开</p>
-<pre><code>require &apos;sass/scss&apos;
-require &apos;sass/stack&apos;
-require &apos;sass/error&apos;
-require &apos;sass/importers&apos;
-require &apos;sass/shared&apos;
-require &apos;sass/media&apos;
-require &apos;sass/supports&apos;
-</code></pre><p>我们在一连串的 require 后面加上代码</p>
-<pre><code>Encoding.default_external = Encoding.find(&apos;utf-8&apos;)
-</code></pre><p>最后再重启 sass 一下就好了</p>
-<p>更详细的使用可以参考：<a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/06/sass.html</a></p>
+<p>不同浏览器的实现差异：<br>不同浏览器的刷新频率可能不同,实现方式也可能略有差异，这可能会导致动画效果在不同浏览器中有细微的差别。<br>在我的电脑上，屏幕的刷新率是 60Hz，它每一次的刷新频率大概是 16.666ms。</p>
+<p>优点：</p>
+<ol>
+<li>与屏幕刷新频率同步，实现平滑的动画效果；</li>
+<li>节省 CPU、GPU 和电量；</li>
+<li>避免布局抖动等视觉差异。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>回调函数的调用频率受屏幕刷新频率的限制,在低刷新频率下会感觉到卡顿；</li>
+<li>若连续调用 requestAnimationFrame，可能会导致过高的 CPU 占用，应避免请求动画帧的频率超过屏幕刷新频率；</li>
+<li>部分低端机型的刷新频率较低,动画效果可能不太平滑。</li>
+</ol>
+<p>使用示例：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 执行动画绘制等逻辑</span></span><br><span class="line">  requestAnimationFrame(animate); </span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br></pre></td></tr></table></figure></div></p>
+<p>可以使用 cancelAnimationFrame 取消一个 requestAnimationFrame 的回调函数。例如：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> rafId;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 执行动画绘制等逻辑</span></span><br><span class="line">  rafId = requestAnimationFrame(animate);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startAnimation</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">  rafId = requestAnimationFrame(animate); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 取消 requestAnimationFrame</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopAnimation</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  cancelAnimationFrame(rafId); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 ]]></content>
       <tags>
-        <tag>sass</tag>
-        <tag>css</tag>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python 文本转成 excel</title>
+    <url>/python-%E6%96%87%E6%9C%AC%E8%BD%AC%E6%88%90-excel.html</url>
+    <content><![CDATA[<p>环境：<br>python：2.7</p>
+<h1 id="安装-pip"><a href="#安装-pip" class="headerlink" title="安装 pip"></a>安装 pip</h1><p>在windows下安装pip： 在C:\python27\scirpts下运行<code>easy_install pip</code>进行安装。</p>
+<p>如果不知道是哪个路径，去设置变量那里看看就知道</p>
+<h1 id="安装-pandas-和-openpyxl"><a href="#安装-pandas-和-openpyxl" class="headerlink" title="安装 pandas 和 openpyxl"></a>安装 pandas 和 openpyxl</h1><p>可以使用国内镜像安装</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="code"><pre><span class="line">pip install pandas -i <span class="string">https:</span><span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br></pre></td></tr></table></figure></div>
+<p>pip install openpyxl -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
+<p>同时需要设置环境参数，<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="MEL"><figure class="iseeu highlight /mel"><table><tr><td class="code"><pre><span class="line">.../<span class="keyword">python</span>  这个是 <span class="keyword">python</span> 的环境参数</span><br><span class="line"><span class="comment">// 需要加多一个</span></span><br><span class="line">../<span class="keyword">python</span>/Script</span><br></pre></td></tr></table></figure></div></p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>可以使用 Pandas 库的 sort_values() 方法对 DataFrame 进行排序。</p>
+<p>例如，如果要按 project 列进行排序，可以这样写：</p>
+<p>Copy code<br>df = df.sort_values(‘project’)<br>这将按 project 列的值对 DataFrame 进行排序。</p>
+<p>如果要按多列进行排序，可以使用 by 参数指定排序列，例如：</p>
+<p>Copy code<br>df = df.sort_values(by=[‘project’, ‘date’])<br>这将按 project 列和 date 列的值对 DataFrame 进行排序。</p>
+<p>如果要按降序排序，可以使用 ascending 参数设置为 False，例如：</p>
+<p>Copy code<br>df = df.sort_values(by=’project’, ascending=False)<br>这将按 project 列的值从大到小对 DataFrame 进行排序。</p>
+<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  # 必须加上这个，否则就识别不了中文</span></span><br><span class="line"><span class="comment"># 引入一些库，需要使用 pip 安装</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> openpyxl.utils.dataframe <span class="keyword">import</span> dataframe_to_rows</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> Workbook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个是 text，也就是我的工作日报的格式，用这个来解析成 excel</span></span><br><span class="line">text = <span class="string">"""</span></span><br><span class="line"><span class="string"># 日期</span></span><br><span class="line"><span class="string">项目名称</span></span><br><span class="line"><span class="string">- [x] 工作项1</span></span><br><span class="line"><span class="string">- [x] 工作项2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将工作日报文本转换为 DataFrame</span></span><br><span class="line">df = pd.DataFrame(columns=[<span class="string">'date'</span>, <span class="string">'project'</span>, <span class="string">'task'</span>])</span><br><span class="line"></span><br><span class="line">lines = text.strip().split(<span class="string">'\n'</span>)</span><br><span class="line">project_str = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    <span class="keyword">if</span> line.startswith(<span class="string">'#'</span>):</span><br><span class="line">        date = <span class="string">'2022-'</span> + line[<span class="number">1</span>:].strip()</span><br><span class="line">        project_str = <span class="string">''</span></span><br><span class="line">    <span class="keyword">elif</span> line.startswith(<span class="string">'-'</span>):</span><br><span class="line">        task = line.replace(<span class="string">'- [x] '</span>, <span class="string">''</span>)</span><br><span class="line">        df = df.append(&#123;<span class="string">'date'</span>: date, <span class="string">'project'</span>: project_str, <span class="string">'task'</span>: task&#125;, ignore_index=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        project_str = line</span><br><span class="line">df = df.sort_values(by=<span class="string">'project'</span>, ascending=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 将 DataFrame 写入 Excel 文件</span></span><br><span class="line">wb = Workbook()</span><br><span class="line">ws = wb.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> dataframe_to_rows(df, index=<span class="literal">False</span>, header=<span class="literal">True</span>):</span><br><span class="line">    ws.append(r)</span><br><span class="line"></span><br><span class="line">wb.save(<span class="string">"work_log.xlsx"</span>)</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -430,36 +430,12 @@ require &apos;sass/supports&apos;
       </tags>
   </entry>
   <entry>
-    <title>定时器 requestAnimationFrame</title>
-    <url>/%E5%AE%9A%E6%97%B6%E5%99%A8-requestAnimationFrame.html</url>
-    <content><![CDATA[<p>requestAnimationFrame 是什么？<br>它是一个浏览器提供的 API，用于在浏览器重绘之前调用指定的回调函数。它可以让浏览器在重绘之前更新动画/视觉效果，从而实现平滑的动画效果。</p>
-<p>使用场景：requestAnimationFrame 经常用来构建平滑的动画效果和视觉效果。比如页面滚动，CSS3 过渡和动画，canvas 动画等。</p>
-<p>原理：requestAnimationFrame 将回调函数加入浏览器的回调队列中,在下一次重绘之前调用。一般来说,屏幕刷新频率是 60Hz，也就是说每秒重新绘制 60 次。requestAnimationFrame 试图将重绘与此刷新频率同步，从而实现平滑的动画效果。</p>
-<p>与 setTimeout/setInterval 的比较：<br>requestAnimationFrame 与 setTimeout/setInterval 都可以实现定时执行代码的功能，但 requestAnimationFrame 有更好的性能表现。这是因为:</p>
-<ul>
-<li>requestAnimationFrame 与屏幕刷新同步，只在需要重绘的时候执行回调，而 setTimeout 是按照固定时间间隔执行。</li>
-<li>requestAnimationFrame 会把多个回调集中在一起执行，减少重绘次数,而 setTimeout 会每个时间间隔就重绘一次。</li>
-<li>requestAnimationFrame 可以保证平滑的动画效果，而 setTimeout 可能由于间隔时间过长产生卡顿感。<br>所以,在不需要严格的时间间隔要求和需要平滑动画的场景下，requestAnimationFrame 是更好的选择。</li>
-</ul>
-<p>不同浏览器的实现差异：<br>不同浏览器的刷新频率可能不同,实现方式也可能略有差异，这可能会导致动画效果在不同浏览器中有细微的差别。<br>在我的电脑上，屏幕的刷新率是 60Hz，它每一次的刷新频率大概是 16.666ms。</p>
-<p>优点：</p>
-<ol>
-<li>与屏幕刷新频率同步，实现平滑的动画效果；</li>
-<li>节省 CPU、GPU 和电量；</li>
-<li>避免布局抖动等视觉差异。</li>
-</ol>
-<p>缺点：</p>
-<ol>
-<li>回调函数的调用频率受屏幕刷新频率的限制,在低刷新频率下会感觉到卡顿；</li>
-<li>若连续调用 requestAnimationFrame，可能会导致过高的 CPU 占用，应避免请求动画帧的频率超过屏幕刷新频率；</li>
-<li>部分低端机型的刷新频率较低,动画效果可能不太平滑。</li>
-</ol>
-<p>使用示例：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 执行动画绘制等逻辑</span></span><br><span class="line">  requestAnimationFrame(animate); </span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br></pre></td></tr></table></figure></div></p>
-<p>可以使用 cancelAnimationFrame 取消一个 requestAnimationFrame 的回调函数。例如：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> rafId;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 执行动画绘制等逻辑</span></span><br><span class="line">  rafId = requestAnimationFrame(animate);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startAnimation</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">  rafId = requestAnimationFrame(animate); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 取消 requestAnimationFrame</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopAnimation</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  cancelAnimationFrame(rafId); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+    <title>解除端口占用</title>
+    <url>/%E8%A7%A3%E9%99%A4%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8.html</url>
+    <content><![CDATA[<p>打开 dos 命令窗口输入一下命令</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">netstat -o -n -a <span class="string">| findstr :4000</span></span><br></pre></td></tr></table></figure>
+<p>可以看到输出如下：<br><img src="images/20220902172812.png" alt><br>可以看到 LISTENING 同时端口是 4000 那一行，最后面带着一串数字，数字是 3628，这个时候我们输出一行命令，解除掉占用<br><img src="images/20230409134012.png" alt><br><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">taskkill <span class="string">/F</span> <span class="string">/PID</span> 3628</span><br></pre></td></tr></table></figure></p>
 ]]></content>
-      <tags>
-        <tag>JS</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue-electron 批量生成 pdf</title>
@@ -489,12 +465,124 @@ require &apos;sass/supports&apos;
       </tags>
   </entry>
   <entry>
-    <title>解除端口占用</title>
-    <url>/%E8%A7%A3%E9%99%A4%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8.html</url>
-    <content><![CDATA[<p>打开 dos 命令窗口输入一下命令</p>
-<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">netstat -o -n -a <span class="string">| findstr :4000</span></span><br></pre></td></tr></table></figure>
-<p>可以看到输出如下：<br><img src="images/20220902172812.png" alt><br>可以看到 LISTENING 同时端口是 4000 那一行，最后面带着一串数字，数字是 3628，这个时候我们输出一行命令，解除掉占用<br><img src="images/20230409134012.png" alt><br><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">taskkill <span class="string">/F</span> <span class="string">/PID</span> 3628</span><br></pre></td></tr></table></figure></p>
+    <title>纯 html 文件中怎么使用 sass</title>
+    <url>/%E7%BA%AF-html-%E6%96%87%E4%BB%B6%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8-sass.html</url>
+    <content><![CDATA[<p>sass 是一种流行的 CSS 预处理器，它能够让开发者使用嵌套语法和变量，以及一些其他的便利功能，来更加高效地编写 CSS 样式表。</p>
+<blockquote>
+<p>没有使用 npm 安装 sass，在平时的纯 html 页面中，要怎么才能使用 sass</p>
+</blockquote>
+<h1 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h1><p><a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="noopener">http://www.ruby-lang.org/zh_cn/downloads/</a></p>
+<h1 id="安装-sass"><a href="#安装-sass" class="headerlink" title="安装 sass"></a>安装 sass</h1><p>cmd 命令行输入下面的命令</p>
+<pre><code>gem install sass
+</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><blockquote>
+<p>文件夹名称不能是中文，否则会编译失败</p>
+</blockquote>
+<ul>
+<li>单文件编译</li>
+</ul>
+<!---->
+<pre><code>sass &lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css
+</code></pre><ul>
+<li><p>多文件编译<br>sass sass/\:css/（表示“sass”文件夹中所有的”.scss”文件编译成”.css”文件，并且将这些css文件放到“css”文件夹中）</p>
+</li>
+<li><p>自动监测（主要使用）<br><code>sass --watch&lt;要编译的Sass文件路径&gt;/style.scss:&lt;要输出CSS文件路径&gt;/style.css</code>（.scss文件每次修改按ctrl+s保存都会实时的反映到输出的.css文件中）</p>
+</li>
+</ul>
+<!---->
+<pre><code>:expanded 普通样式
+:compact 一个样式一行
+:compressed 所有样式一行
+</code></pre><p>先打开命令行工具，进入到具体的文件夹，然后再执行使用命令。</p>
+<p>例子：<br>我有一个项目放在了 <code>E</code> 盘，名称叫 <code>sass-project</code>，里面有一个 <code>sass</code> 和 <code>css</code> 文件夹。<br>打开 <code>cmd</code>,<code>E:</code>进入到 E 盘，然后使用 <code>cd</code> 进入到 <code>sass-project</code>文件夹，接下来执行下面的命令就行</p>
+<pre><code>sass --watch sass:css --style compact
+</code></pre><!---->
+<pre><code>ctrl+c 停止
+</code></pre><p><img src="/images/2023-3-11-1.png" alt="image"></p>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><pre><code>　　$blue : #1875e7;　
+　　div {
+　　　color : $blue;
+　　}
+</code></pre><h2 id="计算功能"><a href="#计算功能" class="headerlink" title="计算功能"></a>计算功能</h2><pre><code>　　body {
+　　　　margin: (14px/2);
+　　　　top: 50px + 100px;
+　　　　right: $var * 10%;
+　　}
+</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><pre><code>　　div {
+　　　　h1 {
+　　　　　　color:red;
+　　　　}
+　　}
+　　border-color属性
+　　p { 
+　　　　border: {
+　　　　　　color: red;
+　　　　}
+　　}
+　　a:hover
+　　a {
+　　　　&amp;:hover { color: #ffb3ff; }
+　　}
+</code></pre><h2 id="代码的重用"><a href="#代码的重用" class="headerlink" title="代码的重用"></a>代码的重用</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><pre><code>.class1 {
+　　　　border: 1px solid #ddd;
+　　}
+　　.class2 {
+　　　　@extend .class1;
+　　　　font-size:120%;
+　　}
+</code></pre><h3 id="Mixin-重用代码块-可以指定参数和缺省值"><a href="#Mixin-重用代码块-可以指定参数和缺省值" class="headerlink" title="Mixin (重用代码块) 可以指定参数和缺省值"></a>Mixin (重用代码块) 可以指定参数和缺省值</h3><pre><code>　　@mixin left {
+　　　　float: left;
+　　　　margin-left: 10px;
+　　}
+　　div {
+　　　　@include left;
+　　}
+</code></pre><p>eg: mixin的实例，用来生成浏览器前缀</p>
+<pre><code>　　@mixin rounded($vert, $horz, $radius: 10px) {
+　　　　border-#{$vert}-#{$horz}-radius: $radius;
+　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
+　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
+　　}
+　　&lt;!--调用--&gt;
+　　#navbar li { @include rounded(top, left); }
+　　#footer { @include rounded(top, left, 5px); }
+</code></pre><h2 id="颜色函数"><a href="#颜色函数" class="headerlink" title="颜色函数"></a>颜色函数</h2><p>SASS提供了一些内置的颜色函数，以便生成系列颜色。</p>
+<pre><code>　　lighten(#cc3, 10%) // #d6d65c
+　　darken(#cc3, 10%) // #a3a329
+　　grayscale(#cc3) // #808080
+　　complement(#cc3) // #33c
+</code></pre><h2 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h2><pre><code>@import &quot;path/filename.scss&quot;;
+@import &quot;foo.css&quot;;
+</code></pre><h1 id="支持中文注释方法"><a href="#支持中文注释方法" class="headerlink" title="支持中文注释方法"></a>支持中文注释方法</h1><ul>
+<li>在 scss 文件头加上 <code>@charset &quot;utf-8&quot;;</code></li>
+<li>查看出错的 css 文件</li>
+</ul>
+<!---->
+<pre><code>Backtrace:
+sass/shop.scss:4
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1090:in `rescue in block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1087:in `block in find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `each_with_index&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:1086:in `find_encoding_error&apos;
+C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/util.rb:820:in `rescue in check_sass_encoding&apos;
+</code></pre><p>得到路径 <code>C:/Ruby26/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass</code></p>
+<p>里面有一个文件<code>engine.rb</code>打开</p>
+<pre><code>require &apos;sass/scss&apos;
+require &apos;sass/stack&apos;
+require &apos;sass/error&apos;
+require &apos;sass/importers&apos;
+require &apos;sass/shared&apos;
+require &apos;sass/media&apos;
+require &apos;sass/supports&apos;
+</code></pre><p>我们在一连串的 require 后面加上代码</p>
+<pre><code>Encoding.default_external = Encoding.find(&apos;utf-8&apos;)
+</code></pre><p>最后再重启 sass 一下就好了</p>
+<p>更详细的使用可以参考：<a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/06/sass.html</a></p>
 ]]></content>
+      <tags>
+        <tag>sass</tag>
+        <tag>css</tag>
+      </tags>
   </entry>
   <entry>
     <title>隐藏文件管理资源器左侧的坚果云快捷方式</title>
@@ -578,21 +666,6 @@ require &apos;sass/supports&apos;
 ]]></content>
       <tags>
         <tag>C#</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>echarts 增加可移动竖线</title>
-    <url>/echarts-%E5%A2%9E%E5%8A%A0%E5%8F%AF%E7%A7%BB%E5%8A%A8%E7%AB%96%E7%BA%BF.html</url>
-    <content><![CDATA[<p>实现逻辑：<br>在一个 echarts 折线图上，实现两条竖线可随意左右移动的功能，移动停止后，获得竖线此时在 x 轴上的位置。</p>
-<p>引入依赖文件<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/echarts.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> // 我的版本是 5.0.2</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> // 因为我的是一个 vue 项目，所以加了 vue，没有 vue 的话，普通的也是用同样的方法加载下图表就可以</span><br></pre></td></tr></table></figure></div></p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="LUA"><figure class="iseeu highlight /lua"><table><tr><td class="code"><pre><span class="line">let data = <span class="string">[[3, 100], [4, 100]]</span> // [x, y] x 是在 x 轴上的位置，y 是竖线的高度，需要比图表 y 轴最大值大</span><br></pre></td></tr></table></figure></div>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="YAML"><figure class="iseeu highlight /yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">shape:</span> <span class="string">&#123;</span></span><br><span class="line">	<span class="attr">x1:</span> <span class="number">0</span><span class="string">,</span></span><br><span class="line">	<span class="attr">y1:</span> <span class="number">0</span><span class="string">,</span></span><br><span class="line">	<span class="attr">x2:</span> <span class="number">0</span><span class="string">,</span></span><br><span class="line">	<span class="attr">y2:</span> <span class="number">4000</span> <span class="string">//</span> <span class="string">竖线的高度</span></span><br><span class="line"><span class="string">&#125;,</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">x1、y1:线段起点</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">x2、y2:线段终点</span></span><br></pre></td></tr></table></figure></div>
-<p>draggable<br> // 设置为 true/false 以启用/禁用拖拽，也可以设置为 ‘horizontal’/‘vertical’ 限制只允许水平或垂直方向拖拽。<br> 设置成 true 时，它可以上下左右拖拽，不适合我们的情况，这里我们只要在 x 轴上左右水平拖动，所以设置成 horizontal</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="COFFEESCRIPT"><figure class="iseeu highlight /coffeescript"><table><tr><td class="code"><pre><span class="line">ondragend: <span class="function"><span class="params">(params)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="regexp">//</span> 这个是 x 轴的位置，如果想要变更成不可拖拽的 markline，可以利用这个</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.chart.convertFromPixel(<span class="string">'grid'</span>, params.target.position))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>完整代码如下：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>markline<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/echarts.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">class</span>=<span class="string">"chart"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main2"</span> <span class="attr">style</span>=<span class="string">"height: 430px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">    el: <span class="string">'#app'</span>,</span></span><br><span class="line">    data: &#123;</span><br><span class="line"><span class="actionscript">        chart: <span class="literal">null</span>,</span></span><br><span class="line"><span class="actionscript">        option1: <span class="literal">null</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    mounted() &#123;</span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.chart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main2'</span>));</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.option1 = &#123;</span></span><br><span class="line"><span class="actionscript">            color: [<span class="string">'#F8CB00'</span>],</span></span><br><span class="line">            grid: &#123;</span><br><span class="line">                left: 40,</span><br><span class="line">                top: 30,</span><br><span class="line">                bottom: 30,</span><br><span class="line">                right: 30,</span><br><span class="line"><span class="actionscript">                containLabel: <span class="literal">false</span></span></span><br><span class="line">            &#125;,</span><br><span class="line">            xAxis: [&#123;</span><br><span class="line"><span class="actionscript">                id: <span class="string">'2'</span>,</span></span><br><span class="line"><span class="actionscript">                type: <span class="string">'value'</span>,</span></span><br><span class="line">                min: 0,</span><br><span class="line">                max: 10,</span><br><span class="line">                axisTick: &#123;</span><br><span class="line"><span class="actionscript">                    alignWithLabel: <span class="literal">true</span></span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;],</span><br><span class="line">            yAxis: &#123;</span><br><span class="line"><span class="actionscript">                type: <span class="string">'value'</span>,</span></span><br><span class="line"><span class="actionscript">                id: <span class="string">'2'</span>,</span></span><br><span class="line">                min: 0,</span><br><span class="line">                max: 15,</span><br><span class="line">                interval: 3,</span><br><span class="line">                axisLabel: &#123;</span><br><span class="line"><span class="actionscript">                    formatter: <span class="string">'&#123;value&#125;'</span></span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            series: [&#123;</span><br><span class="line"><span class="actionscript">                id: <span class="string">'aaa'</span>,</span></span><br><span class="line"><span class="actionscript">                name: <span class="string">''</span>,</span></span><br><span class="line"><span class="actionscript">                type: <span class="string">'line'</span>,</span></span><br><span class="line"><span class="actionscript">                barWidth: <span class="string">'65%'</span>,</span></span><br><span class="line">                data: [[1, 8.1], [2, 13.3], [3, 1.5], [4, 14.6], [5, 10.8], [6, 9.0], [7, 9.2], [8, 9.3]],</span><br><span class="line">            &#125;],</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.chart.setOption(<span class="keyword">this</span>.option1);</span></span><br><span class="line"><span class="javascript">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">this</span>.setChart()</span></span><br><span class="line">        &#125;, 0)</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        setChart() &#123;</span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> data = [[<span class="number">3</span>, <span class="number">100</span>], [<span class="number">4</span>, <span class="number">100</span>]] <span class="comment">// [x, y] x 是在 x 轴上的位置，y 是竖线的高度，需要比图表 y 轴最大值大</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> graphicChart = &#123;</span></span><br><span class="line"><span class="javascript">                graphic: data.map(<span class="function">(<span class="params">item, dataIndex</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">                        type: <span class="string">'line'</span>,</span></span><br><span class="line">                        z: 100,</span><br><span class="line">                        shape: &#123;</span><br><span class="line">                            x1: 0,</span><br><span class="line">                            y1: 0,</span><br><span class="line">                            x2: 0,</span><br><span class="line"><span class="actionscript">                            y2: <span class="number">4000</span> <span class="comment">// 竖线的高度</span></span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        style: &#123;</span><br><span class="line"><span class="actionscript">                            stroke: <span class="string">'rgba(0,0,0,1)'</span>,</span></span><br><span class="line">                            lineWidth: 1,</span><br><span class="line">                            lineDash: [5, 3]</span><br><span class="line">                        &#125;,</span><br><span class="line"><span class="actionscript">                        bounding: <span class="string">'raw'</span>,</span></span><br><span class="line"><span class="actionscript">                        position: <span class="keyword">this</span>.chart.convertToPixel(<span class="string">'grid'</span>, item),</span></span><br><span class="line"><span class="actionscript">                        cursor: <span class="string">'e-resize'</span>, <span class="comment">// 鼠标修改成可以移动的状态</span></span></span><br><span class="line"><span class="actionscript">                        draggable: <span class="string">'horizontal'</span>, <span class="comment">// 竖线修改成可以移动的状态</span></span></span><br><span class="line"><span class="javascript">                        ondragend: <span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                            <span class="built_in">console</span>.log(<span class="keyword">this</span>.chart.convertFromPixel(<span class="string">'grid'</span>, params.target.position))</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line"><span class="actionscript">            <span class="keyword">this</span>.chart.setOption(graphicChart)</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></div></p>
-]]></content>
-      <tags>
-        <tag>echarts</tag>
       </tags>
   </entry>
 </search>
