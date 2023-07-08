@@ -31,19 +31,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C# 软件放大和缩小</title>
-    <url>/C-%E8%BD%AF%E4%BB%B6%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F.html</url>
-    <content><![CDATA[<p>在软件开发中，实现界面放大和缩小是一项很常见的功能。今天我们来看一下如何开发这样的功能。<br>首先，我们需要一个变量来存储软件当前是放大还是缩小状态，这里使用isMinimized。然后定义正常大小 normalSize 和缩小后的大小 minimizedSize 两个变量。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GRADLE"><figure class="iseeu highlight /gradle"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">bool isMinimized = <span class="keyword">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line"><span class="keyword">Size</span> normalSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小 </span></span><br><span class="line"><span class="keyword">Size</span> minimizedSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br></pre></td></tr></table></figure></div></p>
-<p>在窗口加载时,我们先设置默认大小为 normalSize，并将按钮文本设置为“最小化”。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">this.Size</span> = normalSize<span class="comment">;</span></span><br><span class="line"><span class="attr">minimizeButton.Text</span> = <span class="string">"最小化"</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div></p>
-<p>当点击按钮时,我们需要判断当前状态。如果是正常大小,就缩小窗口并更新变量和按钮文本。如果是缩小状态,就还原大小。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="NIX"><figure class="iseeu highlight /nix"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!isMinimized) </span><br><span class="line">&#123;</span><br><span class="line">    // 最小化 </span><br><span class="line">    this.<span class="attr">Size</span> = minimizedSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">false</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"还原"</span>;</span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">&#123;</span><br><span class="line">    // 还原</span><br><span class="line">    this.<span class="attr">Size</span> = normalSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">true</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"最小化"</span>; </span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p><img src="images/20230525_3.png" alt><br>下方是完整的示例代码：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WindowsFormsApp1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Form1</span> : <span class="title">Form</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">bool</span> isMinimized = <span class="literal">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line">        Size normalSize = <span class="keyword">new</span> Size(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小</span></span><br><span class="line">        Size minimizedSize = <span class="keyword">new</span> Size(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Form1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">            minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">// 点击放大缩小按钮的判断事件</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">minimizeButton_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!isMinimized)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 最小化</span></span><br><span class="line">                <span class="keyword">this</span>.Size = minimizedSize;</span><br><span class="line">                label1.Visible = <span class="literal">false</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"还原"</span>;</span><br><span class="line">                isMinimized = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 还原</span></span><br><span class="line">                <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">                label1.Visible = <span class="literal">true</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">                isMinimized = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
-]]></content>
-      <tags>
-        <tag>C#</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Claude 使用教程</title>
     <url>/Claude-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.html</url>
     <content><![CDATA[<p>Claude 是由前 openAI 员工开发的聊天机器人，最重要的一点是不用科学上网。</p>
@@ -59,6 +46,19 @@
 ]]></content>
       <tags>
         <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C# 软件放大和缩小</title>
+    <url>/C-%E8%BD%AF%E4%BB%B6%E6%94%BE%E5%A4%A7%E5%92%8C%E7%BC%A9%E5%B0%8F.html</url>
+    <content><![CDATA[<p>在软件开发中，实现界面放大和缩小是一项很常见的功能。今天我们来看一下如何开发这样的功能。<br>首先，我们需要一个变量来存储软件当前是放大还是缩小状态，这里使用isMinimized。然后定义正常大小 normalSize 和缩小后的大小 minimizedSize 两个变量。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="GRADLE"><figure class="iseeu highlight /gradle"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">bool isMinimized = <span class="keyword">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line"><span class="keyword">Size</span> normalSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小 </span></span><br><span class="line"><span class="keyword">Size</span> minimizedSize = <span class="keyword">new</span> <span class="keyword">Size</span>(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br></pre></td></tr></table></figure></div></p>
+<p>在窗口加载时,我们先设置默认大小为 normalSize，并将按钮文本设置为“最小化”。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="INI"><figure class="iseeu highlight /ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">this.Size</span> = normalSize<span class="comment">;</span></span><br><span class="line"><span class="attr">minimizeButton.Text</span> = <span class="string">"最小化"</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></div></p>
+<p>当点击按钮时,我们需要判断当前状态。如果是正常大小,就缩小窗口并更新变量和按钮文本。如果是缩小状态,就还原大小。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="NIX"><figure class="iseeu highlight /nix"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!isMinimized) </span><br><span class="line">&#123;</span><br><span class="line">    // 最小化 </span><br><span class="line">    this.<span class="attr">Size</span> = minimizedSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">false</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"还原"</span>;</span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">&#123;</span><br><span class="line">    // 还原</span><br><span class="line">    this.<span class="attr">Size</span> = normalSize;</span><br><span class="line">    label1.<span class="attr">Visible</span> = <span class="literal">true</span>;</span><br><span class="line">    minimizeButton.<span class="attr">Text</span> = <span class="string">"最小化"</span>; </span><br><span class="line">    <span class="attr">isMinimized</span> = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img src="images/20230525_3.png" alt><br>下方是完整的示例代码：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CS"><figure class="iseeu highlight /cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WindowsFormsApp1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Form1</span> : <span class="title">Form</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">bool</span> isMinimized = <span class="literal">false</span>; <span class="comment">// 放大和缩小的状态判断</span></span><br><span class="line">        Size normalSize = <span class="keyword">new</span> Size(<span class="number">800</span>, <span class="number">600</span>); <span class="comment">// 正常大小</span></span><br><span class="line">        Size minimizedSize = <span class="keyword">new</span> Size(<span class="number">200</span>, <span class="number">200</span>); <span class="comment">// 缩小后的大小</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Form1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">            minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">// 点击放大缩小按钮的判断事件</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">minimizeButton_Click</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!isMinimized)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 最小化</span></span><br><span class="line">                <span class="keyword">this</span>.Size = minimizedSize;</span><br><span class="line">                label1.Visible = <span class="literal">false</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"还原"</span>;</span><br><span class="line">                isMinimized = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 还原</span></span><br><span class="line">                <span class="keyword">this</span>.Size = normalSize;</span><br><span class="line">                label1.Visible = <span class="literal">true</span>;</span><br><span class="line">                minimizeButton.Text = <span class="string">"最小化"</span>;</span><br><span class="line">                isMinimized = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+]]></content>
+      <tags>
+        <tag>C#</tag>
       </tags>
   </entry>
   <entry>
@@ -96,6 +96,34 @@
       <tags>
         <tag>vscode</tag>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Object 根据值找键</title>
+    <url>/Object-%E6%A0%B9%E6%8D%AE%E5%80%BC%E6%89%BE%E9%94%AE.html</url>
+    <content><![CDATA[<p>在 JavaScript 中，对象是一种重要的数据结构，用于储存和组织数据。对象由键值对组成，其中键名用于查找值。但有时候，我们所知道的只是对象中的某个值，需要找到对应的键名。举个简单的例子：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  age: <span class="number">30</span>,</span><br><span class="line">  city: <span class="string">'New York'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这里我们有一个 person 对象，包含三个键值对。如果我知道这个人的年龄是 30，但不知道对应键名，我该如何获取呢？<br>为了在 JavaScript 对象中灵活查找键和值，我们需要了解几种遍历对象的方法。</p>
+<ol>
+<li>获取键和值：Object.keys() 方法返回一个数组,包含对象的所有键名。<br>Object.values() 方法返回一个数组,包含对象的所有值。使用这两个方法，我们可以轻松获取对象的所有键和值。例如:</li>
+</ol>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  age: <span class="number">30</span>,</span><br><span class="line">  city: <span class="string">'New York'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> keys = <span class="built_in">Object</span>.keys(person); </span><br><span class="line"><span class="comment">// ['name', 'age', 'city']</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> values = <span class="built_in">Object</span>.values(person);</span><br><span class="line"><span class="comment">// ['John', 30, 'New York']</span></span><br></pre></td></tr></table></figure></div>
+<ol start="2">
+<li>对象遍历：对象遍历指的是迭代对象的属性并访问其键值。主要有以下几种方式：<br>for..in 遍历键：<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  age: <span class="number">30</span>,</span><br><span class="line">  city: <span class="string">'New York'</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> person) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key, person[key]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// name John </span></span><br><span class="line"><span class="comment">// age 30</span></span><br><span class="line"><span class="comment">// city New York</span></span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<p>for..of 遍历值：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> <span class="built_in">Object</span>.values(person)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// John </span></span><br><span class="line"><span class="comment">// 30</span></span><br><span class="line"><span class="comment">// New York</span></span><br></pre></td></tr></table></figure></div></p>
+<p>Object.entries() 遍历键值对：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> <span class="built_in">Object</span>.entries(person)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// name John </span></span><br><span class="line"><span class="comment">// age 30</span></span><br><span class="line"><span class="comment">// city New York</span></span><br></pre></td></tr></table></figure></div></p>
+<ol start="3">
+<li>根据值获取键：</li>
+</ol>
+<p>Object.entries() + Array.find():通过 Array.find() 直接找到第一个符合条件的键值对，返回键。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> key = <span class="built_in">Object</span>.entries(obj).find(<span class="function">(<span class="params">[_key, value]</span>) =&gt;</span> value === <span class="number">1</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="built_in">console</span>.log(key); <span class="comment">// a</span></span><br></pre></td></tr></table></figure></div></p>
+<p>Object.entries()：返回对象所有键值对的数组，然后你可以迭代检查每个键值对，找到你要的键。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> <span class="built_in">Object</span>.entries(obj)) &#123;</span><br><span class="line">  <span class="keyword">if</span> (value === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key); <span class="comment">// a or c</span></span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>Object.keys():返回对象所有的键，然后你可以迭代检查每个键对应的值，找到你要的键。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> keys = <span class="built_in">Object</span>.keys(obj);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> keys) &#123;</span><br><span class="line">  <span class="keyword">if</span> (obj[key] === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key); <span class="comment">// a or c</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>以上三种方法根据对象的值查找对应的键名。 Object.entries() + Array.find() 方法性能最高，其余两种方法性能稍差。</p>
+]]></content>
+      <tags>
+        <tag>JS</tag>
       </tags>
   </entry>
   <entry>
@@ -187,46 +215,6 @@
       </tags>
   </entry>
   <entry>
-    <title>eventBus 发布和订阅</title>
-    <url>/eventBus-%E5%8F%91%E5%B8%83%E5%92%8C%E8%AE%A2%E9%98%85.html</url>
-    <content><![CDATA[<p>eventBus 是一个轻量级的发布/订阅事件总线，主要用于组件之间的松耦合通信。它的原理如下：</p>
-<ol>
-<li><p>订阅事件：调用 bus.on() 方法订阅某个事件，传入事件名和回调函数。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">eventBus.on(<span class="string">'eventName'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 处理事件逻辑</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>发布事件：调用 bus.emit() 方法发布事件，传入事件名和数据。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">eventBus.emit(<span class="string">'eventName'</span>, data)</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>eventBus 会将订阅了该事件的回调函数执行，并传入发布事件的数据。一个简单的例子：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> eventBus <span class="keyword">from</span> <span class="string">'./eventBus.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 订阅事件</span></span><br><span class="line">eventBus.on(<span class="string">'eventName'</span>, data =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data) <span class="comment">// 1</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发布事件 </span></span><br><span class="line">eventBus.emit(<span class="string">'eventName'</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
-</li>
-</ol>
-<h1 id="eventBus-js"><a href="#eventBus-js" class="headerlink" title="eventBus.js"></a>eventBus.js</h1><p>eventBus 的代码，用于引入<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventBus</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="comment">// 初始化一个对象,用来存储不同事件名对应的处理函数数组 </span></span><br><span class="line">    <span class="keyword">this</span>.handlers = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  on(eventName, handler) &#123;</span><br><span class="line">    <span class="comment">// 注册事件,如果该事件名对应的处理函数数组不存在,创建一个空数组</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.handlers[eventName]) &#123;</span><br><span class="line">      <span class="keyword">this</span>.handlers[eventName] = [];  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 将处理函数添加到该事件名对应的数组中</span></span><br><span class="line">    <span class="keyword">this</span>.handlers[eventName].push(handler); </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  off(eventName, handler) &#123;</span><br><span class="line">    <span class="comment">// 取消订阅事件</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.handlers[eventName]) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 从处理函数数组中移除指定的处理函数</span></span><br><span class="line">    <span class="keyword">this</span>.handlers[eventName] = <span class="keyword">this</span>.handlers[eventName].filter(h =&gt; h !== handler);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  emit(eventName, ...args) &#123;</span><br><span class="line">    <span class="comment">// 触发事件,获取该事件名对应的处理函数数组</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.handlers[eventName]) &#123;</span><br><span class="line">      <span class="keyword">return</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 执行每个处理函数,并传入事件data</span></span><br><span class="line">    <span class="keyword">this</span>.handlers[eventName].forEach(handler =&gt; handler(...args));   </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 只执行一次</span></span><br><span class="line">  once(eventName, handler) &#123;</span><br><span class="line">    function onceHandler() &#123;</span><br><span class="line">      handler()</span><br><span class="line">      <span class="keyword">this</span>.off(eventName, onceHandler)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.on(eventName, onceHandler) </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> eventBus = new EventBus();</span><br><span class="line"></span><br><span class="line">export <span class="keyword">default</span> eventBus;   </span><br><span class="line"><span class="comment">// 导出 eventBus 实例</span></span><br></pre></td></tr></table></figure></div></p>
-<p>它的工作原理是这样的:</p>
-<ol>
-<li>当调用 on(eventName, handler) 时，handler 函数会被立即注册到 eventBus 中。</li>
-<li>当调用 emit(eventName) 时，eventBus 会立即执行以下操作：<ul>
-<li>获取 eventName 对应的所有 handler 函数  </li>
-<li>在当前执行调用栈中，逐个执行这些 handler 函数这意味着 emit 执行的过程中，所有订阅者的函数都会被调用并执行。举个例子:</li>
-</ul>
-</li>
-</ol>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">eventBus.on(<span class="string">"hello"</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Hello A"</span>) </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">eventBus.on(<span class="string">"hello"</span>, () =&gt; &#123;  </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Hello B"</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">eventBus.emit(<span class="string">"hello"</span>)</span><br></pre></td></tr></table></figure></div>
-<p>执行以上代码后,会立即输出：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DNS"><figure class="iseeu highlight /dns"><table><tr><td class="code"><pre><span class="line">Hello <span class="keyword">A</span></span><br><span class="line">Hello B</span><br></pre></td></tr></table></figure></div>
-<p>这是因为 eventBus.emit(“hello”) 执行的时候，直接调用了两个 handler 函数。所以订阅者可以及时收到消息，不是因为 setTimeout 或者定时器，而是 emit 同步执行了所有订阅函数。</p>
-<p>once 的原理是:</p>
-<ol>
-<li>once() 方法会创建一个内部的 onceHandler 函数</li>
-<li>onceHandler 会先执行传入的 handler 函数，然后调用 off() 移除自身</li>
-<li>最终 onceHandler 只会执行一次</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo 自定义主题</title>
     <url>/hexo%20%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98.html</url>
     <content><![CDATA[<p>参考文章：<a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html</a></p>
@@ -307,6 +295,46 @@
       </tags>
   </entry>
   <entry>
+    <title>eventBus 发布和订阅</title>
+    <url>/eventBus-%E5%8F%91%E5%B8%83%E5%92%8C%E8%AE%A2%E9%98%85.html</url>
+    <content><![CDATA[<p>eventBus 是一个轻量级的发布/订阅事件总线，主要用于组件之间的松耦合通信。它的原理如下：</p>
+<ol>
+<li><p>订阅事件：调用 bus.on() 方法订阅某个事件，传入事件名和回调函数。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">eventBus.on(<span class="string">'eventName'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 处理事件逻辑</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>发布事件：调用 bus.emit() 方法发布事件，传入事件名和数据。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">eventBus.emit(<span class="string">'eventName'</span>, data)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>eventBus 会将订阅了该事件的回调函数执行，并传入发布事件的数据。一个简单的例子：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> eventBus <span class="keyword">from</span> <span class="string">'./eventBus.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 订阅事件</span></span><br><span class="line">eventBus.on(<span class="string">'eventName'</span>, data =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data) <span class="comment">// 1</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发布事件 </span></span><br><span class="line">eventBus.emit(<span class="string">'eventName'</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+<h1 id="eventBus-js"><a href="#eventBus-js" class="headerlink" title="eventBus.js"></a>eventBus.js</h1><p>eventBus 的代码，用于引入<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="KOTLIN"><figure class="iseeu highlight /kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventBus</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="comment">// 初始化一个对象,用来存储不同事件名对应的处理函数数组 </span></span><br><span class="line">    <span class="keyword">this</span>.handlers = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  on(eventName, handler) &#123;</span><br><span class="line">    <span class="comment">// 注册事件,如果该事件名对应的处理函数数组不存在,创建一个空数组</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.handlers[eventName]) &#123;</span><br><span class="line">      <span class="keyword">this</span>.handlers[eventName] = [];  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 将处理函数添加到该事件名对应的数组中</span></span><br><span class="line">    <span class="keyword">this</span>.handlers[eventName].push(handler); </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  off(eventName, handler) &#123;</span><br><span class="line">    <span class="comment">// 取消订阅事件</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.handlers[eventName]) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 从处理函数数组中移除指定的处理函数</span></span><br><span class="line">    <span class="keyword">this</span>.handlers[eventName] = <span class="keyword">this</span>.handlers[eventName].filter(h =&gt; h !== handler);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  emit(eventName, ...args) &#123;</span><br><span class="line">    <span class="comment">// 触发事件,获取该事件名对应的处理函数数组</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.handlers[eventName]) &#123;</span><br><span class="line">      <span class="keyword">return</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 执行每个处理函数,并传入事件data</span></span><br><span class="line">    <span class="keyword">this</span>.handlers[eventName].forEach(handler =&gt; handler(...args));   </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 只执行一次</span></span><br><span class="line">  once(eventName, handler) &#123;</span><br><span class="line">    function onceHandler() &#123;</span><br><span class="line">      handler()</span><br><span class="line">      <span class="keyword">this</span>.off(eventName, onceHandler)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.on(eventName, onceHandler) </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> eventBus = new EventBus();</span><br><span class="line"></span><br><span class="line">export <span class="keyword">default</span> eventBus;   </span><br><span class="line"><span class="comment">// 导出 eventBus 实例</span></span><br></pre></td></tr></table></figure></div></p>
+<p>它的工作原理是这样的:</p>
+<ol>
+<li>当调用 on(eventName, handler) 时，handler 函数会被立即注册到 eventBus 中。</li>
+<li>当调用 emit(eventName) 时，eventBus 会立即执行以下操作：<ul>
+<li>获取 eventName 对应的所有 handler 函数  </li>
+<li>在当前执行调用栈中，逐个执行这些 handler 函数这意味着 emit 执行的过程中，所有订阅者的函数都会被调用并执行。举个例子:</li>
+</ul>
+</li>
+</ol>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">eventBus.on(<span class="string">"hello"</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Hello A"</span>) </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">eventBus.on(<span class="string">"hello"</span>, () =&gt; &#123;  </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Hello B"</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">eventBus.emit(<span class="string">"hello"</span>)</span><br></pre></td></tr></table></figure></div>
+<p>执行以上代码后,会立即输出：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="DNS"><figure class="iseeu highlight /dns"><table><tr><td class="code"><pre><span class="line">Hello <span class="keyword">A</span></span><br><span class="line">Hello B</span><br></pre></td></tr></table></figure></div>
+<p>这是因为 eventBus.emit(“hello”) 执行的时候，直接调用了两个 handler 函数。所以订阅者可以及时收到消息，不是因为 setTimeout 或者定时器，而是 emit 同步执行了所有订阅函数。</p>
+<p>once 的原理是:</p>
+<ol>
+<li>once() 方法会创建一个内部的 onceHandler 函数</li>
+<li>onceHandler 会先执行传入的 handler 函数，然后调用 off() 移除自身</li>
+<li>最终 onceHandler 只会执行一次</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue 父组件想判断所有子组件弹窗是否有打开</title>
     <url>/vue-%E7%88%B6%E7%BB%84%E4%BB%B6%E6%83%B3%E5%88%A4%E6%96%AD%E6%89%80%E6%9C%89%E5%AD%90%E7%BB%84%E4%BB%B6%E5%BC%B9%E7%AA%97%E6%98%AF%E5%90%A6%E6%9C%89%E6%89%93%E5%BC%80.html</url>
     <content><![CDATA[<p>vue + element<br>情况，希望在子组件有弹窗打开时，父组件的一些快捷键功能不要触发，因此需要知道子组件弹窗的打开状态。<br>父组件一个页面<br>子组件可以有多个页面</p>
@@ -328,36 +356,12 @@
       </tags>
   </entry>
   <entry>
-    <title>定时器 requestAnimationFrame</title>
-    <url>/%E5%AE%9A%E6%97%B6%E5%99%A8-requestAnimationFrame.html</url>
-    <content><![CDATA[<p>requestAnimationFrame 是什么？<br>它是一个浏览器提供的 API，用于在浏览器重绘之前调用指定的回调函数。它可以让浏览器在重绘之前更新动画/视觉效果，从而实现平滑的动画效果。</p>
-<p>使用场景：requestAnimationFrame 经常用来构建平滑的动画效果和视觉效果。比如页面滚动，CSS3 过渡和动画，canvas 动画等。</p>
-<p>原理：requestAnimationFrame 将回调函数加入浏览器的回调队列中,在下一次重绘之前调用。一般来说,屏幕刷新频率是 60Hz，也就是说每秒重新绘制 60 次。requestAnimationFrame 试图将重绘与此刷新频率同步，从而实现平滑的动画效果。</p>
-<p>与 setTimeout/setInterval 的比较：<br>requestAnimationFrame 与 setTimeout/setInterval 都可以实现定时执行代码的功能，但 requestAnimationFrame 有更好的性能表现。这是因为:</p>
-<ul>
-<li>requestAnimationFrame 与屏幕刷新同步，只在需要重绘的时候执行回调，而 setTimeout 是按照固定时间间隔执行。</li>
-<li>requestAnimationFrame 会把多个回调集中在一起执行，减少重绘次数,而 setTimeout 会每个时间间隔就重绘一次。</li>
-<li>requestAnimationFrame 可以保证平滑的动画效果，而 setTimeout 可能由于间隔时间过长产生卡顿感。<br>所以,在不需要严格的时间间隔要求和需要平滑动画的场景下，requestAnimationFrame 是更好的选择。</li>
-</ul>
-<p>不同浏览器的实现差异：<br>不同浏览器的刷新频率可能不同,实现方式也可能略有差异，这可能会导致动画效果在不同浏览器中有细微的差别。<br>在我的电脑上，屏幕的刷新率是 60Hz，它每一次的刷新频率大概是 16.666ms。</p>
-<p>优点：</p>
-<ol>
-<li>与屏幕刷新频率同步，实现平滑的动画效果；</li>
-<li>节省 CPU、GPU 和电量；</li>
-<li>避免布局抖动等视觉差异。</li>
-</ol>
-<p>缺点：</p>
-<ol>
-<li>回调函数的调用频率受屏幕刷新频率的限制,在低刷新频率下会感觉到卡顿；</li>
-<li>若连续调用 requestAnimationFrame，可能会导致过高的 CPU 占用，应避免请求动画帧的频率超过屏幕刷新频率；</li>
-<li>部分低端机型的刷新频率较低,动画效果可能不太平滑。</li>
-</ol>
-<p>使用示例：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 执行动画绘制等逻辑</span></span><br><span class="line">  requestAnimationFrame(animate); </span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br></pre></td></tr></table></figure></div></p>
-<p>可以使用 cancelAnimationFrame 取消一个 requestAnimationFrame 的回调函数。例如：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> rafId;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 执行动画绘制等逻辑</span></span><br><span class="line">  rafId = requestAnimationFrame(animate);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startAnimation</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">  rafId = requestAnimationFrame(animate); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 取消 requestAnimationFrame</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopAnimation</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  cancelAnimationFrame(rafId); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+    <title>解除端口占用</title>
+    <url>/%E8%A7%A3%E9%99%A4%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8.html</url>
+    <content><![CDATA[<p>打开 dos 命令窗口输入一下命令</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">netstat -o -n -a <span class="string">| findstr :4000</span></span><br></pre></td></tr></table></figure>
+<p>可以看到输出如下：<br><img src="images/20220902172812.png" alt><br>可以看到 LISTENING 同时端口是 4000 那一行，最后面带着一串数字，数字是 3628，这个时候我们输出一行命令，解除掉占用<br><img src="images/20230409134012.png" alt><br><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">taskkill <span class="string">/F</span> <span class="string">/PID</span> 3628</span><br></pre></td></tr></table></figure></p>
 ]]></content>
-      <tags>
-        <tag>JS</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue-electron 批量生成 pdf</title>
@@ -518,12 +522,50 @@
       </tags>
   </entry>
   <entry>
-    <title>解除端口占用</title>
-    <url>/%E8%A7%A3%E9%99%A4%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8.html</url>
-    <content><![CDATA[<p>打开 dos 命令窗口输入一下命令</p>
-<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">netstat -o -n -a <span class="string">| findstr :4000</span></span><br></pre></td></tr></table></figure>
-<p>可以看到输出如下：<br><img src="images/20220902172812.png" alt><br>可以看到 LISTENING 同时端口是 4000 那一行，最后面带着一串数字，数字是 3628，这个时候我们输出一行命令，解除掉占用<br><img src="images/20230409134012.png" alt><br><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">taskkill <span class="string">/F</span> <span class="string">/PID</span> 3628</span><br></pre></td></tr></table></figure></p>
+    <title>隐藏文件管理资源器左侧的坚果云快捷方式</title>
+    <url>/%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E8%B5%84%E6%BA%90%E5%99%A8%E5%B7%A6%E4%BE%A7%E7%9A%84%E5%9D%9A%E6%9E%9C%E4%BA%91%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F.html</url>
+    <content><![CDATA[<p>系统：windows 10<br>在安装了坚果云之后，发现在左边有一个快捷方式，现在我想要隐藏掉，具体操作如下</p>
+<p>按 Win + R 打开“运行”对话框,输入 regedit 打开注册表编辑器，编辑器打开后点击“编辑”-“查找”:<br>我们可以看到有坚果云的字样<br><img src="images/20230520_1.png" alt></p>
+<ol>
+<li>找到名称为“System.IsPinnedToNamespaceTree”的注册表项</li>
+<li>双击修改该项,将“值数据”一栏从当前值修改为“0”</li>
+<li>点击“确定”保存设置</li>
+<li>重启资源管理器或电脑</li>
+<li>之前的“坚果云”快捷方式应隐藏,如果要显示,将第2步的值改回原来的值即“1”<br><img src="images/20230520_2.png" alt></li>
+</ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>定时器 requestAnimationFrame</title>
+    <url>/%E5%AE%9A%E6%97%B6%E5%99%A8-requestAnimationFrame.html</url>
+    <content><![CDATA[<p>requestAnimationFrame 是什么？<br>它是一个浏览器提供的 API，用于在浏览器重绘之前调用指定的回调函数。它可以让浏览器在重绘之前更新动画/视觉效果，从而实现平滑的动画效果。</p>
+<p>使用场景：requestAnimationFrame 经常用来构建平滑的动画效果和视觉效果。比如页面滚动，CSS3 过渡和动画，canvas 动画等。</p>
+<p>原理：requestAnimationFrame 将回调函数加入浏览器的回调队列中,在下一次重绘之前调用。一般来说,屏幕刷新频率是 60Hz，也就是说每秒重新绘制 60 次。requestAnimationFrame 试图将重绘与此刷新频率同步，从而实现平滑的动画效果。</p>
+<p>与 setTimeout/setInterval 的比较：<br>requestAnimationFrame 与 setTimeout/setInterval 都可以实现定时执行代码的功能，但 requestAnimationFrame 有更好的性能表现。这是因为:</p>
+<ul>
+<li>requestAnimationFrame 与屏幕刷新同步，只在需要重绘的时候执行回调，而 setTimeout 是按照固定时间间隔执行。</li>
+<li>requestAnimationFrame 会把多个回调集中在一起执行，减少重绘次数,而 setTimeout 会每个时间间隔就重绘一次。</li>
+<li>requestAnimationFrame 可以保证平滑的动画效果，而 setTimeout 可能由于间隔时间过长产生卡顿感。<br>所以,在不需要严格的时间间隔要求和需要平滑动画的场景下，requestAnimationFrame 是更好的选择。</li>
+</ul>
+<p>不同浏览器的实现差异：<br>不同浏览器的刷新频率可能不同,实现方式也可能略有差异，这可能会导致动画效果在不同浏览器中有细微的差别。<br>在我的电脑上，屏幕的刷新率是 60Hz，它每一次的刷新频率大概是 16.666ms。</p>
+<p>优点：</p>
+<ol>
+<li>与屏幕刷新频率同步，实现平滑的动画效果；</li>
+<li>节省 CPU、GPU 和电量；</li>
+<li>避免布局抖动等视觉差异。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>回调函数的调用频率受屏幕刷新频率的限制,在低刷新频率下会感觉到卡顿；</li>
+<li>若连续调用 requestAnimationFrame，可能会导致过高的 CPU 占用，应避免请求动画帧的频率超过屏幕刷新频率；</li>
+<li>部分低端机型的刷新频率较低,动画效果可能不太平滑。</li>
+</ol>
+<p>使用示例：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 执行动画绘制等逻辑</span></span><br><span class="line">  requestAnimationFrame(animate); </span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br></pre></td></tr></table></figure></div></p>
+<p>可以使用 cancelAnimationFrame 取消一个 requestAnimationFrame 的回调函数。例如：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> rafId;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 执行动画绘制等逻辑</span></span><br><span class="line">  rafId = requestAnimationFrame(animate);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startAnimation</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">  rafId = requestAnimationFrame(animate); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 取消 requestAnimationFrame</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopAnimation</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  cancelAnimationFrame(rafId); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+]]></content>
+      <tags>
+        <tag>JS</tag>
+      </tags>
   </entry>
   <entry>
     <title>纯 html 文件中怎么使用 sass</title>
@@ -644,20 +686,6 @@ require &apos;sass/supports&apos;
         <tag>sass</tag>
         <tag>css</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>隐藏文件管理资源器左侧的坚果云快捷方式</title>
-    <url>/%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E8%B5%84%E6%BA%90%E5%99%A8%E5%B7%A6%E4%BE%A7%E7%9A%84%E5%9D%9A%E6%9E%9C%E4%BA%91%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F.html</url>
-    <content><![CDATA[<p>系统：windows 10<br>在安装了坚果云之后，发现在左边有一个快捷方式，现在我想要隐藏掉，具体操作如下</p>
-<p>按 Win + R 打开“运行”对话框,输入 regedit 打开注册表编辑器，编辑器打开后点击“编辑”-“查找”:<br>我们可以看到有坚果云的字样<br><img src="images/20230520_1.png" alt></p>
-<ol>
-<li>找到名称为“System.IsPinnedToNamespaceTree”的注册表项</li>
-<li>双击修改该项,将“值数据”一栏从当前值修改为“0”</li>
-<li>点击“确定”保存设置</li>
-<li>重启资源管理器或电脑</li>
-<li>之前的“坚果云”快捷方式应隐藏,如果要显示,将第2步的值改回原来的值即“1”<br><img src="images/20230520_2.png" alt></li>
-</ol>
-]]></content>
   </entry>
   <entry>
     <title>用 C# 开发小软件.md</title>
