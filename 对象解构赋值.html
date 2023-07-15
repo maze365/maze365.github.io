@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="maze365 前端">
+  <meta name="keywords" content="JS,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://maze365.github.io/hello-world.html">
+<meta name="description" content="说明在 JS 中，有一个表达式是解构，它允许从对象或数组中提取值，并将值赋给变量。在开发中使用，能让我们的代码变得更加简洁。 比如：12345678var person = [&apos;John&apos;, 30, &apos;New York&apos;]var name = person[0]var age = person[1]var city = person[2]// 使用解构后var person = [&apos;John&apos;,">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对象解构赋值">
+<meta property="og:url" content="https://maze365.github.io/对象解构赋值.html">
 <meta property="og:site_name" content="maze365&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="说明在 JS 中，有一个表达式是解构，它允许从对象或数组中提取值，并将值赋给变量。在开发中使用，能让我们的代码变得更加简洁。 比如：12345678var person = [&apos;John&apos;, 30, &apos;New York&apos;]var name = person[0]var age = person[1]var city = person[2]// 使用解构后var person = [&apos;John&apos;,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-25T03:47:20.000Z">
+<meta property="og:updated_time" content="2023-07-15T05:52:37.452Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="对象解构赋值">
+<meta name="twitter:description" content="说明在 JS 中，有一个表达式是解构，它允许从对象或数组中提取值，并将值赋给变量。在开发中使用，能让我们的代码变得更加简洁。 比如：12345678var person = [&apos;John&apos;, 30, &apos;New York&apos;]var name = person[0]var age = person[1]var city = person[2]// 使用解构后var person = [&apos;John&apos;,">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://maze365.github.io/hello-world.html">
+  <link rel="canonical" href="https://maze365.github.io/对象解构赋值.html">
 
 
 
 
 
-  <title>Hello World | maze365's Blog</title>
+  <title>对象解构赋值 | maze365's Blog</title>
   
 
 
@@ -242,42 +243,165 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://maze365.github.io/对象解构赋值.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="maze365">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="maze365's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">Hello World</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></div>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+          <h1 class="post-title" itemprop="name headline">对象解构赋值</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-15T13:52:13+08:00">
+                2023-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            <span class="post-tags post-meta-item-icon">
+              <i class="fa fa-tag"></i>
+            </span>
+            
+              <span>JS </span>
+            
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>在 JS 中，有一个表达式是解构，它允许从对象或数组中提取值，并将值赋给变量。在开发中使用，能让我们的代码变得更加简洁。</p>
+<p>比如：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = [<span class="string">'John'</span>, <span class="number">30</span>, <span class="string">'New York'</span>]</span><br><span class="line"><span class="keyword">var</span> name = person[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">var</span> age = person[<span class="number">1</span>]</span><br><span class="line"><span class="keyword">var</span> city = person[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用解构后</span></span><br><span class="line"><span class="keyword">var</span> person = [<span class="string">'John'</span>, <span class="number">30</span>, <span class="string">'New York'</span>]</span><br><span class="line"><span class="keyword">var</span> [name, age, city] = person</span><br></pre></td></tr></table></figure></div></p>
+<h1 id="对象解构"><a href="#对象解构" class="headerlink" title="对象解构"></a>对象解构</h1><p>以下的赋值语法默认使用了 ES6，部分老旧的浏览器是不支持这样赋值的。<br>对对象而言，解构赋值相当于为多个属性创建不同的变量名，例如:<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  age: <span class="number">30</span>,</span><br><span class="line">  city: <span class="string">'New York'</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; name, age &#125; = person; <span class="comment">// 这个是 ES6 新增的解构赋值</span></span><br><span class="line"><span class="comment">// name = 'John', age = 30</span></span><br></pre></td></tr></table></figure></div></p>
+<p>这里我们从 person 对象中解构出 name 和 age 属性，分别赋值给同名变量。这是一个非常实用的语法，可以让我们快速从对象中获取所需的属性。</p>
+<p>非 ES6 语法进行赋值<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对象</span></span><br><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  age: <span class="number">30</span> </span><br><span class="line">&#125;; </span><br><span class="line"><span class="keyword">const</span> name = person.name;</span><br><span class="line"><span class="keyword">const</span> age = person.age;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组</span></span><br><span class="line"><span class="keyword">const</span> fruits = [<span class="string">'Apple'</span>, <span class="string">'Orange'</span>, <span class="string">'Banana'</span>];</span><br><span class="line"><span class="keyword">const</span> first = fruits[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">const</span> second = fruits[<span class="number">1</span>];</span><br></pre></td></tr></table></figure></div></p>
+<p>解构的变量名不需要与属性同名，我们可以在解构语句中自定义变量名：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="attr">name</span>: firstName, age &#125; = person;</span><br><span class="line"><span class="comment">// firstName = 'John', age = 30</span></span><br></pre></td></tr></table></figure></div></p>
+<p>这里我们将 name 属性解构到 firstName 变量。解构赋值语句可以有默认值，这样即使属性不存在，变量也会有值：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; name, age = <span class="number">20</span> &#125; = person; </span><br><span class="line"><span class="comment">// name = 'John', age = 30</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; name, height = <span class="number">180</span> &#125; = person; </span><br><span class="line"><span class="comment">// name = 'John', height = 180</span></span><br></pre></td></tr></table></figure></div></p>
+<p>height 属性不存在，所以 height 变量取默认值 180。</p>
+<p>解构嵌套对象：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  name: <span class="string">'John'</span>,</span><br><span class="line">  age: <span class="number">30</span>,</span><br><span class="line">  address: &#123;</span><br><span class="line">    street: <span class="string">'Main St'</span>,</span><br><span class="line">    city: <span class="string">'New York'</span>,</span><br><span class="line">    state: <span class="string">'NY'</span> </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="attr">address</span>: &#123; street, city &#125; &#125; = user;</span><br><span class="line"><span class="comment">// street = 'Main St'</span></span><br><span class="line"><span class="comment">// city = 'New York'</span></span><br></pre></td></tr></table></figure></div></p>
+<h1 id="数组解构"><a href="#数组解构" class="headerlink" title="数组解构"></a>数组解构</h1><p>我们上面举的例子都是对象解构，下面说明数组解构，也是类似的：<br>基本语法是：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [x, y] = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="comment">// x = 1, y = 2</span></span><br></pre></td></tr></table></figure></div></p>
+<p>交换变量的值：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">[a, b] = [b, a];</span><br><span class="line"><span class="comment">// a = 2, b = 1</span></span><br></pre></td></tr></table></figure></div></p>
+<p>这里我们从数组中解构出 x 和 y 两个值。如果解构不成功,值就等于 undefined：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [x, y] = [<span class="number">1</span>];</span><br><span class="line"><span class="comment">// x = 1, y = undefined</span></span><br></pre></td></tr></table></figure></div></p>
+<p>解构可以嵌套，从多维数组中解构：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [x, [y], z] = [<span class="number">1</span>, [<span class="number">2</span>], <span class="number">3</span>]; </span><br><span class="line"><span class="comment">// x = 1, y = 2, z = 3</span></span><br></pre></td></tr></table></figure></div></p>
+<p>解构也可以有默认值：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [x, y = <span class="number">2</span>] = [<span class="number">1</span>]; </span><br><span class="line"><span class="comment">// x = 1, y = 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [x, y = <span class="number">3</span>] = [<span class="number">1</span>, <span class="literal">null</span>]; </span><br><span class="line"><span class="comment">// x = 1, y = null // null 被认为是一个合法的值，所以 y 取值为 null 而非默认值 3。</span></span><br></pre></td></tr></table></figure></div></p>
+<p>数组解构赋值经常用于从函数返回多个值,并直接赋给不同的变量。例如：<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUser</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [</span><br><span class="line">    <span class="string">'John'</span>,</span><br><span class="line">    <span class="number">30</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [name, age] = getUser();</span><br><span class="line"><span class="comment">// name = 'John', age = 30</span></span><br></pre></td></tr></table></figure></div></p>
+<p>我们从 getUser() 的返回值中直接解构出 name 和 age 变量。</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Object-根据值找键.html" rel="next" title="Object 根据值找键">
+                <i class="fa fa-chevron-left"></i> Object 根据值找键
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -393,7 +517,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象解构"><span class="nav-text">对象解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组解构"><span class="nav-text">数组解构</span></a></li></ol></div>
             
 
           </div>
