@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="maze365 前端">
+  <meta name="keywords" content="JS,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="前端工程师">
-<meta property="og:type" content="website">
-<meta property="og:title" content="maze365&#39;s Blog">
-<meta property="og:url" content="https://maze365.github.io/archives/2019/index.html">
+<meta name="description" content="promise、setTimeout 等异步 API 的执行顺序和区别。 promise 是 ES6 中用于异步编程的一种解决方案。它可以避免回调地狱的问题。setTimeout 是 JavaScript 中的定时函数，可以在一定的时间后执行代码。当 setTimeout 和 promise 同时使用时，它们两个的执行顺序如下： 12345678910111213let promise = new">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Promise 和 setTimeout 执行顺序">
+<meta property="og:url" content="https://maze365.github.io/Promise-和-setTimeout-执行顺序.html">
 <meta property="og:site_name" content="maze365&#39;s Blog">
-<meta property="og:description" content="前端工程师">
+<meta property="og:description" content="promise、setTimeout 等异步 API 的执行顺序和区别。 promise 是 ES6 中用于异步编程的一种解决方案。它可以避免回调地狱的问题。setTimeout 是 JavaScript 中的定时函数，可以在一定的时间后执行代码。当 setTimeout 和 promise 同时使用时，它们两个的执行顺序如下： 12345678910111213let promise = new">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2023-07-29T01:58:07.937Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="maze365&#39;s Blog">
-<meta name="twitter:description" content="前端工程师">
+<meta name="twitter:title" content="Promise 和 setTimeout 执行顺序">
+<meta name="twitter:description" content="promise、setTimeout 等异步 API 的执行顺序和区别。 promise 是 ES6 中用于异步编程的一种解决方案。它可以避免回调地狱的问题。setTimeout 是 JavaScript 中的定时函数，可以在一定的时间后执行代码。当 setTimeout 和 promise 同时使用时，它们两个的执行顺序如下： 12345678910111213let promise = new">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://maze365.github.io/archives/2019/">
+  <link rel="canonical" href="https://maze365.github.io/Promise-和-setTimeout-执行顺序.html">
 
 
 
 
 
-  <title>归档 | maze365's Blog</title>
+  <title>Promise 和 setTimeout 执行顺序 | maze365's Blog</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -239,72 +241,178 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 22 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://maze365.github.io/Promise-和-setTimeout-执行顺序.html">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="maze365">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="maze365's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/sublime 插件删除不成功.html" itemprop="url">
-              
-                <span itemprop="name">sublime 插件删除不成功</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Promise 和 setTimeout 执行顺序</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-11T17:54:50+08:00" content="2019-04-11">
-          04-11
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-07-29T09:57:46+08:00">
+                2023-07-29
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            <span class="post-tags post-meta-item-icon">
+              <i class="fa fa-tag"></i>
+            </span>
+            
+              <span>JS </span>
+            
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <p>promise、setTimeout 等异步 API 的执行顺序和区别。</p>
+<p>promise 是 ES6 中用于异步编程的一种解决方案。它可以避免回调地狱的问题。setTimeout 是 JavaScript 中的定时函数，可以在一定的时间后执行代码。当 setTimeout 和 promise 同时使用时，它们两个的执行顺序如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Promise'</span>) <span class="comment">// 主进程</span></span><br><span class="line">  resolve(<span class="string">'Promise then'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timeout'</span>) <span class="comment">// 宏任务</span></span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123; <span class="comment">// 微任务</span></span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>) <span class="comment">// 主进程</span></span><br></pre></td></tr></table></figure></div>
+<ol>
+<li>promise 对象创建时处于 pending 状态。new Promise 里面的内容会立即执行</li>
+<li>setTimeout 会首先执行，因为它不需要等待任何操作，作为一个异步任务直接进入事件循环队列。</li>
+<li>promise 的 then/catch 被定义，但不会立即执行。</li>
+<li>主线程继续执行同步代码，将 then/catch 放入微任务队列。</li>
+<li>当主线程执行栈为空时，从微任务队列取出 then/catch 回调并执行。</li>
+<li>同时 setTimeout 中的回调函数，会在计时结束后被放入宏任务队列。</li>
+<li>主线程执行完所有微任务后，会检查宏任务队列，取出 setTimeout 回调函数并执行。</li>
+</ol>
+<p>当 JS 引擎执行异步代码时，会按照这个顺序来执行:<br>主线程代码 &gt; 微任务队列 &gt; 宏任务队列<br>也就是:</p>
+<ol>
+<li>首先执行主线程上的同步代码</li>
+<li>主线程代码执行完毕后，检查微任务队列，依次执行所有微任务队列中的任务</li>
+<li>微任务队列执行完毕后，检查宏任务队列，依次执行所有宏任务队列中的任务</li>
+<li>然后循环往复上述过程<br>其中:</li>
+</ol>
+<ul>
+<li>主线程代码指的是普通的同步代码</li>
+<li>微任务包括 promise.then/catch、MutationObserver 等</li>
+<li>宏任务包括 setTimeout、setInterval、DOM 事件回调、I/O 操作的回调（网络请求、文件读写、数据库操作）、postMessage/MessageChannel 的事件等<br>所以在异步代码中，我们往往先定义微任务，然后再定义宏任务。这样可以利用微任务的执行优先级，使得需要先执行的逻辑放在微任务中，从而控制代码的执行顺序。</li>
+</ul>
+<p>执行结果答案<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">执行结果</span><br><span class="line"><span class="built_in">Promise</span></span><br><span class="line">start</span><br><span class="line"><span class="built_in">Promise</span> then</span><br><span class="line">timeout</span><br></pre></td></tr></table></figure></div></p>
+<p>习题，如果我们在 Promise 里面有 setTimeout，外面也有 setTimeout，那么谁会先执行，最终结果是什么呢<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timeout'</span>) <span class="comment">// 宏任务</span></span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Promise'</span>) <span class="comment">// 主进程</span></span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(<span class="string">'Promise then'</span>) <span class="comment">// 宏任务</span></span><br><span class="line">  &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line">promise.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123; <span class="comment">// 微任务</span></span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>) <span class="comment">// 主进程</span></span><br></pre></td></tr></table></figure></div></p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Promise-的基本概念.html" rel="next" title="Promise 的基本概念">
+                <i class="fa fa-chevron-left"></i> Promise 的基本概念
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -312,6 +420,13 @@
 
 
           
+
+  
+
+
+  
+
+
 
         </div>
         
@@ -540,6 +655,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
