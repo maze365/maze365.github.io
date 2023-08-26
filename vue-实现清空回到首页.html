@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python,">
+  <meta name="keywords" content="vue,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="环境：python：2.7 安装 pip在windows下安装pip： 在C:\python27\scirpts下运行easy_install pip进行安装。 如果不知道是哪个路径，去设置变量那里看看就知道 安装 pandas 和 openpyxl可以使用国内镜像安装 1pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple">
-<meta name="keywords" content="python">
+<meta name="description" content="在 Vue 项目中，如果我们想从子路由跳转回首页，并且清空中间的路由历史记录，可以这样实现：  清空路由历史记录使用 $router.go() 方法，传递一个负数作为参数，这样可以向后遍历路由记录，比如:  12// 清空路由历史记录this.$router.go(-this.$route.matched.length) 这里用到了一个关键属性 $route.matched，它包含当前匹配的路由记">
+<meta name="keywords" content="vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python 文本转成 excel">
-<meta property="og:url" content="https://maze365.github.io/python-文本转成-excel.html">
+<meta property="og:title" content="vue 实现清空回到首页">
+<meta property="og:url" content="https://maze365.github.io/vue-实现清空回到首页.html">
 <meta property="og:site_name" content="maze365&#39;s Blog">
-<meta property="og:description" content="环境：python：2.7 安装 pip在windows下安装pip： 在C:\python27\scirpts下运行easy_install pip进行安装。 如果不知道是哪个路径，去设置变量那里看看就知道 安装 pandas 和 openpyxl可以使用国内镜像安装 1pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple">
+<meta property="og:description" content="在 Vue 项目中，如果我们想从子路由跳转回首页，并且清空中间的路由历史记录，可以这样实现：  清空路由历史记录使用 $router.go() 方法，传递一个负数作为参数，这样可以向后遍历路由记录，比如:  12// 清空路由历史记录this.$router.go(-this.$route.matched.length) 这里用到了一个关键属性 $route.matched，它包含当前匹配的路由记">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-04-05T05:28:29.193Z">
+<meta property="og:updated_time" content="2023-08-26T08:05:29.352Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python 文本转成 excel">
-<meta name="twitter:description" content="环境：python：2.7 安装 pip在windows下安装pip： 在C:\python27\scirpts下运行easy_install pip进行安装。 如果不知道是哪个路径，去设置变量那里看看就知道 安装 pandas 和 openpyxl可以使用国内镜像安装 1pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple">
+<meta name="twitter:title" content="vue 实现清空回到首页">
+<meta name="twitter:description" content="在 Vue 项目中，如果我们想从子路由跳转回首页，并且清空中间的路由历史记录，可以这样实现：  清空路由历史记录使用 $router.go() 方法，传递一个负数作为参数，这样可以向后遍历路由记录，比如:  12// 清空路由历史记录this.$router.go(-this.$route.matched.length) 这里用到了一个关键属性 $route.matched，它包含当前匹配的路由记">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://maze365.github.io/python-文本转成-excel.html">
+  <link rel="canonical" href="https://maze365.github.io/vue-实现清空回到首页.html">
 
 
 
 
 
-  <title>python 文本转成 excel | maze365's Blog</title>
+  <title>vue 实现清空回到首页 | maze365's Blog</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://maze365.github.io/python-文本转成-excel.html">
+    <link itemprop="mainEntityOfPage" href="https://maze365.github.io/vue-实现清空回到首页.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="maze365">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python 文本转成 excel</h1>
+          <h1 class="post-title" itemprop="name headline">vue 实现清空回到首页</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
                 <i class="fa fa-clock-o"></i>
               </span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-01T10:37:05+08:00">
-                2023-04-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-26T16:04:02+08:00">
+                2023-08-26
               </time>
             
 
@@ -299,7 +299,7 @@
               <i class="fa fa-tag"></i>
             </span>
             
-              <span>python </span>
+              <span>vue </span>
             
           
 
@@ -334,21 +334,19 @@
       
 
       
-        <p>环境：<br>python：2.7</p>
-<h1 id="安装-pip"><a href="#安装-pip" class="headerlink" title="安装 pip"></a>安装 pip</h1><p>在windows下安装pip： 在C:\python27\scirpts下运行<code>easy_install pip</code>进行安装。</p>
-<p>如果不知道是哪个路径，去设置变量那里看看就知道</p>
-<h1 id="安装-pandas-和-openpyxl"><a href="#安装-pandas-和-openpyxl" class="headerlink" title="安装 pandas 和 openpyxl"></a>安装 pandas 和 openpyxl</h1><p>可以使用国内镜像安装</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="GROOVY"><figure class="iseeu highlight /groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pandas -i <span class="string">https:</span><span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br></pre></td></tr></table></figure></div>
-<p>pip install openpyxl -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
-<p>同时需要设置环境参数，<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="MEL"><figure class="iseeu highlight /mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.../<span class="keyword">python</span>  这个是 <span class="keyword">python</span> 的环境参数</span><br><span class="line"><span class="comment">// 需要加多一个</span></span><br><span class="line">../<span class="keyword">python</span>/Script</span><br></pre></td></tr></table></figure></div></p>
-<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>可以使用 Pandas 库的 sort_values() 方法对 DataFrame 进行排序。</p>
-<p>例如，如果要按 project 列进行排序，可以这样写：</p>
-<p>Copy code<br>df = df.sort_values(‘project’)<br>这将按 project 列的值对 DataFrame 进行排序。</p>
-<p>如果要按多列进行排序，可以使用 by 参数指定排序列，例如：</p>
-<p>Copy code<br>df = df.sort_values(by=[‘project’, ‘date’])<br>这将按 project 列和 date 列的值对 DataFrame 进行排序。</p>
-<p>如果要按降序排序，可以使用 ascending 参数设置为 False，例如：</p>
-<p>Copy code<br>df = df.sort_values(by=’project’, ascending=False)<br>这将按 project 列的值从大到小对 DataFrame 进行排序。</p>
-<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  # 必须加上这个，否则就识别不了中文</span></span><br><span class="line"><span class="comment"># 引入一些库，需要使用 pip 安装</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> openpyxl.utils.dataframe <span class="keyword">import</span> dataframe_to_rows</span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> Workbook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个是 text，也就是我的工作日报的格式，用这个来解析成 excel</span></span><br><span class="line">text = <span class="string">"""</span></span><br><span class="line"><span class="string"># 日期</span></span><br><span class="line"><span class="string">项目名称</span></span><br><span class="line"><span class="string">- [x] 工作项1</span></span><br><span class="line"><span class="string">- [x] 工作项2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将工作日报文本转换为 DataFrame</span></span><br><span class="line">df = pd.DataFrame(columns=[<span class="string">'date'</span>, <span class="string">'project'</span>, <span class="string">'task'</span>])</span><br><span class="line"></span><br><span class="line">lines = text.strip().split(<span class="string">'\n'</span>)</span><br><span class="line">project_str = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    <span class="keyword">if</span> line.startswith(<span class="string">'#'</span>):</span><br><span class="line">        date = <span class="string">'2022-'</span> + line[<span class="number">1</span>:].strip()</span><br><span class="line">        project_str = <span class="string">''</span></span><br><span class="line">    <span class="keyword">elif</span> line.startswith(<span class="string">'-'</span>):</span><br><span class="line">        task = line.replace(<span class="string">'- [x] '</span>, <span class="string">''</span>)</span><br><span class="line">        df = df.append(&#123;<span class="string">'date'</span>: date, <span class="string">'project'</span>: project_str, <span class="string">'task'</span>: task&#125;, ignore_index=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        project_str = line</span><br><span class="line">df = df.sort_values(by=<span class="string">'project'</span>, ascending=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 将 DataFrame 写入 Excel 文件</span></span><br><span class="line">wb = Workbook()</span><br><span class="line">ws = wb.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> dataframe_to_rows(df, index=<span class="literal">False</span>, header=<span class="literal">True</span>):</span><br><span class="line">    ws.append(r)</span><br><span class="line"></span><br><span class="line">wb.save(<span class="string">"work_log.xlsx"</span>)</span><br></pre></td></tr></table></figure></div>
+        <p>在 Vue 项目中，如果我们想从子路由跳转回首页，并且清空中间的路由历史记录，可以这样实现：</p>
+<ol>
+<li>清空路由历史记录使用 <code>$router.go()</code> 方法，传递一个负数作为参数，这样可以向后遍历路由记录，比如:</li>
+</ol>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 清空路由历史记录</span></span><br><span class="line"><span class="keyword">this</span>.$router.go(-<span class="keyword">this</span>.$route.matched.length)</span><br></pre></td></tr></table></figure></div>
+<p>这里用到了一个关键属性 <code>$route.matched</code>，它包含当前匹配的路由记录数组。所以 <code>$route.matched.length</code> 就是当前匹配的路由记录数量。传递这个负数，就可以逐步遍历清空这些路由记录。</p>
+<ol start="2">
+<li>跳转首页清空记录后，再用 <code>$router.push()</code> 跳转到首页:</li>
+</ol>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 跳转首页</span></span><br><span class="line"><span class="keyword">this</span>.$router.push(&#123; <span class="attr">name</span>: <span class="string">'home'</span> &#125;)</span><br></pre></td></tr></table></figure></div>
+<p>这里通过路由名称 <code>home</code> 来指定要跳转的首页路由。3. 合并写法可以把上述两步合并成一步:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 回首页，并清空历史记录</span></span><br><span class="line"><span class="keyword">this</span>.$router.go(-<span class="keyword">this</span>.$route.matched.length + <span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
+<p>直接传递一个负数，值的计算是当前路由数量减 1，即可以先清空记录，再回首页。</p>
 
       
     </div>
@@ -373,8 +371,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/纯-html-文件中怎么使用-sass.html" rel="next" title="纯 html 文件中怎么使用 sass">
-                <i class="fa fa-chevron-left"></i> 纯 html 文件中怎么使用 sass
+              <a href="/node-版本管理-nvm.html" rel="next" title="node 版本管理 nvm">
+                <i class="fa fa-chevron-left"></i> node 版本管理 nvm
               </a>
             
           </div>
@@ -382,10 +380,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/AI-相关工具.html" rel="prev" title="AI 相关工具">
-                AI 相关工具 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -440,19 +434,12 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            标签
-          </li>
-        </ul>
-      
 
       
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="category-all-page">
+          
+          <p class="site-author-name">标签</p>
           
           <div class="tag-cloud-tags">
             <a href="/tags/AI/" style="font-size: 22px;">AI</a> <a href="/tags/C/" style="font-size: 22px;">C#</a> <a href="/tags/JS/" style="font-size: 30px;">JS</a> <a href="/tags/css/" style="font-size: 14px;">css</a> <a href="/tags/echarts/" style="font-size: 14px;">echarts</a> <a href="/tags/electron/" style="font-size: 14px;">electron</a> <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/hexo/" style="font-size: 22px;">hexo</a> <a href="/tags/nodejs/" style="font-size: 14px;">nodejs</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/sass/" style="font-size: 14px;">sass</a> <a href="/tags/sublime/" style="font-size: 14px;">sublime</a> <a href="/tags/vscode/" style="font-size: 14px;">vscode</a> <a href="/tags/vue/" style="font-size: 22px;">vue</a>
@@ -510,22 +497,6 @@
         -->
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装-pip"><span class="nav-text">安装 pip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装-pandas-和-openpyxl"><span class="nav-text">安装 pandas 和 openpyxl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-text">排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码示例"><span class="nav-text">代码示例</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
